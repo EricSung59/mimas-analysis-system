@@ -31,9 +31,11 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminatingControlPanel = new AnalysisSystem.Controls.EliminatingControlPanel();
+            this.statusLabel1 = new System.Windows.Forms.Label();
+            this.statusLabel = new System.Windows.Forms.Label();
             this.convertingControlPanel = new AnalysisSystem.Controls.ConvertingControlPanel();
             this.functionControlPanel = new AnalysisSystem.Controls.FunctionControlPanel();
+            this.eliminatingControlPanel = new AnalysisSystem.Controls.EliminatingControlPanel();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +47,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1151, 34);
+            this.menuStrip.Size = new System.Drawing.Size(642, 34);
             this.menuStrip.TabIndex = 4;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -61,49 +63,79 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(77, 30);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // eliminatingControlPanel
+            // statusLabel1
             // 
-            this.eliminatingControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.eliminatingControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.eliminatingControlPanel.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eliminatingControlPanel.Location = new System.Drawing.Point(185, 34);
-            this.eliminatingControlPanel.Margin = new System.Windows.Forms.Padding(5);
-            this.eliminatingControlPanel.Name = "eliminatingControlPanel";
-            this.eliminatingControlPanel.Size = new System.Drawing.Size(966, 426);
-            this.eliminatingControlPanel.TabIndex = 7;
+            this.statusLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.statusLabel1.Location = new System.Drawing.Point(0, 432);
+            this.statusLabel1.Margin = new System.Windows.Forms.Padding(0);
+            this.statusLabel1.Name = "statusLabel1";
+            this.statusLabel1.Size = new System.Drawing.Size(66, 28);
+            this.statusLabel1.TabIndex = 8;
+            this.statusLabel1.Text = "Status:";
+            this.statusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.statusLabel.Location = new System.Drawing.Point(66, 432);
+            this.statusLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(576, 28);
+            this.statusLabel.TabIndex = 9;
+            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // convertingControlPanel
             // 
+            this.convertingControlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.convertingControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.convertingControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.convertingControlPanel.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.convertingControlPanel.Location = new System.Drawing.Point(185, 34);
-            this.convertingControlPanel.Margin = new System.Windows.Forms.Padding(5);
+            this.convertingControlPanel.Margin = new System.Windows.Forms.Padding(0);
             this.convertingControlPanel.Name = "convertingControlPanel";
-            this.convertingControlPanel.Size = new System.Drawing.Size(966, 426);
+            this.convertingControlPanel.Size = new System.Drawing.Size(457, 398);
             this.convertingControlPanel.TabIndex = 6;
             // 
             // functionControlPanel
             // 
-            this.functionControlPanel.AnalysisSystemForm = null;
+            this.functionControlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.functionControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.functionControlPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.functionControlPanel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.functionControlPanel.Location = new System.Drawing.Point(0, 34);
-            this.functionControlPanel.Margin = new System.Windows.Forms.Padding(5);
+            this.functionControlPanel.Margin = new System.Windows.Forms.Padding(0);
             this.functionControlPanel.Name = "functionControlPanel";
-            this.functionControlPanel.Size = new System.Drawing.Size(185, 426);
+            this.functionControlPanel.Size = new System.Drawing.Size(185, 398);
             this.functionControlPanel.TabIndex = 5;
+            // 
+            // eliminatingControlPanel
+            // 
+            this.eliminatingControlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.eliminatingControlPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.eliminatingControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.eliminatingControlPanel.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eliminatingControlPanel.Location = new System.Drawing.Point(185, 34);
+            this.eliminatingControlPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.eliminatingControlPanel.Name = "eliminatingControlPanel";
+            this.eliminatingControlPanel.Size = new System.Drawing.Size(457, 398);
+            this.eliminatingControlPanel.TabIndex = 7;
             // 
             // AnalysisSystemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1151, 460);
-            this.Controls.Add(this.eliminatingControlPanel);
+            this.ClientSize = new System.Drawing.Size(642, 460);
+            this.Controls.Add(this.statusLabel);
+            this.Controls.Add(this.statusLabel1);
             this.Controls.Add(this.convertingControlPanel);
             this.Controls.Add(this.functionControlPanel);
             this.Controls.Add(this.menuStrip);
+            this.Controls.Add(this.eliminatingControlPanel);
             this.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -125,5 +157,7 @@
         private Controls.FunctionControlPanel functionControlPanel;
         private Controls.ConvertingControlPanel convertingControlPanel;
         private Controls.EliminatingControlPanel eliminatingControlPanel;
+        private System.Windows.Forms.Label statusLabel1;
+        private System.Windows.Forms.Label statusLabel;
     }
 }

@@ -33,6 +33,7 @@
             this.outFolderLabel = new System.Windows.Forms.Label();
             this.outFolderTextBox = new System.Windows.Forms.TextBox();
             this.outFolderBrowseButton = new System.Windows.Forms.Button();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // selectSampleButton
@@ -45,6 +46,7 @@
             this.selectSampleButton.TabIndex = 0;
             this.selectSampleButton.Text = "Select Sample  ID";
             this.selectSampleButton.UseVisualStyleBackColor = true;
+            this.selectSampleButton.Click += new System.EventHandler(this.selectSampleButton_Click);
             // 
             // listView
             // 
@@ -57,6 +59,7 @@
             this.listView.Size = new System.Drawing.Size(635, 362);
             this.listView.TabIndex = 1;
             this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.List;
             // 
             // outFolderLabel
             // 
@@ -87,6 +90,7 @@
             this.outFolderBrowseButton.TabIndex = 4;
             this.outFolderBrowseButton.Text = "Browse";
             this.outFolderBrowseButton.UseVisualStyleBackColor = true;
+            this.outFolderBrowseButton.Click += new System.EventHandler(this.outFolderBrowseButton_Click);
             // 
             // ChoosingControlPanel
             // 
@@ -114,5 +118,6 @@
         private System.Windows.Forms.Label outFolderLabel;
         private System.Windows.Forms.TextBox outFolderTextBox;
         private System.Windows.Forms.Button outFolderBrowseButton;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
     }
 }
