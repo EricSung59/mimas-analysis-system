@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalysisSystem.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnalysisSystem.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ChoosingControlPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ChoosingControlPanel.Designer.cs">
+      <DependentUpon>ChoosingControlPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ConvertingControlPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -70,8 +82,23 @@
     <Compile Include="Forms\AnalysisSystemForm.Designer.cs">
       <DependentUpon>AnalysisSystemForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Test\ListViewGroupsExample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="AnalysisSystem.dbml.layout">
+      <DependentUpon>AnalysisSystem.dbml</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Controls\ChoosingControlPanel.resx">
+      <DependentUpon>ChoosingControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ConvertingControlPanel.resx">
       <DependentUpon>ConvertingControlPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -84,6 +111,9 @@
     <EmbeddedResource Include="Forms\AnalysisSystemForm.resx">
       <DependentUpon>AnalysisSystemForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Test\Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -93,6 +123,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="AnalysisSystem.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>AnalysisSystem.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,7 +139,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
