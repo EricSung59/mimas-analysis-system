@@ -26,6 +26,12 @@ namespace AnalysisSystem.Controls
             InitializeComponent();
         }
 
+        public FunctionControlPanel(AnalysisSystemForm form)
+            : this()
+        {
+            _analysisSystemForm = form;
+        }
+
         private void convertingButton_Click(object sender, EventArgs e)
         {
 

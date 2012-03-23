@@ -28,37 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.choosingControlPanel1 = new AnalysisSystem.Controls.ChoosingControlPanel();
+            this.convertButton = new System.Windows.Forms.Button();
+            this.choosingControlPanel = new AnalysisSystem.Controls.ChoosingControlPanel();
             this.SuspendLayout();
             // 
-            // choosingControlPanel1
+            // convertButton
             // 
-            this.choosingControlPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.choosingControlPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.choosingControlPanel1.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.choosingControlPanel1.Location = new System.Drawing.Point(0, 0);
-            this.choosingControlPanel1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.choosingControlPanel1.Name = "choosingControlPanel1";
-            this.choosingControlPanel1.Size = new System.Drawing.Size(1083, 467);
-            this.choosingControlPanel1.TabIndex = 1;
+            this.convertButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.convertButton.AutoSize = true;
+            this.convertButton.Location = new System.Drawing.Point(314, 563);
+            this.convertButton.Name = "convertButton";
+            this.convertButton.Size = new System.Drawing.Size(136, 52);
+            this.convertButton.TabIndex = 2;
+            this.convertButton.Text = "CONVERT";
+            this.convertButton.UseVisualStyleBackColor = true;
+            this.convertButton.Click += new System.EventHandler(this.convertButton_Click);
+            // 
+            // choosingControlPanel
+            // 
+            this.choosingControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.choosingControlPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.choosingControlPanel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.choosingControlPanel.Location = new System.Drawing.Point(0, 0);
+            this.choosingControlPanel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.choosingControlPanel.Name = "choosingControlPanel";
+            this.choosingControlPanel.Size = new System.Drawing.Size(765, 544);
+            this.choosingControlPanel.TabIndex = 1;
             // 
             // ConvertingControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.choosingControlPanel1);
+            this.Controls.Add(this.convertButton);
+            this.Controls.Add(this.choosingControlPanel);
             this.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ConvertingControlPanel";
-            this.Size = new System.Drawing.Size(1083, 508);
+            this.Size = new System.Drawing.Size(765, 627);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private ChoosingControlPanel choosingControlPanel1;
+        private ChoosingControlPanel choosingControlPanel;
+        private System.Windows.Forms.Button convertButton;
 
     }
 }

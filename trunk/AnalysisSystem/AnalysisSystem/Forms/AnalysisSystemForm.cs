@@ -7,11 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AnalysisSystem.Controls;
+using System.IO;
 
 namespace AnalysisSystem.Forms
 {
     public partial class AnalysisSystemForm : Form
     {
+        UserControl _currentVisibleControlPanel;
+
+        public AnalysisSystemForm()
+        {
+            InitializeComponent();
+
+            convertingControlPanel.AnalysisSystemForm = this;
+            eliminatingControlPanel.AnalysisSystemForm = this;
+            functionControlPanel.AnalysisSystemForm = this;
+
+            _currentVisibleControlPanel = convertingControlPanel;
+            convertingControlPanel.Visible = true;
+            eliminatingControlPanel.Visible = false;
+        }
+
         public FunctionControlPanel FunctionControlPanel
         {
             get { return functionControlPanel; }
@@ -27,22 +43,15 @@ namespace AnalysisSystem.Forms
             get { return eliminatingControlPanel; }
             set { eliminatingControlPanel = value; }
         }
-
-        UserControl _currentVisibleControlPanel;
+        public Label StatusLabel
+        {
+            get { return statusLabel; }
+            set { statusLabel = value; }
+        }
         public UserControl CurrentVisibleControlPanel
         {
             get { return _currentVisibleControlPanel; }
             set { _currentVisibleControlPanel = value; }
-        }
-
-        public AnalysisSystemForm()
-        {
-            InitializeComponent();
-
-            functionControlPanel.AnalysisSystemForm = this;
-            _currentVisibleControlPanel = convertingControlPanel;
-            convertingControlPanel.Visible = true;
-            eliminatingControlPanel.Visible = false;
         }
     }
 }

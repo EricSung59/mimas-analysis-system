@@ -82,6 +82,12 @@
     <Compile Include="Forms\AnalysisSystemForm.Designer.cs">
       <DependentUpon>AnalysisSystemForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ChoosingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChoosingForm.Designer.cs">
+      <DependentUpon>ChoosingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Test\ListViewGroupsExample.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AnalysisSystemForm.resx">
       <DependentUpon>AnalysisSystemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChoosingForm.resx">
+      <DependentUpon>ChoosingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test\Test.resx">
       <DependentUpon>Test.cs</DependentUpon>
