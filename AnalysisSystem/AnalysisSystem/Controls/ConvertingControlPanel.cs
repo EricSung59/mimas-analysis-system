@@ -9,36 +9,34 @@ namespace AnalysisSystem.Controls
     public partial class ConvertingControlPanel : UserControl
     {
         AnalysisSystemForm _analysisSystemForm;
-        public AnalysisSystemForm AnalysisSystemForm
-        {
-            get
-            {
-                return _analysisSystemForm;
-            }
-            set
-            {
-                _analysisSystemForm = value;
-                choosingControlPanel.AnalysisSystemForm = value;
-            }
-        }
+
+        String _baseFolderPath;
+        String _csvFolderName = "CsvFiles";
+        String _csvFolderPath;
 
         public ConvertingControlPanel()
         {
             InitializeComponent();
-        }
 
-        public ConvertingControlPanel(AnalysisSystemForm form)
-            : this()
-        {
-            _analysisSystemForm = form;
+            _baseFolderPath = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                @"Mimas\AnalysisSystem");
+            if (!Directory.Exists(_baseFolderPath))
+                Directory.CreateDirectory(_baseFolderPath);
+
+            _csvFolderPath = Path.Combine(_baseFolderPath, _csvFolderName);
+            if (!Directory.Exists(_csvFolderPath))
+                Directory.CreateDirectory(_csvFolderPath);
+
+            outFolderTextBox.Text = _csvFolderPath;
         }
 
         private void convertButton_Click(object sender, EventArgs e)
         {
             String acquisitionBasePath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                @"Mimas JSC\Data Acquisition");
-            String edfFilePath = Path.Combine(acquisitionBasePath, "Edf Files");
+                @"Mimas\DataAcquisition");
+            String edfFilePath = Path.Combine(acquisitionBasePath, "EdfFiles");
 
             if (!Directory.Exists(edfFilePath))
             {
@@ -56,6 +54,8 @@ namespace AnalysisSystem.Controls
             Process process = new Process();
             process.StartInfo.FileName = converterPath;
 
+            _analysisSystemForm.StatusLabel.Text = "Converting";
+
             foreach (ListViewItem item in choosingControlPanel.ListView.Items)
             {
                 string inputFile = Path.Combine(edfFilePath, item.SubItems[3].Text);
@@ -63,14 +63,38 @@ namespace AnalysisSystem.Controls
                     continue;
 
                 string outputFile = Path.Combine(
-                    choosingControlPanel.OutFolderTextBox.Text,
+                    outFolderTextBox.Text,
                     Path.ChangeExtension(Path.GetFileName(inputFile), "csv"));
                 if (File.Exists(outputFile))
                     File.Delete(outputFile);
 
-                process.StartInfo.Arguments = "--inputfile " + inputFile + " --outputfile " + outputFile;
-                process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                process.StartInfo.Arguments = " --inputfile " + inputFile + " --outputfile " + outputFile;
+                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 process.Start();
+                process.WaitForExit();
+            }
+
+            _analysisSystemForm.StatusLabel.Text = "Convert done";
+        }
+
+        private void outFolderBrowseButton_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                outFolderTextBox.Text = folderBrowserDialog.SelectedPath;
+            }
+        }
+
+        public AnalysisSystemForm AnalysisSystemForm
+        {
+            get
+            {
+                return _analysisSystemForm;
+            }
+            set
+            {
+                _analysisSystemForm = value;
+                choosingControlPanel.AnalysisSystemForm = value;
             }
         }
     }
