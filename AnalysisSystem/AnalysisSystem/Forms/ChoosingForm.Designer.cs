@@ -34,12 +34,12 @@
             this.selectAllButton = new System.Windows.Forms.Button();
             this.deselectAllButton = new System.Windows.Forms.Button();
             this.volunteerIdGroupBox = new System.Windows.Forms.GroupBox();
-            this.volunteerIdOutListBox = new System.Windows.Forms.ListBox();
-            this.volunteerIdInListBox = new System.Windows.Forms.ListBox();
-            this.volunteerIdPushInAllButton = new System.Windows.Forms.Button();
-            this.volunteerIdPushInOneButton = new System.Windows.Forms.Button();
-            this.volunteerIdPullOutAllButton = new System.Windows.Forms.Button();
             this.volunteerIdPullOutOneButton = new System.Windows.Forms.Button();
+            this.volunteerIdPullOutAllButton = new System.Windows.Forms.Button();
+            this.volunteerIdPushInOneButton = new System.Windows.Forms.Button();
+            this.volunteerIdPushInAllButton = new System.Windows.Forms.Button();
+            this.volunteerIdInListBox = new System.Windows.Forms.ListBox();
+            this.volunteerIdOutListBox = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureIdPullOutOneButton = new System.Windows.Forms.Button();
             this.pictureIdPullOutAllButton = new System.Windows.Forms.Button();
@@ -55,7 +55,7 @@
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.okButton.AutoSize = true;
-            this.okButton.Location = new System.Drawing.Point(731, 568);
+            this.okButton.Location = new System.Drawing.Point(731, 595);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(79, 33);
             this.okButton.TabIndex = 0;
@@ -67,7 +67,7 @@
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.AutoSize = true;
-            this.cancelButton.Location = new System.Drawing.Point(816, 568);
+            this.cancelButton.Location = new System.Drawing.Point(816, 595);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(79, 33);
             this.cancelButton.TabIndex = 1;
@@ -95,7 +95,7 @@
             // 
             this.selectAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.selectAllButton.AutoSize = true;
-            this.selectAllButton.Location = new System.Drawing.Point(12, 568);
+            this.selectAllButton.Location = new System.Drawing.Point(12, 595);
             this.selectAllButton.Name = "selectAllButton";
             this.selectAllButton.Size = new System.Drawing.Size(88, 33);
             this.selectAllButton.TabIndex = 3;
@@ -107,7 +107,7 @@
             // 
             this.deselectAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.deselectAllButton.AutoSize = true;
-            this.deselectAllButton.Location = new System.Drawing.Point(106, 568);
+            this.deselectAllButton.Location = new System.Drawing.Point(106, 595);
             this.deselectAllButton.Name = "deselectAllButton";
             this.deselectAllButton.Size = new System.Drawing.Size(107, 33);
             this.deselectAllButton.TabIndex = 4;
@@ -131,49 +131,16 @@
             this.volunteerIdGroupBox.TabStop = false;
             this.volunteerIdGroupBox.Text = "Volunteer ID";
             // 
-            // volunteerIdOutListBox
+            // volunteerIdPullOutOneButton
             // 
-            this.volunteerIdOutListBox.FormattingEnabled = true;
-            this.volunteerIdOutListBox.ItemHeight = 23;
-            this.volunteerIdOutListBox.Location = new System.Drawing.Point(6, 29);
-            this.volunteerIdOutListBox.Name = "volunteerIdOutListBox";
-            this.volunteerIdOutListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.volunteerIdOutListBox.Size = new System.Drawing.Size(120, 234);
-            this.volunteerIdOutListBox.Sorted = true;
-            this.volunteerIdOutListBox.TabIndex = 0;
-            // 
-            // volunteerIdInListBox
-            // 
-            this.volunteerIdInListBox.FormattingEnabled = true;
-            this.volunteerIdInListBox.ItemHeight = 23;
-            this.volunteerIdInListBox.Location = new System.Drawing.Point(230, 30);
-            this.volunteerIdInListBox.Name = "volunteerIdInListBox";
-            this.volunteerIdInListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.volunteerIdInListBox.Size = new System.Drawing.Size(120, 234);
-            this.volunteerIdInListBox.Sorted = true;
-            this.volunteerIdInListBox.TabIndex = 1;
-            // 
-            // volunteerIdPushInAllButton
-            // 
-            this.volunteerIdPushInAllButton.AutoSize = true;
-            this.volunteerIdPushInAllButton.Location = new System.Drawing.Point(159, 87);
-            this.volunteerIdPushInAllButton.Name = "volunteerIdPushInAllButton";
-            this.volunteerIdPushInAllButton.Size = new System.Drawing.Size(38, 33);
-            this.volunteerIdPushInAllButton.TabIndex = 2;
-            this.volunteerIdPushInAllButton.Text = ">>";
-            this.volunteerIdPushInAllButton.UseVisualStyleBackColor = true;
-            this.volunteerIdPushInAllButton.Click += new System.EventHandler(this.volunteerIdPushInAllButton_Click);
-            // 
-            // volunteerIdPushInOneButton
-            // 
-            this.volunteerIdPushInOneButton.AutoSize = true;
-            this.volunteerIdPushInOneButton.Location = new System.Drawing.Point(159, 48);
-            this.volunteerIdPushInOneButton.Name = "volunteerIdPushInOneButton";
-            this.volunteerIdPushInOneButton.Size = new System.Drawing.Size(38, 33);
-            this.volunteerIdPushInOneButton.TabIndex = 3;
-            this.volunteerIdPushInOneButton.Text = ">";
-            this.volunteerIdPushInOneButton.UseVisualStyleBackColor = true;
-            this.volunteerIdPushInOneButton.Click += new System.EventHandler(this.volunteerIdPushInOneButton_Click);
+            this.volunteerIdPullOutOneButton.AutoSize = true;
+            this.volunteerIdPullOutOneButton.Location = new System.Drawing.Point(159, 162);
+            this.volunteerIdPullOutOneButton.Name = "volunteerIdPullOutOneButton";
+            this.volunteerIdPullOutOneButton.Size = new System.Drawing.Size(38, 33);
+            this.volunteerIdPullOutOneButton.TabIndex = 5;
+            this.volunteerIdPullOutOneButton.Text = "<";
+            this.volunteerIdPullOutOneButton.UseVisualStyleBackColor = true;
+            this.volunteerIdPullOutOneButton.Click += new System.EventHandler(this.volunteerIdPullOutOneButton_Click);
             // 
             // volunteerIdPullOutAllButton
             // 
@@ -186,16 +153,49 @@
             this.volunteerIdPullOutAllButton.UseVisualStyleBackColor = true;
             this.volunteerIdPullOutAllButton.Click += new System.EventHandler(this.volunteerIdPullOutAllButton_Click);
             // 
-            // volunteerIdPullOutOneButton
+            // volunteerIdPushInOneButton
             // 
-            this.volunteerIdPullOutOneButton.AutoSize = true;
-            this.volunteerIdPullOutOneButton.Location = new System.Drawing.Point(159, 162);
-            this.volunteerIdPullOutOneButton.Name = "volunteerIdPullOutOneButton";
-            this.volunteerIdPullOutOneButton.Size = new System.Drawing.Size(38, 33);
-            this.volunteerIdPullOutOneButton.TabIndex = 5;
-            this.volunteerIdPullOutOneButton.Text = "<";
-            this.volunteerIdPullOutOneButton.UseVisualStyleBackColor = true;
-            this.volunteerIdPullOutOneButton.Click += new System.EventHandler(this.volunteerIdPullOutOneButton_Click);
+            this.volunteerIdPushInOneButton.AutoSize = true;
+            this.volunteerIdPushInOneButton.Location = new System.Drawing.Point(159, 48);
+            this.volunteerIdPushInOneButton.Name = "volunteerIdPushInOneButton";
+            this.volunteerIdPushInOneButton.Size = new System.Drawing.Size(38, 33);
+            this.volunteerIdPushInOneButton.TabIndex = 3;
+            this.volunteerIdPushInOneButton.Text = ">";
+            this.volunteerIdPushInOneButton.UseVisualStyleBackColor = true;
+            this.volunteerIdPushInOneButton.Click += new System.EventHandler(this.volunteerIdPushInOneButton_Click);
+            // 
+            // volunteerIdPushInAllButton
+            // 
+            this.volunteerIdPushInAllButton.AutoSize = true;
+            this.volunteerIdPushInAllButton.Location = new System.Drawing.Point(159, 87);
+            this.volunteerIdPushInAllButton.Name = "volunteerIdPushInAllButton";
+            this.volunteerIdPushInAllButton.Size = new System.Drawing.Size(38, 33);
+            this.volunteerIdPushInAllButton.TabIndex = 2;
+            this.volunteerIdPushInAllButton.Text = ">>";
+            this.volunteerIdPushInAllButton.UseVisualStyleBackColor = true;
+            this.volunteerIdPushInAllButton.Click += new System.EventHandler(this.volunteerIdPushInAllButton_Click);
+            // 
+            // volunteerIdInListBox
+            // 
+            this.volunteerIdInListBox.FormattingEnabled = true;
+            this.volunteerIdInListBox.ItemHeight = 23;
+            this.volunteerIdInListBox.Location = new System.Drawing.Point(230, 30);
+            this.volunteerIdInListBox.Name = "volunteerIdInListBox";
+            this.volunteerIdInListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.volunteerIdInListBox.Size = new System.Drawing.Size(120, 234);
+            this.volunteerIdInListBox.Sorted = true;
+            this.volunteerIdInListBox.TabIndex = 1;
+            // 
+            // volunteerIdOutListBox
+            // 
+            this.volunteerIdOutListBox.FormattingEnabled = true;
+            this.volunteerIdOutListBox.ItemHeight = 23;
+            this.volunteerIdOutListBox.Location = new System.Drawing.Point(6, 29);
+            this.volunteerIdOutListBox.Name = "volunteerIdOutListBox";
+            this.volunteerIdOutListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.volunteerIdOutListBox.Size = new System.Drawing.Size(120, 234);
+            this.volunteerIdOutListBox.Sorted = true;
+            this.volunteerIdOutListBox.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -283,7 +283,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 613);
+            this.ClientSize = new System.Drawing.Size(907, 640);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.volunteerIdGroupBox);
             this.Controls.Add(this.deselectAllButton);

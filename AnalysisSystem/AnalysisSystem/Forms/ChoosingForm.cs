@@ -89,6 +89,7 @@ namespace AnalysisSystem.Forms
             {
                 ListViewItem item = new ListViewItem();
                 item.Text = data.SID;
+                item.Name = data.SID;
                 item.SubItems.Add(data.VID);
                 item.SubItems.Add(data.PID);
                 item.SubItems.Add(data.EdfPath);
@@ -143,62 +144,50 @@ namespace AnalysisSystem.Forms
 
         private void volunteerIdPullOutOneButton_Click(object sender, EventArgs e)
         {
-            ArrayList removedVolunteerIds = new ArrayList();
-
             while (volunteerIdInListBox.SelectedItems.Count > 0)
             {
                 Object volunteerId = volunteerIdInListBox.SelectedItems[0];
                 volunteerIdInListBox.Items.Remove(volunteerId);
                 volunteerIdOutListBox.Items.Add(volunteerId);
-                removedVolunteerIds.Add(volunteerId);
             }
 
-            updateRemoveVolunteerListView(removedVolunteerIds);
+            updateListView();
         }
 
         private void volunteerIdPullOutAllButton_Click(object sender, EventArgs e)
         {
-            ArrayList removedVolunteerIds = new ArrayList();
-
             while (volunteerIdInListBox.Items.Count > 0)
             {
                 Object item = volunteerIdInListBox.Items[0];
                 volunteerIdInListBox.Items.Remove(item);
                 volunteerIdOutListBox.Items.Add(item);
-                removedVolunteerIds.Add(item);
             }
 
-            updateRemoveVolunteerListView(removedVolunteerIds);
+            updateListView();
         }
 
         private void volunteerIdPushInOneButton_Click(object sender, EventArgs e)
         {
-            ArrayList addedVolunteerIds = new ArrayList();
-
             while (volunteerIdOutListBox.SelectedItems.Count > 0)
             {
                 Object item = volunteerIdOutListBox.SelectedItems[0];
                 volunteerIdOutListBox.Items.Remove(item);
                 volunteerIdInListBox.Items.Add(item);
-                addedVolunteerIds.Add(item);
             }
 
-            updateAddVolunteerListView(addedVolunteerIds);
+            updateListView();
         }
 
         private void volunteerIdPushInAllButton_Click(object sender, EventArgs e)
         {
-            ArrayList addedVolunteerIds = new ArrayList();
-
             while (volunteerIdOutListBox.Items.Count > 0)
             {
                 Object item = volunteerIdOutListBox.Items[0];
                 volunteerIdOutListBox.Items.Remove(item);
                 volunteerIdInListBox.Items.Add(item);
-                addedVolunteerIds.Add(item);
             }
 
-            updateAddVolunteerListView(addedVolunteerIds);
+            updateListView();
         }
 
         //
@@ -207,62 +196,50 @@ namespace AnalysisSystem.Forms
 
         private void pictureIdPullOutOneButton_Click(object sender, EventArgs e)
         {
-            ArrayList removedPictureIds = new ArrayList();
-
             while (pictureIdInListBox.SelectedItems.Count > 0)
             {
                 Object pictureId = pictureIdInListBox.SelectedItems[0];
                 pictureIdInListBox.Items.Remove(pictureId);
                 pictureIdOutListBox.Items.Add(pictureId);
-                removedPictureIds.Add(pictureId);
             }
 
-            updateRemovePictureListView(removedPictureIds);
+            updateListView();
         }
 
         private void pictureIdPullOutAllButton_Click(object sender, EventArgs e)
         {
-            ArrayList removedPictureIds = new ArrayList();
-
             while (pictureIdInListBox.Items.Count > 0)
             {
                 Object item = pictureIdInListBox.Items[0];
                 pictureIdInListBox.Items.Remove(item);
                 pictureIdOutListBox.Items.Add(item);
-                removedPictureIds.Add(item);
             }
 
-            updateRemovePictureListView(removedPictureIds);
+            updateListView();
         }
 
         private void pictureIdPushInOneButton_Click(object sender, EventArgs e)
         {
-            ArrayList addedPictureIds = new ArrayList();
-
             while (pictureIdOutListBox.SelectedItems.Count > 0)
             {
                 Object item = pictureIdOutListBox.SelectedItems[0];
                 pictureIdOutListBox.Items.Remove(item);
                 pictureIdInListBox.Items.Add(item);
-                addedPictureIds.Add(item);
             }
 
-            updateAddPictureListView(addedPictureIds);
+            updateListView();
         }
 
         private void pictureIdPushInAllButton_Click(object sender, EventArgs e)
         {
-            ArrayList addedPictureIds = new ArrayList();
-
             while (pictureIdOutListBox.Items.Count > 0)
             {
                 Object item = pictureIdOutListBox.Items[0];
                 pictureIdOutListBox.Items.Remove(item);
                 pictureIdInListBox.Items.Add(item);
-                addedPictureIds.Add(item);
             }
 
-            updateAddVolunteerListView(addedPictureIds);
+            updateListView();
         }
 
         // -------------- PROPERTIES -----------------//
@@ -273,26 +250,7 @@ namespace AnalysisSystem.Forms
         }
 
         // -------------- PRIVATE HELPERS --------------//
-
-        private void updateRemoveVolunteerListView(ArrayList removedVolunteerIds)
-        {
-            listView.BeginUpdate();
-
-            int counter = 0;
-            int total = listView.Items.Count;
-
-            for (int i = 0; i < total; i++)
-            {
-                if (removedVolunteerIds.Contains(listView.Items[counter].SubItems[1].Text))
-                    listView.Items.Remove(listView.Items[counter]);
-                else
-                    counter++;
-            }
-
-            listView.EndUpdate();
-        }
-
-        private void updateAddVolunteerListView(ArrayList addedVolunteerIds)
+        private void updateListView()
         {
             listView.BeginUpdate();
 
@@ -300,64 +258,62 @@ namespace AnalysisSystem.Forms
                 from samples in _db.Samples
                 from volpics in _db.VolPics
                 where samples.SID == volpics.SID
+                orderby samples.SID ascending
                 select new { samples.SID, samples.EdfPath, volpics.VID, volpics.PID };
+
+            ArrayList sidList = new ArrayList();
+            foreach (ListViewItem item in listView.Items)
+            {
+                sidList.Add(item.Text);
+            }
+            sidList.Sort();
 
             foreach (var data in dataQuery)
             {
-                if (addedVolunteerIds.Contains(data.VID))
-                {
-                    ListViewItem item = new ListViewItem();
-                    item.Text = data.SID;
-                    item.SubItems.Add(data.VID);
-                    item.SubItems.Add(data.PID);
-                    item.SubItems.Add(data.EdfPath);
+                bool found = false;
 
-                    listView.Items.Add(item);
+                while (true)
+                {
+                    if (sidList.Count <= 0)
+                        break;
+
+                    if (String.Compare(data.SID, sidList[0] as String) > 0)
+                    {
+                        sidList.RemoveAt(0);
+                        continue;
+                    }
+                    else if (String.Compare(data.SID, sidList[0] as String) == 0)
+                    {
+                        found = true;
+                        break;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
-            }
 
-            listView.EndUpdate();
-        }
-
-        private void updateRemovePictureListView(ArrayList removedPictureIds)
-        {
-            listView.BeginUpdate();
-
-            int counter = 0;
-            int total = listView.Items.Count;
-
-            for (int i = 0; i < total; i++)
-            {
-                if (removedPictureIds.Contains(listView.Items[counter].SubItems[2].Text))
-                    listView.Items.Remove(listView.Items[counter]);
-                else
-                    counter++;
-            }
-
-            listView.EndUpdate();
-        }
-
-        private void updateAddPictureListView(ArrayList addedPictureIds)
-        {
-            listView.BeginUpdate();
-
-            var dataQuery =
-                from samples in _db.Samples
-                from volpics in _db.VolPics
-                where samples.SID == volpics.SID
-                select new { samples.SID, samples.EdfPath, volpics.VID, volpics.PID };
-
-            foreach (var data in dataQuery)
-            {
-                if (addedPictureIds.Contains(data.PID))
+                // data.SID already in listView.Items
+                if (found)
                 {
-                    ListViewItem item = new ListViewItem();
-                    item.Text = data.SID;
-                    item.SubItems.Add(data.VID);
-                    item.SubItems.Add(data.PID);
-                    item.SubItems.Add(data.EdfPath);
+                    if (!volunteerIdInListBox.Items.Contains(data.VID) || !pictureIdInListBox.Items.Contains(data.PID))
+                    {
+                        listView.Items.RemoveByKey(data.SID);
+                    }
+                }
+                else
+                {
+                    if (volunteerIdInListBox.Items.Contains(data.VID) && pictureIdInListBox.Items.Contains(data.PID))
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item.Text = data.SID;
+                        item.Name = data.SID;
+                        item.SubItems.Add(data.VID);
+                        item.SubItems.Add(data.PID);
+                        item.SubItems.Add(data.EdfPath);
 
-                    listView.Items.Add(item);
+                        listView.Items.Add(item);
+                    }
                 }
             }
 

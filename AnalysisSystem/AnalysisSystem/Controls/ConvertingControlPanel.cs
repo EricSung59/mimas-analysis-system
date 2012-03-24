@@ -56,8 +56,10 @@ namespace AnalysisSystem.Controls
 
             _analysisSystemForm.StatusLabel.Text = "Converting";
 
+            int i = 0;
             foreach (ListViewItem item in choosingControlPanel.ListView.Items)
             {
+                _analysisSystemForm.StatusLabel.Text = "Converting... (" + i++ + "/" + choosingControlPanel.ListView.Items.Count + ")";
                 string inputFile = Path.Combine(edfFilePath, item.SubItems[3].Text);
                 if (!File.Exists(inputFile))
                     continue;
