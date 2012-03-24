@@ -13,11 +13,7 @@ namespace AnalysisSystem.Controls
 {
     public partial class ChoosingControlPanel : UserControl
     {
-        AnalysisSystemDataContext _db;
-
-        String _baseFolderPath;
-        String _csvFolderName = "Csv Files";
-        String _csvFolderPath;
+        AnalysisSystemDataContext _db = new AnalysisSystemDataContext();
 
         AnalysisSystemForm _analysisSystemForm;
         public AnalysisSystemForm AnalysisSystemForm
@@ -35,33 +31,6 @@ namespace AnalysisSystem.Controls
         public ChoosingControlPanel()
         {
             InitializeComponent();
-            _db = new AnalysisSystemDataContext();
-
-            _baseFolderPath = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                @"Mimas JSC\Analysis System");
-            if (!Directory.Exists(_baseFolderPath))
-                Directory.CreateDirectory(_baseFolderPath);
-
-            _csvFolderPath = Path.Combine(_baseFolderPath, _csvFolderName);
-            if (!Directory.Exists(_csvFolderPath))
-                Directory.CreateDirectory(_csvFolderPath);
-
-            outFolderTextBox.Text = _csvFolderPath;
-        }
-
-        public ChoosingControlPanel(AnalysisSystemForm form)
-            : this()
-        {
-            _analysisSystemForm = form;
-        }
-
-        private void outFolderBrowseButton_Click(object sender, EventArgs e)
-        {
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {
-                outFolderTextBox.Text = folderBrowserDialog.SelectedPath;
-            }
         }
 
         private void selectSampleButton_Click(object sender, EventArgs e)
@@ -88,11 +57,6 @@ namespace AnalysisSystem.Controls
         public ListView ListView
         {
             get { return listView; }
-        }
-
-        public TextBox OutFolderTextBox
-        {
-            get { return outFolderTextBox; }
         }
     }
 }

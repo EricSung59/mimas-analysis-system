@@ -88,6 +88,9 @@
     <Compile Include="Forms\ChoosingForm.Designer.cs">
       <DependentUpon>ChoosingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Test\ListBoxMultiColumn.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Test\ListViewGroupsExample.cs">
       <SubType>Form</SubType>
     </Compile>

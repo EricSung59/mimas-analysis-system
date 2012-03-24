@@ -23,11 +23,5 @@ namespace AnalysisSystem.Controls
         {
             InitializeComponent();
         }
-
-        public EliminatingControlPanel(AnalysisSystemForm form)
-            : this()
-        {
-            _analysisSystemForm = form;
-        }
     }
 }
