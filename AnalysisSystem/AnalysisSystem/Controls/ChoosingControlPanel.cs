@@ -33,6 +33,12 @@ namespace AnalysisSystem.Controls
             InitializeComponent();
         }
 
+        public ChoosingControlPanel(AnalysisSystemForm form)
+            : this()
+        {
+            _analysisSystemForm = form;
+        }
+
         private void selectSampleButton_Click(object sender, EventArgs e)
         {
             _analysisSystemForm.StatusLabel.Text = "Choosing sample";
@@ -47,7 +53,7 @@ namespace AnalysisSystem.Controls
                 {
                     listView.Items.Add(item.Clone() as ListViewItem);
                 }
-
+                
                 listView.EndUpdate();
             }
 

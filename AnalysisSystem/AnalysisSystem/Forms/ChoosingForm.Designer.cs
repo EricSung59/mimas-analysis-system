@@ -185,6 +185,7 @@
             this.volunteerIdInListBox.Size = new System.Drawing.Size(120, 234);
             this.volunteerIdInListBox.Sorted = true;
             this.volunteerIdInListBox.TabIndex = 1;
+            this.volunteerIdInListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.volunteerIdInListBox_MouseDoubleClick);
             // 
             // volunteerIdOutListBox
             // 
@@ -196,6 +197,7 @@
             this.volunteerIdOutListBox.Size = new System.Drawing.Size(120, 234);
             this.volunteerIdOutListBox.Sorted = true;
             this.volunteerIdOutListBox.TabIndex = 0;
+            this.volunteerIdOutListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.volunteerIdOutListBox_MouseDoubleClick);
             // 
             // groupBox1
             // 
@@ -267,6 +269,7 @@
             this.pictureIdInListBox.Size = new System.Drawing.Size(120, 234);
             this.pictureIdInListBox.Sorted = true;
             this.pictureIdInListBox.TabIndex = 1;
+            this.pictureIdInListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pictureIdInListBox_MouseDoubleClick);
             // 
             // pictureIdOutListBox
             // 
@@ -278,6 +281,7 @@
             this.pictureIdOutListBox.Size = new System.Drawing.Size(120, 234);
             this.pictureIdOutListBox.Sorted = true;
             this.pictureIdOutListBox.TabIndex = 0;
+            this.pictureIdOutListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pictureIdOutListBox_MouseDoubleClick);
             // 
             // ChoosingForm
             // 

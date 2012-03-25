@@ -55,6 +55,7 @@ namespace AnalysisSystem.Controls
             process.StartInfo.FileName = converterPath;
 
             _analysisSystemForm.StatusLabel.Text = "Converting";
+            convertButton.Enabled = false;
 
             int i = 0;
             foreach (ListViewItem item in choosingControlPanel.ListView.Items)
@@ -77,6 +78,7 @@ namespace AnalysisSystem.Controls
             }
 
             _analysisSystemForm.StatusLabel.Text = "Convert done";
+            convertButton.Enabled = true;
         }
 
         private void outFolderBrowseButton_Click(object sender, EventArgs e)
