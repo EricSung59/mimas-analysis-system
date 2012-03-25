@@ -93,6 +93,12 @@
     <Compile Include="Controls\ConvertingControlPanel.Designer.cs">
       <DependentUpon>ConvertingControlPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DoubleViewChoosingControlPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DoubleViewChoosingControlPanel.Designer.cs">
+      <DependentUpon>DoubleViewChoosingControlPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\EliminatingControlPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -104,6 +110,12 @@
     </Compile>
     <Compile Include="Controls\FunctionControlPanel.Designer.cs">
       <DependentUpon>FunctionControlPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ResultChoosingControlPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ResultChoosingControlPanel.Designer.cs">
+      <DependentUpon>ResultChoosingControlPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AnalysisSystemForm.cs">
       <SubType>Form</SubType>
@@ -140,11 +152,17 @@
     <EmbeddedResource Include="Controls\ConvertingControlPanel.resx">
       <DependentUpon>ConvertingControlPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DoubleViewChoosingControlPanel.resx">
+      <DependentUpon>DoubleViewChoosingControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\EliminatingControlPanel.resx">
       <DependentUpon>EliminatingControlPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\FunctionControlPanel.resx">
       <DependentUpon>FunctionControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ResultChoosingControlPanel.resx">
+      <DependentUpon>ResultChoosingControlPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AnalysisSystemForm.resx">
       <DependentUpon>AnalysisSystemForm.cs</DependentUpon>
@@ -169,7 +187,6 @@
       <LastGenOutput>AnalysisSystem.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="AnalysisSystem_TemporaryKey.pfx" />
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

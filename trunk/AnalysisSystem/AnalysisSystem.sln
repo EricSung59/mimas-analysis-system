@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalysisSystem", "AnalysisSystem\AnalysisSystem.csproj", "{7D7EB96F-0827-40C6-B29C-3067EB28C142}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AnalysisSystemSetup", "AnalysisSystemSetup\AnalysisSystemSetup.vdproj", "{617CF402-CEEA-4E65-8010-19B3FB937CB8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadTest", "ThreadTest\ThreadTest.csproj", "{6C3D4EA2-0455-40B9-9A0C-9BCB957B3673}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -17,12 +13,6 @@ Global
 		{7D7EB96F-0827-40C6-B29C-3067EB28C142}.Debug|x86.Build.0 = Debug|x86
 		{7D7EB96F-0827-40C6-B29C-3067EB28C142}.Release|x86.ActiveCfg = Release|x86
 		{7D7EB96F-0827-40C6-B29C-3067EB28C142}.Release|x86.Build.0 = Release|x86
-		{617CF402-CEEA-4E65-8010-19B3FB937CB8}.Debug|x86.ActiveCfg = Debug
-		{617CF402-CEEA-4E65-8010-19B3FB937CB8}.Release|x86.ActiveCfg = Release
-		{6C3D4EA2-0455-40B9-9A0C-9BCB957B3673}.Debug|x86.ActiveCfg = Debug|x86
-		{6C3D4EA2-0455-40B9-9A0C-9BCB957B3673}.Debug|x86.Build.0 = Debug|x86
-		{6C3D4EA2-0455-40B9-9A0C-9BCB957B3673}.Release|x86.ActiveCfg = Release|x86
-		{6C3D4EA2-0455-40B9-9A0C-9BCB957B3673}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -24,8 +24,8 @@ namespace AnalysisSystem.Forms
             functionControlPanel.AnalysisSystemForm = this;
 
             _currentVisibleControlPanel = convertingControlPanel;
-            convertingControlPanel.Visible = true;
-            eliminatingControlPanel.Visible = false;
+            convertingControlPanel.Visible = false;
+            eliminatingControlPanel.Visible = true;
         }
 
         public FunctionControlPanel FunctionControlPanel

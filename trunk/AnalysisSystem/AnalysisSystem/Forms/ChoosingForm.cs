@@ -24,83 +24,6 @@ namespace AnalysisSystem.Forms
             loadPictureIdInListBox();
         }
 
-        private void loadPictureIdInListBox()
-        {
-            var pictureIdQuery = (
-                from samples in _db.Samples
-                from volpics in _db.VolPics
-                where samples.SID == volpics.SID
-                select volpics.PID).Distinct();
-
-            foreach (String pid in pictureIdQuery)
-            {
-                pictureIdInListBox.Items.Add(pid);
-            }
-        }
-
-        private void loadVolunteerIdInListBox()
-        {
-            var volunteerIdQuery = (
-                from samples in _db.Samples
-                from volpics in _db.VolPics
-                where samples.SID == volpics.SID
-                select volpics.VID).Distinct();
-
-            foreach (String vid in volunteerIdQuery)
-            {
-                volunteerIdInListBox.Items.Add(vid);
-            }
-        }
-
-        private void loadListView()
-        {
-            listView.BeginUpdate();
-            //
-            // Header
-            //
-            ColumnHeader sampleIdColumnHeader = new ColumnHeader();
-            sampleIdColumnHeader.Text = "Sample ID";
-            sampleIdColumnHeader.Width = -2;
-
-            ColumnHeader volunteerIdColumnHeader = new ColumnHeader();
-            volunteerIdColumnHeader.Text = "Volunteer ID";
-            volunteerIdColumnHeader.Width = -2;
-
-            ColumnHeader pictureIdColumnHeader = new ColumnHeader();
-            pictureIdColumnHeader.Text = "Picture ID";
-            pictureIdColumnHeader.Width = -2;
-
-            ColumnHeader edfPathColumnHeader = new ColumnHeader();
-            edfPathColumnHeader.Text = "Edf Path";
-            edfPathColumnHeader.Width = -2;
-
-            listView.Columns.AddRange(new ColumnHeader[] { sampleIdColumnHeader, volunteerIdColumnHeader, pictureIdColumnHeader, edfPathColumnHeader });
-            //
-            // Query for data 
-            //
-            var dataQuery =
-                from samples in _db.Samples
-                from volpics in _db.VolPics
-                where samples.SID == volpics.SID
-                select new { volpics.VID, volpics.PID, samples.SID, samples.EdfPath };
-            //
-            // Fill data to ListView
-            //
-            foreach (var data in dataQuery)
-            {
-                ListViewItem item = new ListViewItem();
-                item.Text = data.SID;
-                item.Name = data.SID;
-                item.SubItems.Add(data.VID);
-                item.SubItems.Add(data.PID);
-                item.SubItems.Add(data.EdfPath);
-
-                listView.Items.Add(item);
-            }
-
-            listView.EndUpdate();
-        }
-
         //--------------- EVENT HANDLE ----------------//
 
         private void selectAllButton_Click(object sender, EventArgs e)
@@ -307,6 +230,84 @@ namespace AnalysisSystem.Forms
         }
 
         // -------------- PRIVATE HELPERS --------------//
+
+        private void loadPictureIdInListBox()
+        {
+            var pictureIdQuery = (
+                from samples in _db.Samples
+                from volpics in _db.VolPics
+                where samples.SID == volpics.SID
+                select volpics.PID).Distinct();
+
+            foreach (String pid in pictureIdQuery)
+            {
+                pictureIdInListBox.Items.Add(pid);
+            }
+        }
+
+        private void loadVolunteerIdInListBox()
+        {
+            var volunteerIdQuery = (
+                from samples in _db.Samples
+                from volpics in _db.VolPics
+                where samples.SID == volpics.SID
+                select volpics.VID).Distinct();
+
+            foreach (String vid in volunteerIdQuery)
+            {
+                volunteerIdInListBox.Items.Add(vid);
+            }
+        }
+
+        private void loadListView()
+        {
+            listView.BeginUpdate();
+            //
+            // Header
+            //
+            ColumnHeader sampleIdColumnHeader = new ColumnHeader();
+            sampleIdColumnHeader.Text = "Sample ID";
+            sampleIdColumnHeader.Width = -2;
+
+            ColumnHeader volunteerIdColumnHeader = new ColumnHeader();
+            volunteerIdColumnHeader.Text = "Volunteer ID";
+            volunteerIdColumnHeader.Width = -2;
+
+            ColumnHeader pictureIdColumnHeader = new ColumnHeader();
+            pictureIdColumnHeader.Text = "Picture ID";
+            pictureIdColumnHeader.Width = -2;
+
+            ColumnHeader edfPathColumnHeader = new ColumnHeader();
+            edfPathColumnHeader.Text = "Edf Path";
+            edfPathColumnHeader.Width = -2;
+
+            listView.Columns.AddRange(new ColumnHeader[] { sampleIdColumnHeader, volunteerIdColumnHeader, pictureIdColumnHeader, edfPathColumnHeader });
+            //
+            // Query for data 
+            //
+            var dataQuery =
+                from samples in _db.Samples
+                from volpics in _db.VolPics
+                where samples.SID == volpics.SID
+                select new { volpics.VID, volpics.PID, samples.SID, samples.EdfPath };
+            //
+            // Fill data to ListView
+            //
+            foreach (var data in dataQuery)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = data.SID;
+                item.Name = data.SID;
+                item.SubItems.Add(data.VID);
+                item.SubItems.Add(data.PID);
+                item.SubItems.Add(data.EdfPath);
+
+                listView.Items.Add(item);
+            }
+
+            listView.EndUpdate();
+        }
+
         private void updateListView()
         {
             listView.BeginUpdate();
@@ -324,7 +325,7 @@ namespace AnalysisSystem.Forms
                 sidList.Add(item.Text);
             }
             sidList.Sort();
-
+            
             foreach (var data in dataQuery)
             {
                 bool found = false;
@@ -363,11 +364,15 @@ namespace AnalysisSystem.Forms
                     if (volunteerIdInListBox.Items.Contains(data.VID) && pictureIdInListBox.Items.Contains(data.PID))
                     {
                         ListViewItem item = new ListViewItem();
+
                         item.Text = data.SID;
                         item.Name = data.SID;
-                        item.SubItems.Add(data.VID);
-                        item.SubItems.Add(data.PID);
-                        item.SubItems.Add(data.EdfPath);
+
+                        item.SubItems.AddRange(new String[]
+                            {
+                                data.VID, data.PID, data.EdfPath
+                            }
+                        );
 
                         listView.Items.Add(item);
                     }
