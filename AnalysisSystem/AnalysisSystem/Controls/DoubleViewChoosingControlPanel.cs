@@ -54,6 +54,8 @@ namespace AnalysisSystem.Controls
             ChoosingForm form = new ChoosingForm();
             if (form.ShowDialog() == DialogResult.OK)
             {
+                _analysisSystemForm.EliminatingControlPanel.UpdateButton.Enabled = false;
+
                 ArrayList sidList = new ArrayList();
                 foreach (ListViewItem item in form.ListView.SelectedItems)
                 {
@@ -63,6 +65,7 @@ namespace AnalysisSystem.Controls
 
                 leftListView.BeginUpdate();
                 leftListView.Items.Clear();
+                rightListView.Items.Clear();
 
                 foreach (var data in dataQuery)
                 {
@@ -217,6 +220,16 @@ namespace AnalysisSystem.Controls
         {
             get { return _analysisSystemForm; }
             set { _analysisSystemForm = value; }
+        }
+
+        public ListView LeftListView
+        {
+            get { return leftListView; }
+        }
+
+        public ListView RightListView
+        {
+            get { return rightListView; }
         }
     }
 }

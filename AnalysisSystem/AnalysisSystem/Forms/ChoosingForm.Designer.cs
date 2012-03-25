@@ -86,7 +86,6 @@
             this.listView.Location = new System.Drawing.Point(12, 12);
             this.listView.Name = "listView";
             this.listView.Size = new System.Drawing.Size(519, 550);
-            this.listView.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listView.TabIndex = 2;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;

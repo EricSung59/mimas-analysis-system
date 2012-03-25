@@ -111,12 +111,6 @@
     <Compile Include="Controls\FunctionControlPanel.Designer.cs">
       <DependentUpon>FunctionControlPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ResultChoosingControlPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ResultChoosingControlPanel.Designer.cs">
-      <DependentUpon>ResultChoosingControlPanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\AnalysisSystemForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,9 +154,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\FunctionControlPanel.resx">
       <DependentUpon>FunctionControlPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ResultChoosingControlPanel.resx">
-      <DependentUpon>ResultChoosingControlPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AnalysisSystemForm.resx">
       <DependentUpon>AnalysisSystemForm.cs</DependentUpon>
