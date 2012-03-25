@@ -19,6 +19,8 @@ namespace AnalysisSystem.Forms
         {
             InitializeComponent();
 
+            CancelButton = cancelButton;
+
             loadListView();
             loadVolunteerIdInListBox();
             loadPictureIdInListBox();

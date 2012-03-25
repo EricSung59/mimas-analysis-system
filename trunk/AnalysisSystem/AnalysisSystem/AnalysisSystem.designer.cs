@@ -33,9 +33,6 @@ namespace AnalysisSystem
     partial void InsertDataPoint(DataPoint instance);
     partial void UpdateDataPoint(DataPoint instance);
     partial void DeleteDataPoint(DataPoint instance);
-    partial void InsertVolunteer(Volunteer instance);
-    partial void UpdateVolunteer(Volunteer instance);
-    partial void DeleteVolunteer(Volunteer instance);
     partial void InsertEEG(EEG instance);
     partial void UpdateEEG(EEG instance);
     partial void DeleteEEG(EEG instance);
@@ -54,6 +51,9 @@ namespace AnalysisSystem
     partial void InsertVolPic(VolPic instance);
     partial void UpdateVolPic(VolPic instance);
     partial void DeleteVolPic(VolPic instance);
+    partial void InsertVolunteer(Volunteer instance);
+    partial void UpdateVolunteer(Volunteer instance);
+    partial void DeleteVolunteer(Volunteer instance);
     #endregion
 		
 		public AnalysisSystemDataContext() : 
@@ -91,14 +91,6 @@ namespace AnalysisSystem
 			get
 			{
 				return this.GetTable<DataPoint>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Volunteer> Volunteers
-		{
-			get
-			{
-				return this.GetTable<Volunteer>();
 			}
 		}
 		
@@ -147,6 +139,14 @@ namespace AnalysisSystem
 			get
 			{
 				return this.GetTable<VolPic>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Volunteer> Volunteers
+		{
+			get
+			{
+				return this.GetTable<Volunteer>();
 			}
 		}
 	}
@@ -323,288 +323,6 @@ namespace AnalysisSystem
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Volunteers")]
-	public partial class Volunteer : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _VID;
-		
-		private string _Name;
-		
-		private System.Nullable<int> _Age;
-		
-		private string _Gender;
-		
-		private string _Email;
-		
-		private string _Phone;
-		
-		private string _Address;
-		
-		private string _Study;
-		
-		private string _JobTitle;
-		
-		private EntitySet<VolPic> _VolPics;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnVIDChanging(string value);
-    partial void OnVIDChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnAgeChanging(System.Nullable<int> value);
-    partial void OnAgeChanged();
-    partial void OnGenderChanging(string value);
-    partial void OnGenderChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnPhoneChanging(string value);
-    partial void OnPhoneChanged();
-    partial void OnAddressChanging(string value);
-    partial void OnAddressChanged();
-    partial void OnStudyChanging(string value);
-    partial void OnStudyChanged();
-    partial void OnJobTitleChanging(string value);
-    partial void OnJobTitleChanged();
-    #endregion
-		
-		public Volunteer()
-		{
-			this._VolPics = new EntitySet<VolPic>(new Action<VolPic>(this.attach_VolPics), new Action<VolPic>(this.detach_VolPics));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VID", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string VID
-		{
-			get
-			{
-				return this._VID;
-			}
-			set
-			{
-				if ((this._VID != value))
-				{
-					this.OnVIDChanging(value);
-					this.SendPropertyChanging();
-					this._VID = value;
-					this.SendPropertyChanged("VID");
-					this.OnVIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Age", DbType="Int")]
-		public System.Nullable<int> Age
-		{
-			get
-			{
-				return this._Age;
-			}
-			set
-			{
-				if ((this._Age != value))
-				{
-					this.OnAgeChanging(value);
-					this.SendPropertyChanging();
-					this._Age = value;
-					this.SendPropertyChanged("Age");
-					this.OnAgeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Gender", DbType="NVarChar(MAX)")]
-		public string Gender
-		{
-			get
-			{
-				return this._Gender;
-			}
-			set
-			{
-				if ((this._Gender != value))
-				{
-					this.OnGenderChanging(value);
-					this.SendPropertyChanging();
-					this._Gender = value;
-					this.SendPropertyChanged("Gender");
-					this.OnGenderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(MAX)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(MAX)")]
-		public string Phone
-		{
-			get
-			{
-				return this._Phone;
-			}
-			set
-			{
-				if ((this._Phone != value))
-				{
-					this.OnPhoneChanging(value);
-					this.SendPropertyChanging();
-					this._Phone = value;
-					this.SendPropertyChanged("Phone");
-					this.OnPhoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(MAX)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this.OnAddressChanging(value);
-					this.SendPropertyChanging();
-					this._Address = value;
-					this.SendPropertyChanged("Address");
-					this.OnAddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Study", DbType="NVarChar(MAX)")]
-		public string Study
-		{
-			get
-			{
-				return this._Study;
-			}
-			set
-			{
-				if ((this._Study != value))
-				{
-					this.OnStudyChanging(value);
-					this.SendPropertyChanging();
-					this._Study = value;
-					this.SendPropertyChanged("Study");
-					this.OnStudyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobTitle", DbType="NVarChar(MAX)")]
-		public string JobTitle
-		{
-			get
-			{
-				return this._JobTitle;
-			}
-			set
-			{
-				if ((this._JobTitle != value))
-				{
-					this.OnJobTitleChanging(value);
-					this.SendPropertyChanging();
-					this._JobTitle = value;
-					this.SendPropertyChanged("JobTitle");
-					this.OnJobTitleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Volunteer_VolPic", Storage="_VolPics", ThisKey="VID", OtherKey="VID")]
-		public EntitySet<VolPic> VolPics
-		{
-			get
-			{
-				return this._VolPics;
-			}
-			set
-			{
-				this._VolPics.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_VolPics(VolPic entity)
-		{
-			this.SendPropertyChanging();
-			entity.Volunteer = this;
-		}
-		
-		private void detach_VolPics(VolPic entity)
-		{
-			this.SendPropertyChanging();
-			entity.Volunteer = null;
 		}
 	}
 	
@@ -1609,6 +1327,8 @@ namespace AnalysisSystem
 		
 		private string _AffectionLabel;
 		
+		private System.Nullable<bool> _IsGood;
+		
 		private EntityRef<DataPoint> _DataPoint;
 		
 		private EntityRef<EEG> _EEG;
@@ -1631,6 +1351,8 @@ namespace AnalysisSystem
     partial void OnSamValenceChanged();
     partial void OnAffectionLabelChanging(string value);
     partial void OnAffectionLabelChanged();
+    partial void OnIsGoodChanging(System.Nullable<bool> value);
+    partial void OnIsGoodChanged();
     #endregion
 		
 		public Sample()
@@ -1757,6 +1479,26 @@ namespace AnalysisSystem
 					this._AffectionLabel = value;
 					this.SendPropertyChanged("AffectionLabel");
 					this.OnAffectionLabelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsGood", DbType="Bit")]
+		public System.Nullable<bool> IsGood
+		{
+			get
+			{
+				return this._IsGood;
+			}
+			set
+			{
+				if ((this._IsGood != value))
+				{
+					this.OnIsGoodChanging(value);
+					this.SendPropertyChanging();
+					this._IsGood = value;
+					this.SendPropertyChanged("IsGood");
+					this.OnIsGoodChanged();
 				}
 			}
 		}
@@ -2095,6 +1837,288 @@ namespace AnalysisSystem
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Volunteers")]
+	public partial class Volunteer : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _VID;
+		
+		private string _Name;
+		
+		private System.Nullable<int> _Age;
+		
+		private string _Gender;
+		
+		private string _Email;
+		
+		private string _Phone;
+		
+		private string _Address;
+		
+		private string _Study;
+		
+		private string _JobTitle;
+		
+		private EntitySet<VolPic> _VolPics;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnVIDChanging(string value);
+    partial void OnVIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnAgeChanging(System.Nullable<int> value);
+    partial void OnAgeChanged();
+    partial void OnGenderChanging(string value);
+    partial void OnGenderChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnPhoneChanging(string value);
+    partial void OnPhoneChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnStudyChanging(string value);
+    partial void OnStudyChanged();
+    partial void OnJobTitleChanging(string value);
+    partial void OnJobTitleChanged();
+    #endregion
+		
+		public Volunteer()
+		{
+			this._VolPics = new EntitySet<VolPic>(new Action<VolPic>(this.attach_VolPics), new Action<VolPic>(this.detach_VolPics));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VID", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string VID
+		{
+			get
+			{
+				return this._VID;
+			}
+			set
+			{
+				if ((this._VID != value))
+				{
+					this.OnVIDChanging(value);
+					this.SendPropertyChanging();
+					this._VID = value;
+					this.SendPropertyChanged("VID");
+					this.OnVIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Age", DbType="Int")]
+		public System.Nullable<int> Age
+		{
+			get
+			{
+				return this._Age;
+			}
+			set
+			{
+				if ((this._Age != value))
+				{
+					this.OnAgeChanging(value);
+					this.SendPropertyChanging();
+					this._Age = value;
+					this.SendPropertyChanged("Age");
+					this.OnAgeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Gender", DbType="NVarChar(MAX)")]
+		public string Gender
+		{
+			get
+			{
+				return this._Gender;
+			}
+			set
+			{
+				if ((this._Gender != value))
+				{
+					this.OnGenderChanging(value);
+					this.SendPropertyChanging();
+					this._Gender = value;
+					this.SendPropertyChanged("Gender");
+					this.OnGenderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(MAX)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(MAX)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this.OnPhoneChanging(value);
+					this.SendPropertyChanging();
+					this._Phone = value;
+					this.SendPropertyChanged("Phone");
+					this.OnPhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(MAX)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Study", DbType="NVarChar(MAX)")]
+		public string Study
+		{
+			get
+			{
+				return this._Study;
+			}
+			set
+			{
+				if ((this._Study != value))
+				{
+					this.OnStudyChanging(value);
+					this.SendPropertyChanging();
+					this._Study = value;
+					this.SendPropertyChanged("Study");
+					this.OnStudyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobTitle", DbType="NVarChar(MAX)")]
+		public string JobTitle
+		{
+			get
+			{
+				return this._JobTitle;
+			}
+			set
+			{
+				if ((this._JobTitle != value))
+				{
+					this.OnJobTitleChanging(value);
+					this.SendPropertyChanging();
+					this._JobTitle = value;
+					this.SendPropertyChanged("JobTitle");
+					this.OnJobTitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Volunteer_VolPic", Storage="_VolPics", ThisKey="VID", OtherKey="VID")]
+		public EntitySet<VolPic> VolPics
+		{
+			get
+			{
+				return this._VolPics;
+			}
+			set
+			{
+				this._VolPics.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_VolPics(VolPic entity)
+		{
+			this.SendPropertyChanging();
+			entity.Volunteer = this;
+		}
+		
+		private void detach_VolPics(VolPic entity)
+		{
+			this.SendPropertyChanging();
+			entity.Volunteer = null;
 		}
 	}
 }

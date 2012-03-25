@@ -9,20 +9,6 @@
       <Association Name="Sample_DataPoint" Member="Sample" ThisKey="SID" OtherKey="SID" Type="Sample" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Volunteers" Member="Volunteers">
-    <Type Name="Volunteer">
-      <Column Name="VID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Gender" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Study" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="JobTitle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="Volunteer_VolPic" Member="VolPics" ThisKey="VID" OtherKey="VID" Type="VolPic" />
-    </Type>
-  </Table>
   <Table Name="dbo.EEG" Member="EEGs">
     <Type Name="EEG">
       <Column Name="SID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -79,6 +65,7 @@
       <Column Name="SamArousal" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="SamValence" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="AffectionLabel" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsGood" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="Sample_DataPoint" Member="DataPoint" ThisKey="SID" OtherKey="SID" Type="DataPoint" Cardinality="One" />
       <Association Name="Sample_EEG" Member="EEG" ThisKey="SID" OtherKey="SID" Type="EEG" Cardinality="One" />
       <Association Name="Sample_VolPic" Member="VolPics" ThisKey="SID" OtherKey="SID" Type="VolPic" />
@@ -92,6 +79,20 @@
       <Association Name="Picture_VolPic" Member="Picture" ThisKey="PID" OtherKey="PID" Type="Picture" IsForeignKey="true" />
       <Association Name="Sample_VolPic" Member="Sample" ThisKey="SID" OtherKey="SID" Type="Sample" IsForeignKey="true" />
       <Association Name="Volunteer_VolPic" Member="Volunteer" ThisKey="VID" OtherKey="VID" Type="Volunteer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Volunteers" Member="Volunteers">
+    <Type Name="Volunteer">
+      <Column Name="VID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Study" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="JobTitle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Volunteer_VolPic" Member="VolPics" ThisKey="VID" OtherKey="VID" Type="VolPic" />
     </Type>
   </Table>
 </Database>
