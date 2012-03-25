@@ -15,13 +15,21 @@ namespace AnalysisSystem.Controls
         AnalysisSystemForm _analysisSystemForm;
         public AnalysisSystemForm AnalysisSystemForm
         {
-            get { return _analysisSystemForm; }
-            set { _analysisSystemForm = value; }
+            get
+            {
+                return _analysisSystemForm;
+            }
+            set
+            {
+                _analysisSystemForm = value;
+                doubleViewChoosingControlPanel.AnalysisSystemForm = value;
+            }
         }
 
         public EliminatingControlPanel()
         {
             InitializeComponent();
         }
+
     }
 }

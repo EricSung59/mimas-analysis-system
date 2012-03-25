@@ -34,6 +34,7 @@
             this.outFolderBrowseButton = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.choosingControlPanel = new AnalysisSystem.Controls.ChoosingControlPanel();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // convertButton
@@ -42,7 +43,7 @@
             this.convertButton.AutoSize = true;
             this.convertButton.Location = new System.Drawing.Point(314, 516);
             this.convertButton.Name = "convertButton";
-            this.convertButton.Size = new System.Drawing.Size(136, 52);
+            this.convertButton.Size = new System.Drawing.Size(136, 50);
             this.convertButton.TabIndex = 2;
             this.convertButton.Text = "CONVERT";
             this.convertButton.UseVisualStyleBackColor = true;
@@ -93,6 +94,10 @@
             this.choosingControlPanel.Size = new System.Drawing.Size(765, 444);
             this.choosingControlPanel.TabIndex = 1;
             // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+            // 
             // ConvertingControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
@@ -120,6 +125,7 @@
         private System.Windows.Forms.TextBox outFolderTextBox;
         private System.Windows.Forms.Button outFolderBrowseButton;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
 
     }
 }

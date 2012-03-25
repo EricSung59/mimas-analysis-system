@@ -14,6 +14,8 @@ namespace AnalysisSystem.Controls
         String _csvFolderName = "CsvFiles";
         String _csvFolderPath;
 
+        //-------------- CONSTRUCTOR ----------------------//
+
         public ConvertingControlPanel()
         {
             InitializeComponent();
@@ -31,7 +33,22 @@ namespace AnalysisSystem.Controls
             outFolderTextBox.Text = _csvFolderPath;
         }
 
+        //-------------- EVENT HANDLERS -------------------//
+
         private void convertButton_Click(object sender, EventArgs e)
+        {
+            backgroundWorker.RunWorkerAsync();
+        }
+
+        private void outFolderBrowseButton_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                outFolderTextBox.Text = folderBrowserDialog.SelectedPath;
+            }
+        }
+
+        private void backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             String acquisitionBasePath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
@@ -71,7 +88,7 @@ namespace AnalysisSystem.Controls
                 if (File.Exists(outputFile))
                     File.Delete(outputFile);
 
-                process.StartInfo.Arguments = " --inputfile " + inputFile + " --outputfile " + outputFile;
+                process.StartInfo.Arguments = "--inputfile " + inputFile + " --outputfile " + outputFile;
                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 process.Start();
                 process.WaitForExit();
@@ -81,13 +98,7 @@ namespace AnalysisSystem.Controls
             convertButton.Enabled = true;
         }
 
-        private void outFolderBrowseButton_Click(object sender, EventArgs e)
-        {
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {
-                outFolderTextBox.Text = folderBrowserDialog.SelectedPath;
-            }
-        }
+        //-------------- PROPERTIES -----------------------//
 
         public AnalysisSystemForm AnalysisSystemForm
         {
