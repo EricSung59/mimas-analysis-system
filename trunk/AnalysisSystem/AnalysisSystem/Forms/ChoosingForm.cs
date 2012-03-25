@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
+using System.Threading;
 
 namespace AnalysisSystem.Forms
 {
@@ -96,7 +97,7 @@ namespace AnalysisSystem.Forms
 
                 listView.Items.Add(item);
             }
-            
+
             listView.EndUpdate();
         }
 
@@ -242,6 +243,62 @@ namespace AnalysisSystem.Forms
             updateListView();
         }
 
+        //
+        // ListBox
+        //
+
+        private void volunteerIdInListBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = volunteerIdInListBox.IndexFromPoint(e.Location);
+            if (index != ListBox.NoMatches)
+            {
+                Object item = volunteerIdInListBox.Items[index];
+                volunteerIdInListBox.Items.Remove(item);
+                volunteerIdOutListBox.Items.Add(item);
+
+                updateListView();
+            }
+        }
+
+        private void volunteerIdOutListBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = volunteerIdOutListBox.IndexFromPoint(e.Location);
+            if (index != ListBox.NoMatches)
+            {
+                Object item = volunteerIdOutListBox.Items[index];
+                volunteerIdOutListBox.Items.Remove(item);
+                volunteerIdInListBox.Items.Add(item);
+
+                updateListView();
+            }
+        }
+
+        private void pictureIdInListBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = pictureIdInListBox.IndexFromPoint(e.Location);
+            if (index != ListBox.NoMatches)
+            {
+                Object item = pictureIdInListBox.Items[index];
+                pictureIdInListBox.Items.Remove(item);
+                pictureIdOutListBox.Items.Add(item);
+
+                updateListView();
+            }
+        }
+
+        private void pictureIdOutListBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = pictureIdOutListBox.IndexFromPoint(e.Location);
+            if (index != ListBox.NoMatches)
+            {
+                Object item = pictureIdOutListBox.Items[index];
+                pictureIdOutListBox.Items.Remove(item);
+                pictureIdInListBox.Items.Add(item);
+
+                updateListView();
+            }
+        }
+
         // -------------- PROPERTIES -----------------//
 
         public ListView ListView
@@ -255,11 +312,11 @@ namespace AnalysisSystem.Forms
             listView.BeginUpdate();
 
             var dataQuery =
-                from samples in _db.Samples
-                from volpics in _db.VolPics
-                where samples.SID == volpics.SID
-                orderby samples.SID ascending
-                select new { samples.SID, samples.EdfPath, volpics.VID, volpics.PID };
+                    from samples in _db.Samples
+                    from volpics in _db.VolPics
+                    where samples.SID == volpics.SID
+                    orderby samples.SID ascending
+                    select new { samples.SID, samples.EdfPath, volpics.VID, volpics.PID };
 
             ArrayList sidList = new ArrayList();
             foreach (ListViewItem item in listView.Items)

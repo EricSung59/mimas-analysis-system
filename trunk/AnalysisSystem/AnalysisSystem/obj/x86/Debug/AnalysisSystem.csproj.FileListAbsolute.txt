@@ -14,3 +14,7 @@ D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analy
 D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Controls.ChoosingControlPanel.resources
 D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Test.Test.resources
 D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Forms.ChoosingForm.resources
+D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\bin\Debug\AnalysisSystem.exe.manifest
+D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\bin\Debug\AnalysisSystem.application
+D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.exe.manifest
+D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.application
