@@ -16,6 +16,8 @@ namespace AnalysisSystem.Controls
         AnalysisSystemDataContext _db = new AnalysisSystemDataContext();
         AnalysisSystemForm _analysisSystemForm;
 
+        public event EventHandler SelectComplete;
+
         //------------------- CONSTRUCTOR -------------------//
 
         public DoubleViewChoosingControlPanel()
@@ -30,7 +32,7 @@ namespace AnalysisSystem.Controls
 
         private void selectSampleButton_Click(object sender, EventArgs e)
         {
-            _analysisSystemForm.StatusLabel.Text = "Choosing sample";
+            _analysisSystemForm.SetStatus("Choosing sample");
 
             var dataQuery =
                 from samples in _db.Samples
@@ -89,9 +91,11 @@ namespace AnalysisSystem.Controls
                 }
 
                 leftListView.EndUpdate();
+
+                OnSelectComplete();
             }
 
-            _analysisSystemForm.StatusLabel.Text = "";
+            _analysisSystemForm.SetStatus(String.Empty);
         }
 
         //------------------- PRIVATE HELPERS ---------------//
@@ -188,6 +192,14 @@ namespace AnalysisSystem.Controls
             );
 
             rightListView.EndUpdate();
+        }
+
+        private void OnSelectComplete()
+        {
+            if (SelectComplete != null)
+            {
+                SelectComplete(this, EventArgs.Empty);
+            }
         }
 
         //------------------- PROPERTIES --------------------//

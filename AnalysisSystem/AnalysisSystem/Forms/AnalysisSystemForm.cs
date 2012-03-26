@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using AnalysisSystem.Controls;
-using System.IO;
 
 namespace AnalysisSystem.Forms
 {
     public partial class AnalysisSystemForm : Form
     {
         UserControl _currentVisibleControlPanel;
+        bool statusTextChanged = false;
+
+        //-------------------- CONSTRUCTOR ---------------------//
 
         public AnalysisSystemForm()
         {
@@ -27,6 +24,24 @@ namespace AnalysisSystem.Forms
             convertingControlPanel.Visible = false;
             eliminatingControlPanel.Visible = true;
         }
+
+        //-------------------- EVENT HANDLERS ------------------//
+
+        private void statusLabel_TextChanged(object sender, EventArgs e)
+        {
+            //statusTextChanged = true;
+        }
+
+        //-------------------- PUBLIC METHODS ------------------//
+
+        public void SetStatus(String status)
+        {
+            statusLabel.Text = "Status: " + status;
+            //statusTextChanged = false;
+            //while (statusTextChanged == false) ;
+        }
+
+        //-------------------- PROPERTIES ----------------------//
 
         public FunctionControlPanel FunctionControlPanel
         {
@@ -55,6 +70,3 @@ namespace AnalysisSystem.Forms
         }
     }
 }
-
-// Gan hoan thanh update button cho eliminating
-// Can chinh lai: chi update cho cac item co o leftListView

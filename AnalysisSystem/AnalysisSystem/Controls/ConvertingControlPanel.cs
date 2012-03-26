@@ -57,27 +57,27 @@ namespace AnalysisSystem.Controls
 
             if (!Directory.Exists(edfFilePath))
             {
-                _analysisSystemForm.StatusLabel.Text = "Cannot find folder " + edfFilePath;
+                _analysisSystemForm.SetStatus("Cannot find folder " + edfFilePath);
                 return;
             }
 
             String converterPath = Path.Combine(Application.StartupPath, "EDFConverterConsole.exe");
             if (!File.Exists(converterPath))
             {
-                _analysisSystemForm.StatusLabel.Text = "Cannot find EDFConverterConsole.exe";
+                _analysisSystemForm.SetStatus("Cannot find EDFConverterConsole.exe");
                 return;
             }
 
             Process process = new Process();
             process.StartInfo.FileName = converterPath;
 
-            _analysisSystemForm.StatusLabel.Text = "Converting";
+            _analysisSystemForm.SetStatus("Converting...");
             convertButton.Enabled = false;
 
             int i = 0;
             foreach (ListViewItem item in choosingControlPanel.ListView.Items)
             {
-                _analysisSystemForm.StatusLabel.Text = "Converting... (" + i++ + "/" + choosingControlPanel.ListView.Items.Count + ")";
+                _analysisSystemForm.SetStatus("Converting... (" + i++ + "/" + choosingControlPanel.ListView.Items.Count + ")");
                 string inputFile = Path.Combine(edfFilePath, item.SubItems[3].Text);
                 if (!File.Exists(inputFile))
                     continue;
@@ -94,7 +94,7 @@ namespace AnalysisSystem.Controls
                 process.WaitForExit();
             }
 
-            _analysisSystemForm.StatusLabel.Text = "Convert done";
+            _analysisSystemForm.SetStatus("Converting... done");
             convertButton.Enabled = true;
         }
 

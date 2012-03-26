@@ -31,7 +31,6 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusLabel1 = new System.Windows.Forms.Label();
             this.statusLabel = new System.Windows.Forms.Label();
             this.functionControlPanel = new AnalysisSystem.Controls.FunctionControlPanel();
             this.convertingControlPanel = new AnalysisSystem.Controls.ConvertingControlPanel();
@@ -63,28 +62,17 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(77, 30);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // statusLabel1
-            // 
-            this.statusLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.statusLabel1.Location = new System.Drawing.Point(0, 675);
-            this.statusLabel1.Margin = new System.Windows.Forms.Padding(0);
-            this.statusLabel1.Name = "statusLabel1";
-            this.statusLabel1.Size = new System.Drawing.Size(399, 28);
-            this.statusLabel1.TabIndex = 8;
-            this.statusLabel1.Text = "Status:";
-            this.statusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // statusLabel
             // 
-            this.statusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.statusLabel.Location = new System.Drawing.Point(66, 675);
+            this.statusLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.statusLabel.Location = new System.Drawing.Point(0, 675);
             this.statusLabel.Margin = new System.Windows.Forms.Padding(0);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(909, 28);
-            this.statusLabel.TabIndex = 9;
+            this.statusLabel.Size = new System.Drawing.Size(975, 28);
+            this.statusLabel.TabIndex = 8;
+            this.statusLabel.Text = "Status:";
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.statusLabel.TextChanged += new System.EventHandler(this.statusLabel_TextChanged);
             // 
             // functionControlPanel
             // 
@@ -134,7 +122,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(975, 703);
             this.Controls.Add(this.statusLabel);
-            this.Controls.Add(this.statusLabel1);
             this.Controls.Add(this.functionControlPanel);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.convertingControlPanel);
@@ -160,7 +147,6 @@
         private Controls.FunctionControlPanel functionControlPanel;
         private Controls.ConvertingControlPanel convertingControlPanel;
         private Controls.EliminatingControlPanel eliminatingControlPanel;
-        private System.Windows.Forms.Label statusLabel1;
         private System.Windows.Forms.Label statusLabel;
     }
 }

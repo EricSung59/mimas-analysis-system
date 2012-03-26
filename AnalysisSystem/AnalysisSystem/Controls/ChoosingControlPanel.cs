@@ -35,7 +35,7 @@ namespace AnalysisSystem.Controls
         
         private void selectSampleButton_Click(object sender, EventArgs e)
         {
-            _analysisSystemForm.StatusLabel.Text = "Choosing sample";
+            _analysisSystemForm.SetStatus("Choosing sample");
 
             ChoosingForm form = new ChoosingForm();
             if (form.ShowDialog() == DialogResult.OK)
@@ -51,7 +51,7 @@ namespace AnalysisSystem.Controls
                 listView.EndUpdate();
             }
 
-            _analysisSystemForm.StatusLabel.Text = "";
+            _analysisSystemForm.SetStatus(String.Empty);
         }
 
         public ListView ListView
