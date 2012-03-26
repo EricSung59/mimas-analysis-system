@@ -81,6 +81,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AnalysisSystem.dbml</DependentUpon>
     </Compile>
+    <Compile Include="FindUtils.cs" />
     <Compile Include="Controls\ChoosingControlPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
