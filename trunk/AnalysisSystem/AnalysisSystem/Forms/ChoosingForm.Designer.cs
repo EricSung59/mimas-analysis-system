@@ -47,6 +47,7 @@
             this.pictureIdPushInAllButton = new System.Windows.Forms.Button();
             this.pictureIdInListBox = new System.Windows.Forms.ListBox();
             this.pictureIdOutListBox = new System.Windows.Forms.ListBox();
+            this.statusLabel = new System.Windows.Forms.Label();
             this.volunteerIdGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -55,7 +56,7 @@
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.okButton.AutoSize = true;
-            this.okButton.Location = new System.Drawing.Point(731, 595);
+            this.okButton.Location = new System.Drawing.Point(731, 591);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(79, 33);
             this.okButton.TabIndex = 0;
@@ -67,7 +68,7 @@
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.AutoSize = true;
-            this.cancelButton.Location = new System.Drawing.Point(816, 595);
+            this.cancelButton.Location = new System.Drawing.Point(816, 591);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(79, 33);
             this.cancelButton.TabIndex = 1;
@@ -89,12 +90,13 @@
             this.listView.TabIndex = 2;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView_ItemSelectionChanged);
             // 
             // selectAllButton
             // 
             this.selectAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.selectAllButton.AutoSize = true;
-            this.selectAllButton.Location = new System.Drawing.Point(12, 595);
+            this.selectAllButton.Location = new System.Drawing.Point(12, 591);
             this.selectAllButton.Name = "selectAllButton";
             this.selectAllButton.Size = new System.Drawing.Size(88, 33);
             this.selectAllButton.TabIndex = 3;
@@ -106,7 +108,7 @@
             // 
             this.deselectAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.deselectAllButton.AutoSize = true;
-            this.deselectAllButton.Location = new System.Drawing.Point(106, 595);
+            this.deselectAllButton.Location = new System.Drawing.Point(106, 591);
             this.deselectAllButton.Name = "deselectAllButton";
             this.deselectAllButton.Size = new System.Drawing.Size(107, 33);
             this.deselectAllButton.TabIndex = 4;
@@ -282,11 +284,23 @@
             this.pictureIdOutListBox.TabIndex = 0;
             this.pictureIdOutListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pictureIdOutListBox_MouseDoubleClick);
             // 
+            // statusLabel
+            // 
+            this.statusLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.statusLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.statusLabel.Location = new System.Drawing.Point(0, 645);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(907, 26);
+            this.statusLabel.TabIndex = 7;
+            this.statusLabel.Text = "Status:";
+            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // ChoosingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 640);
+            this.ClientSize = new System.Drawing.Size(907, 671);
+            this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.volunteerIdGroupBox);
             this.Controls.Add(this.deselectAllButton);
@@ -329,5 +343,6 @@
         private System.Windows.Forms.Button pictureIdPushInAllButton;
         private System.Windows.Forms.ListBox pictureIdInListBox;
         private System.Windows.Forms.ListBox pictureIdOutListBox;
+        private System.Windows.Forms.Label statusLabel;
     }
 }

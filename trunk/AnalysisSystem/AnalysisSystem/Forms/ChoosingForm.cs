@@ -224,6 +224,15 @@ namespace AnalysisSystem.Forms
             }
         }
 
+        //
+        // ListView
+        //
+
+        private void listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            updateStatusLabel();
+        }
+
         // -------------- PROPERTIES -----------------//
 
         public ListView ListView
@@ -308,6 +317,8 @@ namespace AnalysisSystem.Forms
             }
 
             listView.EndUpdate();
+
+            updateStatusLabel();
         }
 
         private void updateListView()
@@ -358,6 +369,14 @@ namespace AnalysisSystem.Forms
             }
 
             listView.EndUpdate();
+
+            updateStatusLabel();
+        }
+
+        private void updateStatusLabel()
+        {
+            String status = "Status:  Total: " + listView.Items.Count + " item(s)  |  Selected : " + listView.SelectedItems.Count + " item(s)";
+            statusLabel.Text = status;
         }
     }
 }
