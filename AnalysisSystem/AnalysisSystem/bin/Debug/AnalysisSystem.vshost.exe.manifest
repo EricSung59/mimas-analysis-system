@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AnalysisSystem.exe" size="97792">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AnalysisSystem.exe" size="101888">
       <assemblyIdentity name="AnalysisSystem" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>grFNt7zs1OPytiUH6nPPpyeXnps=</dsig:DigestValue>
+        <dsig:DigestValue>cBTChuhF6RbaVGP9IOlP6afEzXA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

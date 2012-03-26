@@ -81,6 +81,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AnalysisSystem.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\IcaProcessingControlPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\IcaProcessingControlPanel.Designer.cs">
+      <DependentUpon>IcaProcessingControlPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="FindUtils.cs" />
     <Compile Include="Controls\ChoosingControlPanel.cs">
       <SubType>UserControl</SubType>
@@ -88,29 +94,29 @@
     <Compile Include="Controls\ChoosingControlPanel.Designer.cs">
       <DependentUpon>ChoosingControlPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ConvertingControlPanel.cs">
+    <Compile Include="Controls\EdfConvertingControlPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ConvertingControlPanel.Designer.cs">
-      <DependentUpon>ConvertingControlPanel.cs</DependentUpon>
+    <Compile Include="Controls\EdfConvertingControlPanel.Designer.cs">
+      <DependentUpon>EdfConvertingControlPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\DoubleViewChoosingControlPanel.cs">
+    <Compile Include="Controls\ResultChoosingControlPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\DoubleViewChoosingControlPanel.Designer.cs">
-      <DependentUpon>DoubleViewChoosingControlPanel.cs</DependentUpon>
+    <Compile Include="Controls\ResultChoosingControlPanel.Designer.cs">
+      <DependentUpon>ResultChoosingControlPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\EliminatingControlPanel.cs">
+    <Compile Include="Controls\SampleEliminatingControlPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\EliminatingControlPanel.Designer.cs">
-      <DependentUpon>EliminatingControlPanel.cs</DependentUpon>
+    <Compile Include="Controls\SampleEliminatingControlPanel.Designer.cs">
+      <DependentUpon>SampleEliminatingControlPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\FunctionControlPanel.cs">
+    <Compile Include="Controls\FunctionChoosingControlPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\FunctionControlPanel.Designer.cs">
-      <DependentUpon>FunctionControlPanel.cs</DependentUpon>
+    <Compile Include="Controls\FunctionChoosingControlPanel.Designer.cs">
+      <DependentUpon>FunctionChoosingControlPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AnalysisSystemForm.cs">
       <SubType>Form</SubType>
@@ -144,17 +150,17 @@
     <EmbeddedResource Include="Controls\ChoosingControlPanel.resx">
       <DependentUpon>ChoosingControlPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ConvertingControlPanel.resx">
-      <DependentUpon>ConvertingControlPanel.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\EdfConvertingControlPanel.resx">
+      <DependentUpon>EdfConvertingControlPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\DoubleViewChoosingControlPanel.resx">
-      <DependentUpon>DoubleViewChoosingControlPanel.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\ResultChoosingControlPanel.resx">
+      <DependentUpon>ResultChoosingControlPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\EliminatingControlPanel.resx">
-      <DependentUpon>EliminatingControlPanel.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SampleEliminatingControlPanel.resx">
+      <DependentUpon>SampleEliminatingControlPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\FunctionControlPanel.resx">
-      <DependentUpon>FunctionControlPanel.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\FunctionChoosingControlPanel.resx">
+      <DependentUpon>FunctionChoosingControlPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AnalysisSystemForm.resx">
       <DependentUpon>AnalysisSystemForm.cs</DependentUpon>

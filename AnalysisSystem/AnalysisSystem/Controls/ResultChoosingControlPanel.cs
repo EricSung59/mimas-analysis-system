@@ -1,8 +1,13 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using AnalysisSystem.Forms;
+using System.Collections;
 
 namespace AnalysisSystem.Controls
 {
@@ -10,6 +15,8 @@ namespace AnalysisSystem.Controls
     {
         AnalysisSystemDataContext _db = new AnalysisSystemDataContext();
         AnalysisSystemForm _analysisSystemForm;
+
+        public event EventHandler SelectComplete;
 
         //------------------- CONSTRUCTOR -------------------//
 
@@ -25,25 +32,32 @@ namespace AnalysisSystem.Controls
 
         private void selectSampleButton_Click(object sender, EventArgs e)
         {
-            _analysisSystemForm.StatusLabel.Text = "Choosing sample";
+            _analysisSystemForm.SetStatus("Choosing sample");
 
-            var dataQuery = 
+            var dataQuery =
                 from samples in _db.Samples
                 from volpics in _db.VolPics
                 from pictures in _db.Pictures
                 where samples.SID == volpics.SID &&
                       volpics.PID == pictures.PID
                 orderby samples.SID ascending
-                select new 
+                select new
                 {
-                    samples.SID, samples.SamArousal, samples.SamValence,
-                    pictures.PID, pictures.Arousal, pictures.Valence,
-                    pictures.ArousalSD, pictures.ValenceSD 
+                    samples.SID,
+                    samples.SamArousal,
+                    samples.SamValence,
+                    pictures.PID,
+                    pictures.Arousal,
+                    pictures.Valence,
+                    pictures.ArousalSD,
+                    pictures.ValenceSD
                 };
 
             ChoosingForm form = new ChoosingForm();
             if (form.ShowDialog() == DialogResult.OK)
             {
+                _analysisSystemForm.SampleEliminatingControlPanel.UpdateButton.Enabled = false;
+
                 ArrayList sidList = new ArrayList();
                 foreach (ListViewItem item in form.ListView.SelectedItems)
                 {
@@ -53,34 +67,11 @@ namespace AnalysisSystem.Controls
 
                 leftListView.BeginUpdate();
                 leftListView.Items.Clear();
-                
+                rightListView.Items.Clear();
+
                 foreach (var data in dataQuery)
                 {
-                    bool found = false;
-
-                    while (true)
-                    {
-                        if (sidList.Count <= 0)
-                            break;
-
-                        if (String.Compare(data.SID, sidList[0] as String) > 0)
-                        {
-                            sidList.RemoveAt(0);
-                            continue;
-                        }
-                        else if (String.Compare(data.SID, sidList[0] as String) == 0)
-                        {
-                            found = true;
-                            break;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-
-                    //if (form.ListView.SelectedItems.ContainsKey(data.SID))
-                    if (found)
+                    if (FindUtils.Find(sidList, data.SID))
                     {
                         ListViewItem item = new ListViewItem();
 
@@ -96,13 +87,15 @@ namespace AnalysisSystem.Controls
                         );
 
                         leftListView.Items.Add(item);
-                    } 
+                    }
                 }
 
                 leftListView.EndUpdate();
+
+                OnSelectComplete();
             }
 
-            _analysisSystemForm.StatusLabel.Text = "";
+            _analysisSystemForm.SetStatus(String.Empty);
         }
 
         //------------------- PRIVATE HELPERS ---------------//
@@ -201,7 +194,21 @@ namespace AnalysisSystem.Controls
             rightListView.EndUpdate();
         }
 
+        private void OnSelectComplete()
+        {
+            if (SelectComplete != null)
+            {
+                SelectComplete(this, EventArgs.Empty);
+            }
+        }
+
         //------------------- PROPERTIES --------------------//
+
+        public AnalysisSystemForm AnalysisSystemForm
+        {
+            get { return _analysisSystemForm; }
+            set { _analysisSystemForm = value; }
+        }
 
         public ListView LeftListView
         {
@@ -211,22 +218,6 @@ namespace AnalysisSystem.Controls
         public ListView RightListView
         {
             get { return rightListView; }
-        }
-
-        public Label LeftTitleLabel
-        {
-            get { return leftTitleLabel; }
-        }
-        
-        public Label RightTitleLabel
-        {
-            get { return rightTitleLabel; }
-        }
-
-        public AnalysisSystemForm AnalysisSystemForm
-        {
-            get { return _analysisSystemForm; }
-            set { _analysisSystemForm = value; }
         }
     }
 }
