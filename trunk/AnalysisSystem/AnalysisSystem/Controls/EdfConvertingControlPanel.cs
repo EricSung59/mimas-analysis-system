@@ -6,7 +6,7 @@ using AnalysisSystem.Forms;
 
 namespace AnalysisSystem.Controls
 {
-    public partial class ConvertingControlPanel : UserControl
+    public partial class EdfConvertingControlPanel : UserControl
     {
         AnalysisSystemForm _analysisSystemForm;
 
@@ -16,7 +16,7 @@ namespace AnalysisSystem.Controls
 
         //-------------- CONSTRUCTOR ----------------------//
 
-        public ConvertingControlPanel()
+        public EdfConvertingControlPanel()
         {
             InitializeComponent();
 

@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace AnalysisSystem.Controls
 {
-    public partial class EliminatingControlPanel : UserControl
+    public partial class SampleEliminatingControlPanel : UserControl
     {
         AnalysisSystemDataContext _db = new AnalysisSystemDataContext();
         ArrayList _goodSamples = new ArrayList();
@@ -17,11 +17,11 @@ namespace AnalysisSystem.Controls
 
         //------------------ CONSTRUCTOR -------------------//
 
-        public EliminatingControlPanel()
+        public SampleEliminatingControlPanel()
         {
             InitializeComponent();
 
-            doubleViewChoosingControlPanel.SelectComplete += new EventHandler(doubleViewChoosingControlPanel_SelectComplete);
+            resultChoosingControlPanel.SelectComplete += new EventHandler(doubleViewChoosingControlPanel_SelectComplete);
         }
 
         //------------------ EVENT HANDLERS ----------------//
@@ -40,7 +40,7 @@ namespace AnalysisSystem.Controls
                 return;
             }
 
-            doubleViewChoosingControlPanel.RightListView.Items.Clear();
+            resultChoosingControlPanel.RightListView.Items.Clear();
             _goodSamples.Clear();
             _badSamples.Clear();
             _faultSamples.Clear();
@@ -48,7 +48,7 @@ namespace AnalysisSystem.Controls
             badSampleRadioButton.Enabled = false;
             goodSampleRadioButton.Enabled = false;
 
-            foreach (ListViewItem item in doubleViewChoosingControlPanel.LeftListView.Items)
+            foreach (ListViewItem item in resultChoosingControlPanel.LeftListView.Items)
             {
                 String samArousalString = item.SubItems[1].Text;
                 String samValenceString = item.SubItems[2].Text;
@@ -102,7 +102,7 @@ namespace AnalysisSystem.Controls
 
                             if (goodSampleRadioButton.Checked)
                             {
-                                doubleViewChoosingControlPanel.RightListView.Items.Add(item.Clone() as ListViewItem);
+                                resultChoosingControlPanel.RightListView.Items.Add(item.Clone() as ListViewItem);
                             }
                         }
                         else
@@ -111,7 +111,7 @@ namespace AnalysisSystem.Controls
 
                             if (badSampleRadioButton.Checked)
                             {
-                                doubleViewChoosingControlPanel.RightListView.Items.Add(item.Clone() as ListViewItem);
+                                resultChoosingControlPanel.RightListView.Items.Add(item.Clone() as ListViewItem);
                             }
                         }
                     }
@@ -147,7 +147,7 @@ namespace AnalysisSystem.Controls
                 select samples;
 
             ArrayList leftListViewItemsCloneList = new ArrayList();
-            foreach (ListViewItem item in doubleViewChoosingControlPanel.LeftListView.Items)
+            foreach (ListViewItem item in resultChoosingControlPanel.LeftListView.Items)
             {
                 leftListViewItemsCloneList.Add(item.Text);
             }
@@ -185,7 +185,7 @@ namespace AnalysisSystem.Controls
 
         private void updateLeftListViewGroupBox()
         {
-            leftListViewGroupBoxTotalLabel.Text = "Total: " + doubleViewChoosingControlPanel.LeftListView.Items.Count;
+            leftListViewGroupBoxTotalLabel.Text = "Total: " + resultChoosingControlPanel.LeftListView.Items.Count;
         }
 
         private void updateRightListViewGroupBox()
@@ -206,7 +206,7 @@ namespace AnalysisSystem.Controls
             set
             {
                 _analysisSystemForm = value;
-                doubleViewChoosingControlPanel.AnalysisSystemForm = value;
+                resultChoosingControlPanel.AnalysisSystemForm = value;
             }
         }
 

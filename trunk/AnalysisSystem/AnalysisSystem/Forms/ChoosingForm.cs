@@ -375,8 +375,7 @@ namespace AnalysisSystem.Forms
 
         private void updateStatusLabel()
         {
-            String status = "Status:  Total: " + listView.Items.Count + " item(s)  |  Selected : " + listView.SelectedItems.Count + " item(s)";
-            statusLabel.Text = status;
+            statusLabel.Text = "Status:  Total: " + listView.Items.Count + " item(s)  |  Selected : " + listView.SelectedItems.Count + " item(s)";
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace AnalysisSystem.Controls
 {
-    partial class ConvertingControlPanel
+    partial class EdfConvertingControlPanel
     {
         /// <summary> 
         /// Required designer variable.

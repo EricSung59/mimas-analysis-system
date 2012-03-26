@@ -8,7 +8,6 @@ namespace AnalysisSystem.Forms
     public partial class AnalysisSystemForm : Form
     {
         UserControl _currentVisibleControlPanel;
-        bool statusTextChanged = false;
 
         //-------------------- CONSTRUCTOR ---------------------//
 
@@ -16,13 +15,16 @@ namespace AnalysisSystem.Forms
         {
             InitializeComponent();
 
-            convertingControlPanel.AnalysisSystemForm = this;
-            eliminatingControlPanel.AnalysisSystemForm = this;
-            functionControlPanel.AnalysisSystemForm = this;
+            edfConvertingControlPanel.AnalysisSystemForm = this;
+            sampleEliminatingControlPanel.AnalysisSystemForm = this;
+            functionChoosingControlPanel.AnalysisSystemForm = this;
 
-            _currentVisibleControlPanel = convertingControlPanel;
-            convertingControlPanel.Visible = false;
-            eliminatingControlPanel.Visible = true;
+            _currentVisibleControlPanel = sampleEliminatingControlPanel;
+            edfConvertingControlPanel.Visible = false;
+            sampleEliminatingControlPanel.Visible = true;
+
+            functionChoosingControlPanel.CurrentPressedButton = functionChoosingControlPanel.SampleEliminatingButton;
+            functionChoosingControlPanel.SampleEliminatingButton.Enabled = false;
         }
 
         //-------------------- EVENT HANDLERS ------------------//
@@ -43,26 +45,24 @@ namespace AnalysisSystem.Forms
 
         //-------------------- PROPERTIES ----------------------//
 
-        public FunctionControlPanel FunctionControlPanel
+        public FunctionChoosingControlPanel FunctionChoosingControlPanel
         {
-            get { return functionControlPanel; }
-            set { functionControlPanel = value; }
+            get { return functionChoosingControlPanel; }
+            set { functionChoosingControlPanel = value; }
         }
-        public ConvertingControlPanel ConvertingControlPanel
+
+        public EdfConvertingControlPanel EdfConvertingControlPanel
         {
-            get { return convertingControlPanel; }
-            set { convertingControlPanel = value; }
+            get { return edfConvertingControlPanel; }
+            set { edfConvertingControlPanel = value; }
         }
-        public EliminatingControlPanel EliminatingControlPanel
+
+        public SampleEliminatingControlPanel SampleEliminatingControlPanel
         {
-            get { return eliminatingControlPanel; }
-            set { eliminatingControlPanel = value; }
+            get { return sampleEliminatingControlPanel; }
+            set { sampleEliminatingControlPanel = value; }
         }
-        public Label StatusLabel
-        {
-            get { return statusLabel; }
-            set { statusLabel = value; }
-        }
+        
         public UserControl CurrentVisibleControlPanel
         {
             get { return _currentVisibleControlPanel; }
