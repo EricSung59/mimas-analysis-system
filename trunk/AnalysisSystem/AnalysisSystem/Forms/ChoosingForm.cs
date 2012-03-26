@@ -330,31 +330,7 @@ namespace AnalysisSystem.Forms
             
             foreach (var data in dataQuery)
             {
-                bool found = false;
-
-                while (true)
-                {
-                    if (sidList.Count <= 0)
-                        break;
-
-                    if (String.Compare(data.SID, sidList[0] as String) > 0)
-                    {
-                        sidList.RemoveAt(0);
-                        continue;
-                    }
-                    else if (String.Compare(data.SID, sidList[0] as String) == 0)
-                    {
-                        found = true;
-                        break;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                // data.SID already in listView.Items
-                if (found)
+                if (FindUtils.Find(sidList, data.SID))
                 {
                     if (!volunteerIdInListBox.Items.Contains(data.VID) || !pictureIdInListBox.Items.Contains(data.PID))
                     {

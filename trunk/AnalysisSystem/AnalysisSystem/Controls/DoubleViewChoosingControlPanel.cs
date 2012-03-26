@@ -69,31 +69,7 @@ namespace AnalysisSystem.Controls
 
                 foreach (var data in dataQuery)
                 {
-                    bool found = false;
-
-                    while (true)
-                    {
-                        if (sidList.Count <= 0)
-                            break;
-
-                        if (String.Compare(data.SID, sidList[0] as String) > 0)
-                        {
-                            sidList.RemoveAt(0);
-                            continue;
-                        }
-                        else if (String.Compare(data.SID, sidList[0] as String) == 0)
-                        {
-                            found = true;
-                            break;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-
-                    //if (form.ListView.SelectedItems.ContainsKey(data.SID))
-                    if (found)
+                    if (FindUtils.Find(sidList, data.SID))
                     {
                         ListViewItem item = new ListViewItem();
 

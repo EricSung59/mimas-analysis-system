@@ -38,6 +38,9 @@ namespace AnalysisSystem.Controls
             doubleViewChoosingControlPanel.RightListView.Items.Clear();
             goodSamples.Clear();
 
+            badSampleRadioButton.Enabled = false;
+            goodSampleRadioButton.Enabled = false;
+
             foreach (ListViewItem item in doubleViewChoosingControlPanel.LeftListView.Items)
             {
                 String samArousalString = item.SubItems[1].Text;
@@ -106,6 +109,9 @@ namespace AnalysisSystem.Controls
                 }
             }
 
+            badSampleRadioButton.Enabled = true;
+            goodSampleRadioButton.Enabled = true;
+
             updateButton.Enabled = true;
             _analysisSystemForm.StatusLabel.Text = "Processing... Done";
         }
@@ -114,47 +120,33 @@ namespace AnalysisSystem.Controls
         {
             _analysisSystemForm.StatusLabel.Text = "Updating...";
 
-            var dataQuery = 
+            var dataQuery =
                 from samples
                 in _db.Samples
                 orderby samples.SID ascending
                 select samples;
 
+            ArrayList leftListViewItemsCloneList = new ArrayList();
+            foreach (ListViewItem item in doubleViewChoosingControlPanel.LeftListView.Items)
+            {
+                leftListViewItemsCloneList.Add(item.Text);
+            }
+            leftListViewItemsCloneList.Sort();
+            
             foreach (var data in dataQuery)
             {
-                bool found = false;
-
-                while (true)
+                if (FindUtils.Find(leftListViewItemsCloneList, data.SID))
                 {
-                    if (goodSamples.Count <= 0)
-                        break;
-
-                    if (String.Compare(data.SID, goodSamples[0] as String) > 0)
+                    if (FindUtils.Find(goodSamples, data.SID))
                     {
-                        goodSamples.RemoveAt(0);
-                        continue;
-                    }
-                    else if (String.Compare(data.SID, goodSamples[0] as String) == 0)
-                    {
-                        found = true;
-                        break;
+                        data.IsGood = true;
                     }
                     else
                     {
-                        break;
+                        data.IsGood = false;
                     }
                 }
-
-                if (found)
-                {
-                    data.IsGood = true;
-                }
-                else
-                {
-                    data.IsGood = false;
-                }
             }
-
             _db.SubmitChanges();
             _analysisSystemForm.StatusLabel.Text = "Updating... Done";
         }
