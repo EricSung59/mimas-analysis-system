@@ -1,8 +1,0 @@
-D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\ThreadTest\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\ThreadTest\bin\Debug\ThreadTest.exe
-D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\ThreadTest\bin\Debug\ThreadTest.pdb
-D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\ThreadTest\obj\x86\Debug\ThreadTest.exe
-D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\ThreadTest\obj\x86\Debug\ThreadTest.pdb
-D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\ThreadTest\obj\x86\Debug\CrossThreadDemo.Form1.resources
-D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\ThreadTest\obj\x86\Debug\GenerateResource.read.1.tlog
-D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\ThreadTest\obj\x86\Debug\GenerateResource.write.1.tlog
