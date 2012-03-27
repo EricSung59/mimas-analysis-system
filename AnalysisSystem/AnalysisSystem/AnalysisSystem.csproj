@@ -63,6 +63,14 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Matlab, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Matlab.dll</HintPath>
+    </Reference>
+    <Reference Include="MWArray, Version=2.10.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\MATLAB\MATLAB Compiler Runtime\v713\toolbox\dotnetbuilder\bin\win32\v2.0\MWArray.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -80,6 +88,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AnalysisSystem.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HfdCalculatingControlPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\HfdCalculatingControlPanel.Designer.cs">
+      <DependentUpon>HfdCalculatingControlPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\IcaProcessingControlPanel.cs">
       <SubType>UserControl</SubType>
@@ -152,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\EdfConvertingControlPanel.resx">
       <DependentUpon>EdfConvertingControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\HfdCalculatingControlPanel.resx">
+      <DependentUpon>HfdCalculatingControlPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\IcaProcessingControlPanel.resx">
       <DependentUpon>IcaProcessingControlPanel.cs</DependentUpon>

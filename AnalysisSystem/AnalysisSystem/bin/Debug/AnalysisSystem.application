@@ -8,14 +8,14 @@
     <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="AnalysisSystem.exe.manifest" size="3466">
+    <dependentAssembly dependencyType="install" codebase="AnalysisSystem.exe.manifest" size="4363">
       <assemblyIdentity name="AnalysisSystem.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>bim+f0KuDBK87cScNotWiM6IEcM=</dsig:DigestValue>
+        <dsig:DigestValue>59Cq5dyR0sYWnMiPkg3TruBcitc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

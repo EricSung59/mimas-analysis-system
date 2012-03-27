@@ -37,8 +37,7 @@
             // selectSampleButton
             // 
             this.selectSampleButton.AutoSize = true;
-            this.selectSampleButton.Location = new System.Drawing.Point(4, 6);
-            this.selectSampleButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.selectSampleButton.Location = new System.Drawing.Point(3, 3);
             this.selectSampleButton.Name = "selectSampleButton";
             this.selectSampleButton.Size = new System.Drawing.Size(152, 33);
             this.selectSampleButton.TabIndex = 0;
@@ -51,10 +50,9 @@
             this.listView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView.Location = new System.Drawing.Point(4, 51);
-            this.listView.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.listView.Location = new System.Drawing.Point(3, 42);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(903, 412);
+            this.listView.Size = new System.Drawing.Size(905, 424);
             this.listView.TabIndex = 1;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.List;
