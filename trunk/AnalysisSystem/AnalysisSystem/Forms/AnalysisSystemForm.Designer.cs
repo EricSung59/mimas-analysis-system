@@ -41,6 +41,7 @@
             this.tableLayoutPanel_00_10 = new System.Windows.Forms.TableLayoutPanel();
             this.functionChoosingControlPanel = new AnalysisSystem.Controls.FunctionChoosingControlPanel();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.hfdCalculatingControlPanel = new AnalysisSystem.Controls.HfdCalculatingControlPanel();
             this.icaProcessingControlPanel = new AnalysisSystem.Controls.IcaProcessingControlPanel();
             this.sampleEliminatingControlPanel = new AnalysisSystem.Controls.SampleEliminatingControlPanel();
             this.edfConvertingControlPanel = new AnalysisSystem.Controls.EdfConvertingControlPanel();
@@ -167,32 +168,43 @@
             this.functionChoosingControlPanel.CurrentPressedButton = null;
             this.functionChoosingControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.functionChoosingControlPanel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.functionChoosingControlPanel.Location = new System.Drawing.Point(1, 1);
-            this.functionChoosingControlPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.functionChoosingControlPanel.Location = new System.Drawing.Point(6, 6);
+            this.functionChoosingControlPanel.Margin = new System.Windows.Forms.Padding(5);
             this.functionChoosingControlPanel.Name = "functionChoosingControlPanel";
-            this.functionChoosingControlPanel.Size = new System.Drawing.Size(205, 540);
+            this.functionChoosingControlPanel.Size = new System.Drawing.Size(205, 530);
             this.functionChoosingControlPanel.TabIndex = 5;
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.hfdCalculatingControlPanel);
             this.mainPanel.Controls.Add(this.icaProcessingControlPanel);
             this.mainPanel.Controls.Add(this.sampleEliminatingControlPanel);
             this.mainPanel.Controls.Add(this.edfConvertingControlPanel);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(207, 1);
+            this.mainPanel.Location = new System.Drawing.Point(217, 1);
             this.mainPanel.Margin = new System.Windows.Forms.Padding(0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(705, 540);
+            this.mainPanel.Size = new System.Drawing.Size(695, 540);
             this.mainPanel.TabIndex = 0;
+            // 
+            // hfdCalculatingControlPanel
+            // 
+            this.hfdCalculatingControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hfdCalculatingControlPanel.Location = new System.Drawing.Point(0, 0);
+            this.hfdCalculatingControlPanel.Margin = new System.Windows.Forms.Padding(5);
+            this.hfdCalculatingControlPanel.Name = "hfdCalculatingControlPanel";
+            this.hfdCalculatingControlPanel.Size = new System.Drawing.Size(695, 540);
+            this.hfdCalculatingControlPanel.TabIndex = 9;
             // 
             // icaProcessingControlPanel
             // 
             this.icaProcessingControlPanel.AnalysisSystemForm = null;
             this.icaProcessingControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.icaProcessingControlPanel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.icaProcessingControlPanel.Location = new System.Drawing.Point(0, 0);
-            this.icaProcessingControlPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.icaProcessingControlPanel.Margin = new System.Windows.Forms.Padding(5);
             this.icaProcessingControlPanel.Name = "icaProcessingControlPanel";
-            this.icaProcessingControlPanel.Size = new System.Drawing.Size(705, 540);
+            this.icaProcessingControlPanel.Size = new System.Drawing.Size(695, 540);
             this.icaProcessingControlPanel.TabIndex = 8;
             this.icaProcessingControlPanel.Visible = false;
             // 
@@ -204,7 +216,7 @@
             this.sampleEliminatingControlPanel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sampleEliminatingControlPanel.Location = new System.Drawing.Point(0, 0);
             this.sampleEliminatingControlPanel.Name = "sampleEliminatingControlPanel";
-            this.sampleEliminatingControlPanel.Size = new System.Drawing.Size(705, 540);
+            this.sampleEliminatingControlPanel.Size = new System.Drawing.Size(695, 540);
             this.sampleEliminatingControlPanel.TabIndex = 7;
             this.sampleEliminatingControlPanel.Visible = false;
             // 
@@ -216,7 +228,7 @@
             this.edfConvertingControlPanel.Location = new System.Drawing.Point(0, 0);
             this.edfConvertingControlPanel.Margin = new System.Windows.Forms.Padding(5);
             this.edfConvertingControlPanel.Name = "edfConvertingControlPanel";
-            this.edfConvertingControlPanel.Size = new System.Drawing.Size(705, 540);
+            this.edfConvertingControlPanel.Size = new System.Drawing.Size(695, 540);
             this.edfConvertingControlPanel.TabIndex = 6;
             this.edfConvertingControlPanel.Visible = false;
             // 
@@ -260,5 +272,6 @@
         private System.Windows.Forms.ToolStripMenuItem settings4ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settings2ToolStripMenuItem;
         private Controls.IcaProcessingControlPanel icaProcessingControlPanel;
+        private Controls.HfdCalculatingControlPanel hfdCalculatingControlPanel;
     }
 }

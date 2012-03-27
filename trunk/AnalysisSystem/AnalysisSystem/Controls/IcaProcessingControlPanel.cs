@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using AnalysisSystem.Forms;
+using AnalysisSystem.Matlab;
 
 namespace AnalysisSystem.Controls
 {
     public partial class IcaProcessingControlPanel : UserControl
     {
         AnalysisSystemForm _analysisSystemForm;
+        HfdCalculator _hfdCalculator = new HfdCalculator();
 
         //------------------------ CONSTRUCTOR -------------------------//
 
@@ -25,8 +20,15 @@ namespace AnalysisSystem.Controls
 
         public AnalysisSystemForm AnalysisSystemForm
         {
-            get { return _analysisSystemForm; }
-            set { _analysisSystemForm = value; }
+            get
+            {
+                return _analysisSystemForm;
+            }
+            set
+            {
+                _analysisSystemForm = value;
+                choosingControlPanel.AnalysisSystemForm = value;
+            }
         }
     }
 }

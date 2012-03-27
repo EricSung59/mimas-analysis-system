@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Windows.Forms;
 using AnalysisSystem.Forms;
 
@@ -8,42 +9,39 @@ namespace AnalysisSystem.Controls
     {
         AnalysisSystemForm _analysisSystemForm;
         Button _currentPressedButton;
+        ArrayList _buttons;
 
         //----------------------- CONSTRUCTOR --------------------------//
 
         public FunctionChoosingControlPanel()
         {
             InitializeComponent();
+
+            _buttons = new ArrayList();
+            _buttons.Add(edfConvertingButton);
+            _buttons.Add(sampleEliminatingButton);
+            _buttons.Add(icaProcessingButton);
+            _buttons.Add(hfdCalculatingButton);
+            _buttons.Add(emoMappingButton);
+            _buttons.Add(svmTrainingButton);
+            _buttons.Add(testButton);
         }
 
         //----------------------- EVENT HANDLERS -----------------------//
 
         private void functionButton_Click(object sender, EventArgs e)
         {
-            if (_currentPressedButton != null)
-            {
-                _currentPressedButton.Enabled = true;
-            }
-            _analysisSystemForm.CurrentVisibleControlPanel.Visible = false;
+            _analysisSystemForm.SetStatus("");
 
-            Button pressedButton = sender as Button;
-            _currentPressedButton = pressedButton;
-            _currentPressedButton.Enabled = false;
-
-            if (pressedButton == edfConvertingButton)
+            int index = _buttons.IndexOf(sender as Button);
+            if (index == -1)
             {
-                _analysisSystemForm.CurrentVisibleControlPanel = _analysisSystemForm.EdfConvertingControlPanel;
+                _analysisSystemForm.SetStatus("This button is not found in Buttons List");
             }
-            else if (pressedButton == sampleEliminatingButton)
+            else
             {
-                _analysisSystemForm.CurrentVisibleControlPanel = _analysisSystemForm.SampleEliminatingControlPanel;
+                _analysisSystemForm.ShowScreen(index);
             }
-            else if (pressedButton == icaProcessingButton)
-            {
-                _analysisSystemForm.CurrentVisibleControlPanel = _analysisSystemForm.IcaProcessingControlPanel;
-            }
-
-            _analysisSystemForm.CurrentVisibleControlPanel.Visible = true;
         }
 
         //----------------------- PROPERTIES ---------------------------//
@@ -52,6 +50,11 @@ namespace AnalysisSystem.Controls
         {
             get { return _analysisSystemForm; }
             set { _analysisSystemForm = value; }
+        }
+
+        public ArrayList ButtonList
+        {
+            get { return _buttons; }
         }
 
         public Button CurrentPressedButton

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading;
+using System.Collections;
 using System.Windows.Forms;
 using AnalysisSystem.Controls;
 
@@ -7,7 +7,7 @@ namespace AnalysisSystem.Forms
 {
     public partial class AnalysisSystemForm : Form
     {
-        UserControl _currentVisibleControlPanel;
+        ArrayList _screens;
 
         //-------------------- CONSTRUCTOR ---------------------//
 
@@ -15,16 +15,19 @@ namespace AnalysisSystem.Forms
         {
             InitializeComponent();
 
+            functionChoosingControlPanel.AnalysisSystemForm = this;
             edfConvertingControlPanel.AnalysisSystemForm = this;
             sampleEliminatingControlPanel.AnalysisSystemForm = this;
-            functionChoosingControlPanel.AnalysisSystemForm = this;
             icaProcessingControlPanel.AnalysisSystemForm = this;
+            hfdCalculatingControlPanel.AnalysisSystemForm = this;
 
-            _currentVisibleControlPanel = icaProcessingControlPanel;
-            _currentVisibleControlPanel.Visible = true;
+            _screens = new ArrayList();
+            _screens.Add(edfConvertingControlPanel);
+            _screens.Add(sampleEliminatingControlPanel);
+            _screens.Add(icaProcessingControlPanel);
+            _screens.Add(hfdCalculatingControlPanel);
 
-            functionChoosingControlPanel.CurrentPressedButton = functionChoosingControlPanel.IcaProcessingButton;
-            functionChoosingControlPanel.CurrentPressedButton.Enabled = false;
+            ShowScreen(3);
         }
 
         //-------------------- EVENT HANDLERS ------------------//
@@ -41,6 +44,32 @@ namespace AnalysisSystem.Forms
             statusLabel.Text = "Status: " + status;
             //statusTextChanged = false;
             //while (statusTextChanged == false) ;
+        }
+
+        public void ShowScreen(int index)
+        {
+            SetStatus("");
+
+            if (index < _screens.Count)
+            {
+                for (int i = 0; i < _screens.Count; i++)
+                {
+                    if (i == index)
+                    {
+                        (_screens[i] as UserControl).Visible = true;
+                        (functionChoosingControlPanel.ButtonList[i] as Button).Enabled = false;
+                    }
+                    else
+                    {
+                        (_screens[i] as UserControl).Visible = false;
+                        (functionChoosingControlPanel.ButtonList[i] as Button).Enabled = true;
+                    }
+                }
+            }
+            else
+            {
+                SetStatus("This function is not implemented yet.");
+            }
         }
 
         //-------------------- PROPERTIES ----------------------//
@@ -64,11 +93,10 @@ namespace AnalysisSystem.Forms
         {
             get { return icaProcessingControlPanel; }
         }
-        
-        public UserControl CurrentVisibleControlPanel
+
+        public HfdCalculatingControlPanel HfdCalculatingControlPanel
         {
-            get { return _currentVisibleControlPanel; }
-            set { _currentVisibleControlPanel = value; }
+            get { return hfdCalculatingControlPanel; }
         }
     }
 }
