@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalysisSystem", "AnalysisSystem\AnalysisSystem.csproj", "{7D7EB96F-0827-40C6-B29C-3067EB28C142}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatlabFunctionCallConsole", "MainApp\MatlabFunctionCallConsole.csproj", "{85FF3186-23CE-4A9A-98D5-35B1EF19537C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,10 @@ Global
 		{7D7EB96F-0827-40C6-B29C-3067EB28C142}.Debug|x86.Build.0 = Debug|x86
 		{7D7EB96F-0827-40C6-B29C-3067EB28C142}.Release|x86.ActiveCfg = Release|x86
 		{7D7EB96F-0827-40C6-B29C-3067EB28C142}.Release|x86.Build.0 = Release|x86
+		{85FF3186-23CE-4A9A-98D5-35B1EF19537C}.Debug|x86.ActiveCfg = Debug|x86
+		{85FF3186-23CE-4A9A-98D5-35B1EF19537C}.Debug|x86.Build.0 = Debug|x86
+		{85FF3186-23CE-4A9A-98D5-35B1EF19537C}.Release|x86.ActiveCfg = Release|x86
+		{85FF3186-23CE-4A9A-98D5-35B1EF19537C}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

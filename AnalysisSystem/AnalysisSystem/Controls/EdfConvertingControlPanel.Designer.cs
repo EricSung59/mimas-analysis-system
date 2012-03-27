@@ -41,7 +41,7 @@
             // 
             this.convertButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.convertButton.AutoSize = true;
-            this.convertButton.Location = new System.Drawing.Point(314, 516);
+            this.convertButton.Location = new System.Drawing.Point(315, 518);
             this.convertButton.Name = "convertButton";
             this.convertButton.Size = new System.Drawing.Size(136, 50);
             this.convertButton.TabIndex = 2;
@@ -53,7 +53,7 @@
             // 
             this.outFolderLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.outFolderLabel.AutoSize = true;
-            this.outFolderLabel.Location = new System.Drawing.Point(3, 470);
+            this.outFolderLabel.Location = new System.Drawing.Point(3, 472);
             this.outFolderLabel.Name = "outFolderLabel";
             this.outFolderLabel.Size = new System.Drawing.Size(91, 23);
             this.outFolderLabel.TabIndex = 3;
@@ -63,16 +63,16 @@
             // 
             this.outFolderTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.outFolderTextBox.Location = new System.Drawing.Point(100, 466);
+            this.outFolderTextBox.Location = new System.Drawing.Point(100, 468);
             this.outFolderTextBox.Name = "outFolderTextBox";
-            this.outFolderTextBox.Size = new System.Drawing.Size(581, 30);
+            this.outFolderTextBox.Size = new System.Drawing.Size(583, 30);
             this.outFolderTextBox.TabIndex = 4;
             // 
             // outFolderBrowseButton
             // 
             this.outFolderBrowseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.outFolderBrowseButton.AutoSize = true;
-            this.outFolderBrowseButton.Location = new System.Drawing.Point(687, 465);
+            this.outFolderBrowseButton.Location = new System.Drawing.Point(689, 467);
             this.outFolderBrowseButton.Name = "outFolderBrowseButton";
             this.outFolderBrowseButton.Size = new System.Drawing.Size(75, 33);
             this.outFolderBrowseButton.TabIndex = 5;
@@ -86,23 +86,21 @@
             this.choosingControlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.choosingControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.choosingControlPanel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.choosingControlPanel.Location = new System.Drawing.Point(-1, -1);
             this.choosingControlPanel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.choosingControlPanel.Name = "choosingControlPanel";
-            this.choosingControlPanel.Size = new System.Drawing.Size(765, 444);
+            this.choosingControlPanel.Size = new System.Drawing.Size(767, 446);
             this.choosingControlPanel.TabIndex = 1;
             // 
             // backgroundWorker
             // 
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
-            // ConvertingControlPanel
+            // EdfConvertingControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.outFolderBrowseButton);
             this.Controls.Add(this.outFolderTextBox);
             this.Controls.Add(this.outFolderLabel);
@@ -110,8 +108,8 @@
             this.Controls.Add(this.choosingControlPanel);
             this.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
-            this.Name = "ConvertingControlPanel";
-            this.Size = new System.Drawing.Size(765, 583);
+            this.Name = "EdfConvertingControlPanel";
+            this.Size = new System.Drawing.Size(767, 585);
             this.ResumeLayout(false);
             this.PerformLayout();
 
