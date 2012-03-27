@@ -153,6 +153,9 @@
     <EmbeddedResource Include="Controls\EdfConvertingControlPanel.resx">
       <DependentUpon>EdfConvertingControlPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\IcaProcessingControlPanel.resx">
+      <DependentUpon>IcaProcessingControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ResultChoosingControlPanel.resx">
       <DependentUpon>ResultChoosingControlPanel.cs</DependentUpon>
     </EmbeddedResource>

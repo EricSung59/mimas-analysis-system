@@ -18,13 +18,13 @@ namespace AnalysisSystem.Forms
             edfConvertingControlPanel.AnalysisSystemForm = this;
             sampleEliminatingControlPanel.AnalysisSystemForm = this;
             functionChoosingControlPanel.AnalysisSystemForm = this;
+            icaProcessingControlPanel.AnalysisSystemForm = this;
 
-            _currentVisibleControlPanel = sampleEliminatingControlPanel;
-            edfConvertingControlPanel.Visible = false;
-            sampleEliminatingControlPanel.Visible = true;
+            _currentVisibleControlPanel = icaProcessingControlPanel;
+            _currentVisibleControlPanel.Visible = true;
 
-            functionChoosingControlPanel.CurrentPressedButton = functionChoosingControlPanel.SampleEliminatingButton;
-            functionChoosingControlPanel.SampleEliminatingButton.Enabled = false;
+            functionChoosingControlPanel.CurrentPressedButton = functionChoosingControlPanel.IcaProcessingButton;
+            functionChoosingControlPanel.CurrentPressedButton.Enabled = false;
         }
 
         //-------------------- EVENT HANDLERS ------------------//
@@ -48,19 +48,21 @@ namespace AnalysisSystem.Forms
         public FunctionChoosingControlPanel FunctionChoosingControlPanel
         {
             get { return functionChoosingControlPanel; }
-            set { functionChoosingControlPanel = value; }
         }
 
         public EdfConvertingControlPanel EdfConvertingControlPanel
         {
             get { return edfConvertingControlPanel; }
-            set { edfConvertingControlPanel = value; }
         }
 
         public SampleEliminatingControlPanel SampleEliminatingControlPanel
         {
             get { return sampleEliminatingControlPanel; }
-            set { sampleEliminatingControlPanel = value; }
+        }
+
+        public IcaProcessingControlPanel IcaProcessingControlPanel
+        {
+            get { return icaProcessingControlPanel; }
         }
         
         public UserControl CurrentVisibleControlPanel

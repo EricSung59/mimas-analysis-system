@@ -19,3 +19,4 @@ D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analy
 D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Controls.EdfConvertingControlPanel.resources
 D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Controls.SampleEliminatingControlPanel.resources
 D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Controls.FunctionChoosingControlPanel.resources
+D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Controls.IcaProcessingControlPanel.resources

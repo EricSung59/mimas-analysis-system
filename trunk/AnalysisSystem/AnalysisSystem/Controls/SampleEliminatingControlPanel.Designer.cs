@@ -37,32 +37,32 @@
             this.badSampleRadioButton = new System.Windows.Forms.RadioButton();
             this.goodSampleRadioButton = new System.Windows.Forms.RadioButton();
             this.conditionPanel = new System.Windows.Forms.Panel();
-            this.parentTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.commandPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.leftListViewGroupBox = new System.Windows.Forms.GroupBox();
             this.leftListViewGroupBoxTotalLabel = new System.Windows.Forms.Label();
             this.rightListViewGroupBox = new System.Windows.Forms.GroupBox();
             this.rightListViewGroupBoxFaultLabel = new System.Windows.Forms.Label();
             this.rightListViewGroupBoxBadLabel = new System.Windows.Forms.Label();
             this.rightListViewGroupBoxGoodLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel_00 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel_00_10 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel_00_10_01 = new System.Windows.Forms.TableLayoutPanel();
             this.resultChoosingControlPanel = new AnalysisSystem.Controls.ResultChoosingControlPanel();
             this.resultGroupBox.SuspendLayout();
             this.conditionPanel.SuspendLayout();
-            this.parentTableLayoutPanel.SuspendLayout();
             this.commandPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.leftListViewGroupBox.SuspendLayout();
             this.rightListViewGroupBox.SuspendLayout();
+            this.tableLayoutPanel_00.SuspendLayout();
+            this.tableLayoutPanel_00_10.SuspendLayout();
+            this.tableLayoutPanel_00_10_01.SuspendLayout();
             this.SuspendLayout();
             // 
             // deviationLabel
             // 
-            this.deviationLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.deviationLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.deviationLabel.AutoSize = true;
-            this.deviationLabel.Location = new System.Drawing.Point(4, 16);
+            this.deviationLabel.Location = new System.Drawing.Point(27, 9);
             this.deviationLabel.Name = "deviationLabel";
             this.deviationLabel.Size = new System.Drawing.Size(97, 23);
             this.deviationLabel.TabIndex = 1;
@@ -70,8 +70,8 @@
             // 
             // inputTextBox
             // 
-            this.inputTextBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.inputTextBox.Location = new System.Drawing.Point(107, 13);
+            this.inputTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.inputTextBox.Location = new System.Drawing.Point(130, 6);
             this.inputTextBox.Name = "inputTextBox";
             this.inputTextBox.Size = new System.Drawing.Size(63, 30);
             this.inputTextBox.TabIndex = 2;
@@ -80,9 +80,9 @@
             // 
             // sdLabel
             // 
-            this.sdLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.sdLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.sdLabel.AutoSize = true;
-            this.sdLabel.Location = new System.Drawing.Point(178, 16);
+            this.sdLabel.Location = new System.Drawing.Point(201, 9);
             this.sdLabel.Name = "sdLabel";
             this.sdLabel.Size = new System.Drawing.Size(43, 23);
             this.sdLabel.TabIndex = 3;
@@ -90,8 +90,8 @@
             // 
             // processButton
             // 
-            this.processButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.processButton.Location = new System.Drawing.Point(74, 22);
+            this.processButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.processButton.Location = new System.Drawing.Point(29, 15);
             this.processButton.Name = "processButton";
             this.processButton.Size = new System.Drawing.Size(123, 52);
             this.processButton.TabIndex = 4;
@@ -101,9 +101,9 @@
             // 
             // updateButton
             // 
-            this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.updateButton.Enabled = false;
-            this.updateButton.Location = new System.Drawing.Point(74, 94);
+            this.updateButton.Location = new System.Drawing.Point(29, 87);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(123, 52);
             this.updateButton.TabIndex = 5;
@@ -113,10 +113,10 @@
             // 
             // resultGroupBox
             // 
-            this.resultGroupBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.resultGroupBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.resultGroupBox.Controls.Add(this.badSampleRadioButton);
             this.resultGroupBox.Controls.Add(this.goodSampleRadioButton);
-            this.resultGroupBox.Location = new System.Drawing.Point(8, 50);
+            this.resultGroupBox.Location = new System.Drawing.Point(31, 43);
             this.resultGroupBox.Name = "resultGroupBox";
             this.resultGroupBox.Size = new System.Drawing.Size(213, 105);
             this.resultGroupBox.TabIndex = 6;
@@ -147,7 +147,6 @@
             // 
             // conditionPanel
             // 
-            this.conditionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.conditionPanel.Controls.Add(this.deviationLabel);
             this.conditionPanel.Controls.Add(this.resultGroupBox);
             this.conditionPanel.Controls.Add(this.inputTextBox);
@@ -156,67 +155,19 @@
             this.conditionPanel.Location = new System.Drawing.Point(1, 1);
             this.conditionPanel.Margin = new System.Windows.Forms.Padding(0);
             this.conditionPanel.Name = "conditionPanel";
-            this.conditionPanel.Size = new System.Drawing.Size(226, 170);
+            this.conditionPanel.Size = new System.Drawing.Size(270, 155);
             this.conditionPanel.TabIndex = 7;
-            // 
-            // parentTableLayoutPanel
-            // 
-            this.parentTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.parentTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.parentTableLayoutPanel.ColumnCount = 3;
-            this.parentTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.72727F));
-            this.parentTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.parentTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.27273F));
-            this.parentTableLayoutPanel.Controls.Add(this.commandPanel, 2, 0);
-            this.parentTableLayoutPanel.Controls.Add(this.conditionPanel, 0, 0);
-            this.parentTableLayoutPanel.Controls.Add(this.panel1, 1, 0);
-            this.parentTableLayoutPanel.Location = new System.Drawing.Point(0, 381);
-            this.parentTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.parentTableLayoutPanel.Name = "parentTableLayoutPanel";
-            this.parentTableLayoutPanel.RowCount = 1;
-            this.parentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.parentTableLayoutPanel.Size = new System.Drawing.Size(1000, 172);
-            this.parentTableLayoutPanel.TabIndex = 9;
             // 
             // commandPanel
             // 
-            this.commandPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.commandPanel.Controls.Add(this.processButton);
             this.commandPanel.Controls.Add(this.updateButton);
             this.commandPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.commandPanel.Location = new System.Drawing.Point(727, 1);
+            this.commandPanel.Location = new System.Drawing.Point(724, 1);
             this.commandPanel.Margin = new System.Windows.Forms.Padding(0);
             this.commandPanel.Name = "commandPanel";
-            this.commandPanel.Size = new System.Drawing.Size(272, 170);
+            this.commandPanel.Size = new System.Drawing.Size(181, 155);
             this.commandPanel.TabIndex = 10;
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(228, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(498, 170);
-            this.panel1.TabIndex = 11;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.leftListViewGroupBox, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.rightListViewGroupBox, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(496, 168);
-            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // leftListViewGroupBox
             // 
@@ -224,7 +175,7 @@
             this.leftListViewGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.leftListViewGroupBox.Location = new System.Drawing.Point(3, 3);
             this.leftListViewGroupBox.Name = "leftListViewGroupBox";
-            this.leftListViewGroupBox.Size = new System.Drawing.Size(242, 162);
+            this.leftListViewGroupBox.Size = new System.Drawing.Size(216, 143);
             this.leftListViewGroupBox.TabIndex = 0;
             this.leftListViewGroupBox.TabStop = false;
             this.leftListViewGroupBox.Text = "Sample ID";
@@ -244,9 +195,9 @@
             this.rightListViewGroupBox.Controls.Add(this.rightListViewGroupBoxBadLabel);
             this.rightListViewGroupBox.Controls.Add(this.rightListViewGroupBoxGoodLabel);
             this.rightListViewGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rightListViewGroupBox.Location = new System.Drawing.Point(251, 3);
+            this.rightListViewGroupBox.Location = new System.Drawing.Point(225, 3);
             this.rightListViewGroupBox.Name = "rightListViewGroupBox";
-            this.rightListViewGroupBox.Size = new System.Drawing.Size(242, 162);
+            this.rightListViewGroupBox.Size = new System.Drawing.Size(217, 143);
             this.rightListViewGroupBox.TabIndex = 1;
             this.rightListViewGroupBox.TabStop = false;
             this.rightListViewGroupBox.Text = "Result";
@@ -278,43 +229,86 @@
             this.rightListViewGroupBoxGoodLabel.TabIndex = 1;
             this.rightListViewGroupBoxGoodLabel.Text = "Good:";
             // 
+            // tableLayoutPanel_00
+            // 
+            this.tableLayoutPanel_00.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel_00.ColumnCount = 1;
+            this.tableLayoutPanel_00.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_00.Controls.Add(this.resultChoosingControlPanel, 0, 0);
+            this.tableLayoutPanel_00.Controls.Add(this.tableLayoutPanel_00_10, 0, 1);
+            this.tableLayoutPanel_00.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel_00.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel_00.Name = "tableLayoutPanel_00";
+            this.tableLayoutPanel_00.RowCount = 2;
+            this.tableLayoutPanel_00.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel_00.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel_00.Size = new System.Drawing.Size(914, 546);
+            this.tableLayoutPanel_00.TabIndex = 11;
+            // 
+            // tableLayoutPanel_00_10
+            // 
+            this.tableLayoutPanel_00_10.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel_00_10.ColumnCount = 3;
+            this.tableLayoutPanel_00_10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel_00_10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel_00_10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel_00_10.Controls.Add(this.conditionPanel, 0, 0);
+            this.tableLayoutPanel_00_10.Controls.Add(this.commandPanel, 2, 0);
+            this.tableLayoutPanel_00_10.Controls.Add(this.tableLayoutPanel_00_10_01, 1, 0);
+            this.tableLayoutPanel_00_10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel_00_10.Location = new System.Drawing.Point(4, 385);
+            this.tableLayoutPanel_00_10.Name = "tableLayoutPanel_00_10";
+            this.tableLayoutPanel_00_10.RowCount = 1;
+            this.tableLayoutPanel_00_10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_00_10.Size = new System.Drawing.Size(906, 157);
+            this.tableLayoutPanel_00_10.TabIndex = 9;
+            // 
+            // tableLayoutPanel_00_10_01
+            // 
+            this.tableLayoutPanel_00_10_01.ColumnCount = 2;
+            this.tableLayoutPanel_00_10_01.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel_00_10_01.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel_00_10_01.Controls.Add(this.leftListViewGroupBox, 0, 0);
+            this.tableLayoutPanel_00_10_01.Controls.Add(this.rightListViewGroupBox, 1, 0);
+            this.tableLayoutPanel_00_10_01.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel_00_10_01.Location = new System.Drawing.Point(275, 4);
+            this.tableLayoutPanel_00_10_01.Name = "tableLayoutPanel_00_10_01";
+            this.tableLayoutPanel_00_10_01.RowCount = 1;
+            this.tableLayoutPanel_00_10_01.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel_00_10_01.Size = new System.Drawing.Size(445, 149);
+            this.tableLayoutPanel_00_10_01.TabIndex = 11;
+            // 
             // resultChoosingControlPanel
             // 
             this.resultChoosingControlPanel.AnalysisSystemForm = null;
-            this.resultChoosingControlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.resultChoosingControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.resultChoosingControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resultChoosingControlPanel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resultChoosingControlPanel.Location = new System.Drawing.Point(0, 0);
-            this.resultChoosingControlPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.resultChoosingControlPanel.Location = new System.Drawing.Point(6, 6);
+            this.resultChoosingControlPanel.Margin = new System.Windows.Forms.Padding(5);
             this.resultChoosingControlPanel.Name = "resultChoosingControlPanel";
-            this.resultChoosingControlPanel.Size = new System.Drawing.Size(1000, 381);
+            this.resultChoosingControlPanel.Size = new System.Drawing.Size(902, 370);
             this.resultChoosingControlPanel.TabIndex = 8;
             // 
             // SampleEliminatingControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.parentTableLayoutPanel);
-            this.Controls.Add(this.resultChoosingControlPanel);
+            this.Controls.Add(this.tableLayoutPanel_00);
             this.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "SampleEliminatingControlPanel";
-            this.Size = new System.Drawing.Size(1000, 553);
+            this.Size = new System.Drawing.Size(914, 546);
             this.resultGroupBox.ResumeLayout(false);
             this.resultGroupBox.PerformLayout();
             this.conditionPanel.ResumeLayout(false);
             this.conditionPanel.PerformLayout();
-            this.parentTableLayoutPanel.ResumeLayout(false);
             this.commandPanel.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.leftListViewGroupBox.ResumeLayout(false);
             this.leftListViewGroupBox.PerformLayout();
             this.rightListViewGroupBox.ResumeLayout(false);
             this.rightListViewGroupBox.PerformLayout();
+            this.tableLayoutPanel_00.ResumeLayout(false);
+            this.tableLayoutPanel_00_10.ResumeLayout(false);
+            this.tableLayoutPanel_00_10_01.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -331,16 +325,16 @@
         private System.Windows.Forms.RadioButton goodSampleRadioButton;
         private System.Windows.Forms.Panel conditionPanel;
         private ResultChoosingControlPanel resultChoosingControlPanel;
-        private System.Windows.Forms.TableLayoutPanel parentTableLayoutPanel;
         private System.Windows.Forms.Panel commandPanel;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox leftListViewGroupBox;
         private System.Windows.Forms.GroupBox rightListViewGroupBox;
         private System.Windows.Forms.Label leftListViewGroupBoxTotalLabel;
         private System.Windows.Forms.Label rightListViewGroupBoxGoodLabel;
         private System.Windows.Forms.Label rightListViewGroupBoxBadLabel;
         private System.Windows.Forms.Label rightListViewGroupBoxFaultLabel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_00;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_00_10;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_00_10_01;
 
 
     }

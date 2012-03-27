@@ -38,6 +38,10 @@ namespace AnalysisSystem.Controls
             {
                 _analysisSystemForm.CurrentVisibleControlPanel = _analysisSystemForm.SampleEliminatingControlPanel;
             }
+            else if (pressedButton == icaProcessingButton)
+            {
+                _analysisSystemForm.CurrentVisibleControlPanel = _analysisSystemForm.IcaProcessingControlPanel;
+            }
 
             _analysisSystemForm.CurrentVisibleControlPanel.Visible = true;
         }

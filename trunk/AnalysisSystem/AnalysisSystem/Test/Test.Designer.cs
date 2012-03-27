@@ -28,35 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView = new System.Windows.Forms.ListView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.choosingControlPanel1 = new AnalysisSystem.Controls.ChoosingControlPanel();
             this.SuspendLayout();
             // 
-            // listView
+            // choosingControlPanel1
             // 
-            this.listView.Location = new System.Drawing.Point(0, 0);
-            this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(714, 434);
-            this.listView.TabIndex = 0;
-            this.listView.UseCompatibleStateImageBehavior = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(729, 22);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.choosingControlPanel1.AnalysisSystemForm = null;
+            this.choosingControlPanel1.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.choosingControlPanel1.Location = new System.Drawing.Point(91, 45);
+            this.choosingControlPanel1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.choosingControlPanel1.Name = "choosingControlPanel1";
+            this.choosingControlPanel1.Size = new System.Drawing.Size(620, 329);
+            this.choosingControlPanel1.TabIndex = 0;
             // 
             // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(865, 434);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.listView);
+            this.Controls.Add(this.choosingControlPanel1);
             this.Name = "Test";
             this.Text = "Test";
             this.ResumeLayout(false);
@@ -65,8 +55,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView listView;
-        private System.Windows.Forms.Button button1;
+        private Controls.ChoosingControlPanel choosingControlPanel1;
+
 
 
 

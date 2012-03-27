@@ -44,7 +44,7 @@
             // 
             this.edfConvertingButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.edfConvertingButton.AutoSize = true;
-            this.edfConvertingButton.Location = new System.Drawing.Point(6, 48);
+            this.edfConvertingButton.Location = new System.Drawing.Point(7, 48);
             this.edfConvertingButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.edfConvertingButton.Name = "edfConvertingButton";
             this.edfConvertingButton.Size = new System.Drawing.Size(187, 33);
@@ -58,7 +58,7 @@
             // 
             this.sampleEliminatingButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.sampleEliminatingButton.AutoSize = true;
-            this.sampleEliminatingButton.Location = new System.Drawing.Point(6, 91);
+            this.sampleEliminatingButton.Location = new System.Drawing.Point(7, 91);
             this.sampleEliminatingButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.sampleEliminatingButton.Name = "sampleEliminatingButton";
             this.sampleEliminatingButton.Size = new System.Drawing.Size(187, 33);
@@ -72,7 +72,7 @@
             // 
             this.icaProcessingButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.icaProcessingButton.AutoSize = true;
-            this.icaProcessingButton.Location = new System.Drawing.Point(6, 134);
+            this.icaProcessingButton.Location = new System.Drawing.Point(7, 134);
             this.icaProcessingButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.icaProcessingButton.Name = "icaProcessingButton";
             this.icaProcessingButton.Size = new System.Drawing.Size(187, 33);
@@ -86,7 +86,7 @@
             // 
             this.hfdCalculatingButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.hfdCalculatingButton.AutoSize = true;
-            this.hfdCalculatingButton.Location = new System.Drawing.Point(6, 177);
+            this.hfdCalculatingButton.Location = new System.Drawing.Point(7, 177);
             this.hfdCalculatingButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.hfdCalculatingButton.Name = "hfdCalculatingButton";
             this.hfdCalculatingButton.Size = new System.Drawing.Size(187, 33);
@@ -100,7 +100,7 @@
             // 
             this.emoMappingButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.emoMappingButton.AutoSize = true;
-            this.emoMappingButton.Location = new System.Drawing.Point(6, 220);
+            this.emoMappingButton.Location = new System.Drawing.Point(7, 220);
             this.emoMappingButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.emoMappingButton.Name = "emoMappingButton";
             this.emoMappingButton.Size = new System.Drawing.Size(187, 33);
@@ -114,7 +114,7 @@
             // 
             this.svmTrainingButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.svmTrainingButton.AutoSize = true;
-            this.svmTrainingButton.Location = new System.Drawing.Point(6, 263);
+            this.svmTrainingButton.Location = new System.Drawing.Point(7, 263);
             this.svmTrainingButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.svmTrainingButton.Name = "svmTrainingButton";
             this.svmTrainingButton.Size = new System.Drawing.Size(187, 33);
@@ -128,7 +128,7 @@
             // 
             this.testButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.testButton.AutoSize = true;
-            this.testButton.Location = new System.Drawing.Point(6, 306);
+            this.testButton.Location = new System.Drawing.Point(7, 306);
             this.testButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.testButton.Name = "testButton";
             this.testButton.Size = new System.Drawing.Size(187, 33);
@@ -145,7 +145,7 @@
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 43);
+            this.label1.Size = new System.Drawing.Size(195, 43);
             this.label1.TabIndex = 8;
             this.label1.Text = "Select Function";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -176,19 +176,18 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(199, 545);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(201, 547);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
             // FunctionChoosingControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FunctionChoosingControlPanel";
-            this.Size = new System.Drawing.Size(199, 545);
+            this.Size = new System.Drawing.Size(201, 547);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

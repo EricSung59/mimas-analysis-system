@@ -30,23 +30,24 @@
         {
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settings1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settings3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settings5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settings4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settings2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel_00 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel_00_10 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.settings1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settings2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settings3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settings4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settings5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainPanel = new System.Windows.Forms.Panel();
             this.functionChoosingControlPanel = new AnalysisSystem.Controls.FunctionChoosingControlPanel();
+            this.icaProcessingControlPanel = new AnalysisSystem.Controls.IcaProcessingControlPanel();
             this.sampleEliminatingControlPanel = new AnalysisSystem.Controls.SampleEliminatingControlPanel();
             this.edfConvertingControlPanel = new AnalysisSystem.Controls.EdfConvertingControlPanel();
             this.menuStrip.SuspendLayout();
             this.tableLayoutPanel_00.SuspendLayout();
             this.tableLayoutPanel_00_10.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -72,6 +73,41 @@
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(83, 27);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
+            // settings1ToolStripMenuItem
+            // 
+            this.settings1ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settings3ToolStripMenuItem,
+            this.settings4ToolStripMenuItem});
+            this.settings1ToolStripMenuItem.Name = "settings1ToolStripMenuItem";
+            this.settings1ToolStripMenuItem.Size = new System.Drawing.Size(150, 28);
+            this.settings1ToolStripMenuItem.Text = "Settings1";
+            // 
+            // settings3ToolStripMenuItem
+            // 
+            this.settings3ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settings5ToolStripMenuItem});
+            this.settings3ToolStripMenuItem.Name = "settings3ToolStripMenuItem";
+            this.settings3ToolStripMenuItem.Size = new System.Drawing.Size(150, 28);
+            this.settings3ToolStripMenuItem.Text = "Settings3";
+            // 
+            // settings5ToolStripMenuItem
+            // 
+            this.settings5ToolStripMenuItem.Name = "settings5ToolStripMenuItem";
+            this.settings5ToolStripMenuItem.Size = new System.Drawing.Size(150, 28);
+            this.settings5ToolStripMenuItem.Text = "Settings5";
+            // 
+            // settings4ToolStripMenuItem
+            // 
+            this.settings4ToolStripMenuItem.Name = "settings4ToolStripMenuItem";
+            this.settings4ToolStripMenuItem.Size = new System.Drawing.Size(150, 28);
+            this.settings4ToolStripMenuItem.Text = "Settings4";
+            // 
+            // settings2ToolStripMenuItem
+            // 
+            this.settings2ToolStripMenuItem.Name = "settings2ToolStripMenuItem";
+            this.settings2ToolStripMenuItem.Size = new System.Drawing.Size(150, 28);
+            this.settings2ToolStripMenuItem.Text = "Settings2";
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
@@ -80,7 +116,6 @@
             // 
             // statusLabel
             // 
-            this.statusLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.statusLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.statusLabel.Location = new System.Drawing.Point(1, 751);
             this.statusLabel.Margin = new System.Windows.Forms.Padding(0);
@@ -116,7 +151,7 @@
             this.tableLayoutPanel_00_10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel_00_10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel_00_10.Controls.Add(this.functionChoosingControlPanel, 0, 0);
-            this.tableLayoutPanel_00_10.Controls.Add(this.panel1, 1, 0);
+            this.tableLayoutPanel_00_10.Controls.Add(this.mainPanel, 1, 0);
             this.tableLayoutPanel_00_10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel_00_10.Location = new System.Drawing.Point(1, 29);
             this.tableLayoutPanel_00_10.Margin = new System.Windows.Forms.Padding(0);
@@ -126,57 +161,21 @@
             this.tableLayoutPanel_00_10.Size = new System.Drawing.Size(1221, 721);
             this.tableLayoutPanel_00_10.TabIndex = 9;
             // 
-            // panel1
+            // mainPanel
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.sampleEliminatingControlPanel);
-            this.panel1.Controls.Add(this.edfConvertingControlPanel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(207, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1013, 719);
-            this.panel1.TabIndex = 0;
-            // 
-            // settings1ToolStripMenuItem
-            // 
-            this.settings1ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settings3ToolStripMenuItem,
-            this.settings4ToolStripMenuItem});
-            this.settings1ToolStripMenuItem.Name = "settings1ToolStripMenuItem";
-            this.settings1ToolStripMenuItem.Size = new System.Drawing.Size(150, 28);
-            this.settings1ToolStripMenuItem.Text = "Settings1";
-            // 
-            // settings2ToolStripMenuItem
-            // 
-            this.settings2ToolStripMenuItem.Name = "settings2ToolStripMenuItem";
-            this.settings2ToolStripMenuItem.Size = new System.Drawing.Size(150, 28);
-            this.settings2ToolStripMenuItem.Text = "Settings2";
-            // 
-            // settings3ToolStripMenuItem
-            // 
-            this.settings3ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settings5ToolStripMenuItem});
-            this.settings3ToolStripMenuItem.Name = "settings3ToolStripMenuItem";
-            this.settings3ToolStripMenuItem.Size = new System.Drawing.Size(150, 28);
-            this.settings3ToolStripMenuItem.Text = "Settings3";
-            // 
-            // settings4ToolStripMenuItem
-            // 
-            this.settings4ToolStripMenuItem.Name = "settings4ToolStripMenuItem";
-            this.settings4ToolStripMenuItem.Size = new System.Drawing.Size(150, 28);
-            this.settings4ToolStripMenuItem.Text = "Settings4";
-            // 
-            // settings5ToolStripMenuItem
-            // 
-            this.settings5ToolStripMenuItem.Name = "settings5ToolStripMenuItem";
-            this.settings5ToolStripMenuItem.Size = new System.Drawing.Size(150, 28);
-            this.settings5ToolStripMenuItem.Text = "Settings5";
+            this.mainPanel.Controls.Add(this.icaProcessingControlPanel);
+            this.mainPanel.Controls.Add(this.sampleEliminatingControlPanel);
+            this.mainPanel.Controls.Add(this.edfConvertingControlPanel);
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPanel.Location = new System.Drawing.Point(207, 1);
+            this.mainPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(1013, 719);
+            this.mainPanel.TabIndex = 0;
             // 
             // functionChoosingControlPanel
             // 
             this.functionChoosingControlPanel.AnalysisSystemForm = null;
-            this.functionChoosingControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.functionChoosingControlPanel.CurrentPressedButton = null;
             this.functionChoosingControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.functionChoosingControlPanel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -186,30 +185,40 @@
             this.functionChoosingControlPanel.Size = new System.Drawing.Size(205, 719);
             this.functionChoosingControlPanel.TabIndex = 5;
             // 
+            // icaProcessingControlPanel
+            // 
+            this.icaProcessingControlPanel.AnalysisSystemForm = null;
+            this.icaProcessingControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.icaProcessingControlPanel.Location = new System.Drawing.Point(0, 0);
+            this.icaProcessingControlPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.icaProcessingControlPanel.Name = "icaProcessingControlPanel";
+            this.icaProcessingControlPanel.Size = new System.Drawing.Size(1013, 719);
+            this.icaProcessingControlPanel.TabIndex = 8;
+            this.icaProcessingControlPanel.Visible = false;
+            // 
             // sampleEliminatingControlPanel
             // 
             this.sampleEliminatingControlPanel.AnalysisSystemForm = null;
             this.sampleEliminatingControlPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.sampleEliminatingControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sampleEliminatingControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sampleEliminatingControlPanel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sampleEliminatingControlPanel.Location = new System.Drawing.Point(0, 0);
-            this.sampleEliminatingControlPanel.Margin = new System.Windows.Forms.Padding(0);
             this.sampleEliminatingControlPanel.Name = "sampleEliminatingControlPanel";
-            this.sampleEliminatingControlPanel.Size = new System.Drawing.Size(1011, 717);
+            this.sampleEliminatingControlPanel.Size = new System.Drawing.Size(1013, 719);
             this.sampleEliminatingControlPanel.TabIndex = 7;
+            this.sampleEliminatingControlPanel.Visible = false;
             // 
             // edfConvertingControlPanel
             // 
             this.edfConvertingControlPanel.AnalysisSystemForm = null;
-            this.edfConvertingControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.edfConvertingControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.edfConvertingControlPanel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.edfConvertingControlPanel.Location = new System.Drawing.Point(0, 0);
-            this.edfConvertingControlPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.edfConvertingControlPanel.Margin = new System.Windows.Forms.Padding(5);
             this.edfConvertingControlPanel.Name = "edfConvertingControlPanel";
-            this.edfConvertingControlPanel.Size = new System.Drawing.Size(1011, 717);
+            this.edfConvertingControlPanel.Size = new System.Drawing.Size(1013, 719);
             this.edfConvertingControlPanel.TabIndex = 6;
+            this.edfConvertingControlPanel.Visible = false;
             // 
             // AnalysisSystemForm
             // 
@@ -228,7 +237,7 @@
             this.tableLayoutPanel_00.ResumeLayout(false);
             this.tableLayoutPanel_00.PerformLayout();
             this.tableLayoutPanel_00_10.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.mainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -244,11 +253,12 @@
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_00;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_00_10;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.ToolStripMenuItem settings1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settings3ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settings5ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settings4ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settings2ToolStripMenuItem;
+        private Controls.IcaProcessingControlPanel icaProcessingControlPanel;
     }
 }
