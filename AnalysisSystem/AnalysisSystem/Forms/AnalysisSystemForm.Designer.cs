@@ -39,8 +39,8 @@
             this.statusLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel_00 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel_00_10 = new System.Windows.Forms.TableLayoutPanel();
-            this.mainPanel = new System.Windows.Forms.Panel();
             this.functionChoosingControlPanel = new AnalysisSystem.Controls.FunctionChoosingControlPanel();
+            this.mainPanel = new System.Windows.Forms.Panel();
             this.icaProcessingControlPanel = new AnalysisSystem.Controls.IcaProcessingControlPanel();
             this.sampleEliminatingControlPanel = new AnalysisSystem.Controls.SampleEliminatingControlPanel();
             this.edfConvertingControlPanel = new AnalysisSystem.Controls.EdfConvertingControlPanel();
@@ -60,7 +60,7 @@
             this.menuStrip.Location = new System.Drawing.Point(1, 1);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(0);
-            this.menuStrip.Size = new System.Drawing.Size(1221, 27);
+            this.menuStrip.Size = new System.Drawing.Size(913, 27);
             this.menuStrip.TabIndex = 4;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -117,10 +117,10 @@
             // statusLabel
             // 
             this.statusLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statusLabel.Location = new System.Drawing.Point(1, 751);
+            this.statusLabel.Location = new System.Drawing.Point(1, 572);
             this.statusLabel.Margin = new System.Windows.Forms.Padding(0);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(1221, 30);
+            this.statusLabel.Size = new System.Drawing.Size(913, 30);
             this.statusLabel.TabIndex = 8;
             this.statusLabel.Text = "Status:";
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -141,7 +141,7 @@
             this.tableLayoutPanel_00.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel_00.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel_00.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel_00.Size = new System.Drawing.Size(1223, 782);
+            this.tableLayoutPanel_00.Size = new System.Drawing.Size(915, 603);
             this.tableLayoutPanel_00.TabIndex = 9;
             // 
             // tableLayoutPanel_00_10
@@ -158,20 +158,8 @@
             this.tableLayoutPanel_00_10.Name = "tableLayoutPanel_00_10";
             this.tableLayoutPanel_00_10.RowCount = 1;
             this.tableLayoutPanel_00_10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel_00_10.Size = new System.Drawing.Size(1221, 721);
+            this.tableLayoutPanel_00_10.Size = new System.Drawing.Size(913, 542);
             this.tableLayoutPanel_00_10.TabIndex = 9;
-            // 
-            // mainPanel
-            // 
-            this.mainPanel.Controls.Add(this.icaProcessingControlPanel);
-            this.mainPanel.Controls.Add(this.sampleEliminatingControlPanel);
-            this.mainPanel.Controls.Add(this.edfConvertingControlPanel);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(207, 1);
-            this.mainPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1013, 719);
-            this.mainPanel.TabIndex = 0;
             // 
             // functionChoosingControlPanel
             // 
@@ -182,8 +170,20 @@
             this.functionChoosingControlPanel.Location = new System.Drawing.Point(1, 1);
             this.functionChoosingControlPanel.Margin = new System.Windows.Forms.Padding(0);
             this.functionChoosingControlPanel.Name = "functionChoosingControlPanel";
-            this.functionChoosingControlPanel.Size = new System.Drawing.Size(205, 719);
+            this.functionChoosingControlPanel.Size = new System.Drawing.Size(205, 540);
             this.functionChoosingControlPanel.TabIndex = 5;
+            // 
+            // mainPanel
+            // 
+            this.mainPanel.Controls.Add(this.icaProcessingControlPanel);
+            this.mainPanel.Controls.Add(this.sampleEliminatingControlPanel);
+            this.mainPanel.Controls.Add(this.edfConvertingControlPanel);
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPanel.Location = new System.Drawing.Point(207, 1);
+            this.mainPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(705, 540);
+            this.mainPanel.TabIndex = 0;
             // 
             // icaProcessingControlPanel
             // 
@@ -192,7 +192,7 @@
             this.icaProcessingControlPanel.Location = new System.Drawing.Point(0, 0);
             this.icaProcessingControlPanel.Margin = new System.Windows.Forms.Padding(0);
             this.icaProcessingControlPanel.Name = "icaProcessingControlPanel";
-            this.icaProcessingControlPanel.Size = new System.Drawing.Size(1013, 719);
+            this.icaProcessingControlPanel.Size = new System.Drawing.Size(705, 540);
             this.icaProcessingControlPanel.TabIndex = 8;
             this.icaProcessingControlPanel.Visible = false;
             // 
@@ -204,7 +204,7 @@
             this.sampleEliminatingControlPanel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sampleEliminatingControlPanel.Location = new System.Drawing.Point(0, 0);
             this.sampleEliminatingControlPanel.Name = "sampleEliminatingControlPanel";
-            this.sampleEliminatingControlPanel.Size = new System.Drawing.Size(1013, 719);
+            this.sampleEliminatingControlPanel.Size = new System.Drawing.Size(705, 540);
             this.sampleEliminatingControlPanel.TabIndex = 7;
             this.sampleEliminatingControlPanel.Visible = false;
             // 
@@ -216,7 +216,7 @@
             this.edfConvertingControlPanel.Location = new System.Drawing.Point(0, 0);
             this.edfConvertingControlPanel.Margin = new System.Windows.Forms.Padding(5);
             this.edfConvertingControlPanel.Name = "edfConvertingControlPanel";
-            this.edfConvertingControlPanel.Size = new System.Drawing.Size(1013, 719);
+            this.edfConvertingControlPanel.Size = new System.Drawing.Size(705, 540);
             this.edfConvertingControlPanel.TabIndex = 6;
             this.edfConvertingControlPanel.Visible = false;
             // 
@@ -224,7 +224,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1223, 782);
+            this.ClientSize = new System.Drawing.Size(915, 603);
             this.Controls.Add(this.tableLayoutPanel_00);
             this.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip;

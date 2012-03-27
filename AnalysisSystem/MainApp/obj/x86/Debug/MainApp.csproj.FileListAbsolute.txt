@@ -1,6 +1,0 @@
-D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\MainApp\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\MainApp\bin\Debug\MainApp.exe
-D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\MainApp\bin\Debug\MainApp.pdb
-D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\MainApp\bin\Debug\demo.dll
-D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\MainApp\obj\x86\Debug\MainApp.exe
-D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\MainApp\obj\x86\Debug\MainApp.pdb
