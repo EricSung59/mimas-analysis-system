@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using AnalysisSystem.Forms;
 
@@ -11,8 +12,10 @@ namespace AnalysisSystem.Controls
         AnalysisSystemForm _analysisSystemForm;
 
         String _baseFolderPath;
-        String _csvFolderName = "CsvFiles";
+        String _csvFolderName = "DataCsvFiles";
         String _csvFolderPath;
+
+        AnalysisSystemDataContext _db = new AnalysisSystemDataContext();
 
         //-------------- CONSTRUCTOR ----------------------//
 
@@ -30,7 +33,7 @@ namespace AnalysisSystem.Controls
             if (!Directory.Exists(_csvFolderPath))
                 Directory.CreateDirectory(_csvFolderPath);
 
-            outFolderTextBox.Text = _csvFolderPath;
+            outFolderChooserControlPanel.OutFolderPathTextBox.Text = _csvFolderPath;
         }
 
         //-------------- EVENT HANDLERS -------------------//
@@ -38,14 +41,6 @@ namespace AnalysisSystem.Controls
         private void convertButton_Click(object sender, EventArgs e)
         {
             backgroundWorker.RunWorkerAsync();
-        }
-
-        private void outFolderBrowseButton_Click(object sender, EventArgs e)
-        {
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {
-                outFolderTextBox.Text = folderBrowserDialog.SelectedPath;
-            }
         }
 
         private void backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
@@ -78,13 +73,13 @@ namespace AnalysisSystem.Controls
             foreach (ListViewItem item in choosingControlPanel.ListView.Items)
             {
                 _analysisSystemForm.SetStatus("Converting... (" + i++ + "/" + choosingControlPanel.ListView.Items.Count + ")");
-                string inputFile = Path.Combine(edfFilePath, item.SubItems[3].Text);
+                string inputFile = Path.Combine(edfFilePath, item.SubItems[6].Text);
                 if (!File.Exists(inputFile))
                     continue;
 
                 string outputFile = Path.Combine(
-                    outFolderTextBox.Text,
-                    Path.ChangeExtension(Path.GetFileName(inputFile), "csv"));
+                    outFolderChooserControlPanel.OutFolderPathTextBox.Text,
+                    Path.ChangeExtension(Path.GetFileName(inputFile), ".data.csv"));
                 if (File.Exists(outputFile))
                     File.Delete(outputFile);
 
@@ -92,7 +87,17 @@ namespace AnalysisSystem.Controls
                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 process.Start();
                 process.WaitForExit();
+
+                Sample sample = (
+                    from samples
+                    in _db.Samples
+                    where samples.SID == item.Text
+                    select samples).Single();
+
+                sample.DataCsvPath = Path.GetFileName(outputFile);
             }
+
+            _db.SubmitChanges();
 
             _analysisSystemForm.SetStatus("Converting... done");
             convertButton.Enabled = true;
