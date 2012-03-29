@@ -7,7 +7,6 @@ namespace AnalysisSystem.Controls
     public partial class IcaProcessingControlPanel : UserControl
     {
         AnalysisSystemForm _analysisSystemForm;
-        HfdCalculator _hfdCalculator = new HfdCalculator();
 
         //------------------------ CONSTRUCTOR -------------------------//
 

@@ -50,12 +50,14 @@
             this.listView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView.FullRowSelect = true;
+            this.listView.GridLines = true;
             this.listView.Location = new System.Drawing.Point(3, 42);
             this.listView.Name = "listView";
             this.listView.Size = new System.Drawing.Size(905, 424);
             this.listView.TabIndex = 1;
             this.listView.UseCompatibleStateImageBehavior = false;
-            this.listView.View = System.Windows.Forms.View.List;
+            this.listView.View = System.Windows.Forms.View.Details;
             // 
             // tableLayoutPanel_00
             // 

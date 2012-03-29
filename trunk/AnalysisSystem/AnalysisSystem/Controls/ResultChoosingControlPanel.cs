@@ -71,7 +71,7 @@ namespace AnalysisSystem.Controls
 
                 foreach (var data in dataQuery)
                 {
-                    if (FindUtils.Find(sidList, data.SID))
+                    if (AnalysisSystemUtils.Find(sidList, data.SID))
                     {
                         ListViewItem item = new ListViewItem();
 

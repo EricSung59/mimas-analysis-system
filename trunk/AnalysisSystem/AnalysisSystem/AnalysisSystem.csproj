@@ -65,7 +65,7 @@
   <ItemGroup>
     <Reference Include="Matlab, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Matlab.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\MATLAB\Hfd\AnalysisSystem.Matlab\distrib\Matlab.dll</HintPath>
     </Reference>
     <Reference Include="MWArray, Version=2.10.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -101,7 +101,13 @@
     <Compile Include="Controls\IcaProcessingControlPanel.Designer.cs">
       <DependentUpon>IcaProcessingControlPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="FindUtils.cs" />
+    <Compile Include="Controls\OutFolderChooserControlPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OutFolderChooserControlPanel.Designer.cs">
+      <DependentUpon>OutFolderChooserControlPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnalysisSystemUtils.cs" />
     <Compile Include="Controls\ChoosingControlPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\IcaProcessingControlPanel.resx">
       <DependentUpon>IcaProcessingControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OutFolderChooserControlPanel.resx">
+      <DependentUpon>OutFolderChooserControlPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ResultChoosingControlPanel.resx">
       <DependentUpon>ResultChoosingControlPanel.cs</DependentUpon>

@@ -155,9 +155,9 @@ namespace AnalysisSystem.Controls
             
             foreach (var data in dataQuery)
             {
-                if (FindUtils.Find(leftListViewItemsCloneList, data.SID))
+                if (AnalysisSystemUtils.Find(leftListViewItemsCloneList, data.SID))
                 {
-                    if (FindUtils.Find(_goodSamples, data.SID))
+                    if (AnalysisSystemUtils.Find(_goodSamples, data.SID))
                     {
                         data.IsGood = true;
                     }

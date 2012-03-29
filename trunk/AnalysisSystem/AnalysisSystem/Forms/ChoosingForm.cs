@@ -64,9 +64,7 @@ namespace AnalysisSystem.Forms
             Close();
         }
 
-        //
         // Volunteer
-        //
 
         private void volunteerIdPullOutOneButton_Click(object sender, EventArgs e)
         {
@@ -116,9 +114,7 @@ namespace AnalysisSystem.Forms
             updateListView();
         }
 
-        //
         // Picture
-        //
 
         private void pictureIdPullOutOneButton_Click(object sender, EventArgs e)
         {
@@ -168,9 +164,7 @@ namespace AnalysisSystem.Forms
             updateListView();
         }
 
-        //
         // ListBox
-        //
 
         private void volunteerIdInListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -224,9 +218,7 @@ namespace AnalysisSystem.Forms
             }
         }
 
-        //
         // ListView
-        //
 
         private void listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
@@ -341,7 +333,7 @@ namespace AnalysisSystem.Forms
             
             foreach (var data in dataQuery)
             {
-                if (FindUtils.Find(sidList, data.SID))
+                if (AnalysisSystemUtils.Find(sidList, data.SID))
                 {
                     if (!volunteerIdInListBox.Items.Contains(data.VID) || !pictureIdInListBox.Items.Contains(data.PID))
                     {
