@@ -39,42 +39,27 @@ namespace AnalysisSystem.Controls
 
                 listView.Items.Clear();
 
-                ArrayList itemList = new ArrayList();
-                
-                foreach (ListViewItem item in form.ListView.SelectedItems)
-                {
-                    itemList.Add(item.Text);
-                }
-                itemList.Sort();
-
                 var dataQuery =
                     from samples in _db.Samples
                     from volpics in _db.VolPics
                     where samples.SID == volpics.SID
+                    orderby samples.SID ascending
                     select new { samples, volpics };
 
+                List<AnalysisSystemUtils.AnalysisSystemTaskArgs> itemToSearchList = new List<AnalysisSystemUtils.AnalysisSystemTaskArgs>();
                 foreach (var data in dataQuery)
                 {
-                    if (AnalysisSystemUtils.Find(itemList, data.samples.SID))
-                    {
-                        ListViewItem newItem = new ListViewItem();
-                        newItem.Text = data.samples.SID;
-                        newItem.SubItems.AddRange(new String[] 
-                                {
-                                    data.volpics.VID != null ? data.volpics.VID : "", 
-                                    data.volpics.PID != null ? data.volpics.PID : "",
-                                    data.samples.SamArousal != null ? data.samples.SamArousal.ToString() : "",
-                                    data.samples.SamValence != null ? data.samples.SamValence.ToString() : "",
-                                    data.samples.IsGood != null ? data.samples.IsGood.ToString() : "", //data.samples.AffectionLabel,
-                                    data.samples.EdfPath != null ? data.samples.EdfPath : "",
-                                    data.samples.DataCsvPath != null ? data.samples.DataCsvPath : "", 
-                                    data.samples.HfdCsvPath != null ? data.samples.HfdCsvPath : ""
-                                }
-                        );
+                    AnalysisSystemUtils.AnalysisSystemTaskArgs args = new AnalysisSystemUtils.AnalysisSystemTaskArgs(data.samples.SID);
+                    args.Sample = data.samples;
+                    args.VolPic = data.volpics;
 
-                        listView.Items.Add(newItem);
-                    }
+                    itemToSearchList.Add(args);
                 }
+
+                AnalysisSystemUtils.PerformTask(
+                        form.ListView.SelectedItems, 
+                        itemToSearchList, 
+                        new AnalysisSystemUtils.AnalysisSystemTask(addListViewItem));
 
                 foreach (ColumnHeader columnHeader in listView.Columns)
                 {
@@ -142,9 +127,28 @@ namespace AnalysisSystem.Controls
             );
         }
 
-        private void addSampleToList(Sample sample)
+        private void addListViewItem(AnalysisSystemUtils.AnalysisSystemTaskArgs args)
         {
+            if (args.Sample == null || args.VolPic == null)
+                throw new Exception("ChoosingControlPanel::addListViewItem");
 
+            ListViewItem item = new ListViewItem();
+
+            item.Text = (args.Sample.SID != null ? args.Sample.SID : "");
+            item.SubItems.AddRange(new String[]
+                {
+                    args.VolPic.VID != null ? args.VolPic.VID : "",
+                    args.VolPic.PID != null ? args.VolPic.PID : "",
+                    args.Sample.SamArousal != null ? args.Sample.SamArousal.ToString() : "",
+                    args.Sample.SamValence != null ? args.Sample.SamValence.ToString() : "",
+                    args.Sample.IsGood != null ? args.Sample.IsGood.ToString() : "",
+                    args.Sample.EdfPath != null ? args.Sample.EdfPath : "",
+                    args.Sample.DataCsvPath != null ? args.Sample.DataCsvPath : "",
+                    args.Sample.HfdCsvPath != null ? args.Sample.HfdCsvPath : ""
+                }
+            );
+
+            listView.Items.Add(item);
         }
 
         //------------------------ PROPERTIES ------------------------//

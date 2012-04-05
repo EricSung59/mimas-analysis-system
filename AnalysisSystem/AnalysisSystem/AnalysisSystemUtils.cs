@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using System.Windows.Forms;
 
 namespace AnalysisSystem
 {
-    class AnalysisSystemUtils
+    public static class AnalysisSystemUtils
     {
         private static AnalysisSystemDataContext _db = new AnalysisSystemDataContext();
 
-        public delegate void DoWorkAction(Sample sample);
+        //-------------------- DELEGATE ------------------------------//
+
+        public delegate void AnalysisSystemTask(AnalysisSystemTaskArgs args);
+
+        //-------------------- STATIC METHOD -------------------------//
 
         /// <summary>
         /// Check if the list have name item.
@@ -47,34 +52,100 @@ namespace AnalysisSystem
         }
 
         /// <summary>
-        /// 
+        /// if a item in itemToSearchCollection if found in searchCollection, doWorkAction 
+        /// will be executed.
         /// </summary>
-        /// <param name="containColletion">
-        ///     Loop all samples, do Action if the current sample is
-        ///     contained in containCollection
+        /// <param name="searchCollection">
         /// </param>
-        /// <param name="action"></param>
-        public static void DoWork(ICollection containColletion, DoWorkAction action)
+        /// <param name="itemToSearchCollection"></param>
+        /// <param name="task"></param>
+        public static void PerformTask(
+                ICollection searchCollection, 
+                ICollection<AnalysisSystemTaskArgs> itemToSearchCollection, 
+                AnalysisSystemTask task)
         {
-            ArrayList containList = new ArrayList();
-            foreach (object obj in containColletion)
+            ArrayList searchList = new ArrayList();
+            foreach (ListViewItem item in searchCollection)
             {
-                containList.Add(obj.ToString());
+                searchList.Add(item.Text);
             }
-            containList.Sort();
+            searchList.Sort();
 
-            var dataQuery =
-                from samples in _db.Samples
-                from volpics in _db.VolPics
-                where samples.SID == volpics.SID
-                select new { samples, volpics };
-
-            foreach (var data in dataQuery)
+            foreach (AnalysisSystemTaskArgs args in itemToSearchCollection)
             {
-                if (Find(containList, data.samples.SID))
-                {
-                    action(data.samples);
-                }
+                if (Find(searchList, args.SearchValue))
+                    task(args);
+            }
+        }
+
+
+        //-------------------- PUBLIC INNER CLASS --------------------//
+        public class AnalysisSystemTaskArgs
+        {
+            private string _searchValue = null;
+            private int _ordinal;
+            private int _total;
+
+            private Sample _sample = null;
+            private Volunteer _volunteer = null;
+            private Picture _picture = null;
+            private VolPic _volpic = null;
+
+            //----------------------- CONSTRUCTOR --------------------//
+
+            public AnalysisSystemTaskArgs(string searchValue)
+            {
+                _searchValue = searchValue;
+            }
+
+            public AnalysisSystemTaskArgs(string searchValue, int ordinal, int total)
+                : this(searchValue)
+            {
+                _ordinal = ordinal;
+                _total = total;
+            }
+
+            // ---------------------- PROPERTIES ---------------------//
+
+            public string SearchValue
+            {
+                get { return _searchValue; }
+            }
+
+            public Sample Sample
+            {
+                get { return _sample; }
+                set { _sample = value; }
+            }
+
+            public Volunteer Volunteer
+            {
+                get { return _volunteer; }
+                set { _volunteer = value; }
+            }
+
+            public Picture Picture
+            {
+                get { return _picture; }
+                set { _picture = value; }
+            }
+
+            public VolPic VolPic
+            {
+                get { return _volpic; }
+                set { _volpic = value; }
+            }
+
+            public int Ordinal
+            {
+                get { return _ordinal; }
+                set { _ordinal = value; }
+            }
+
+            public int Total
+            {
+                get { return _total; }
+                set { _total = value; }
             }
         }
     }

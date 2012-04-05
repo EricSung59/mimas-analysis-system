@@ -28,66 +28,53 @@ namespace AnalysisSystem.Controls
 
         private void processButton_Click(object sender, EventArgs e)
         {
-            double multiplier = 0.0;
-            try
+            if (processButton.Enabled)
             {
-                _analysisSystemForm.SetStatus("Processing...");
-                multiplier = Convert.ToDouble(inputTextBox.Text);
-            }
-            catch (FormatException fe)
-            {
-                _analysisSystemForm.SetStatus("Multiplier is not right format");
-                return;
-            }
+                processButton.Enabled = false;
+                updateButton.Enabled = false;
 
-            resultChoosingControlPanel.RightListView.Items.Clear();
-            _goodSamples.Clear();
-            _badSamples.Clear();
-            _faultSamples.Clear();
-
-            badSampleRadioButton.Enabled = false;
-            goodSampleRadioButton.Enabled = false;
-
-            foreach (ListViewItem item in resultChoosingControlPanel.LeftListView.Items)
-            {
-                String samArousalString = item.SubItems[1].Text;
-                String samValenceString = item.SubItems[2].Text;
-                String arousalString = item.SubItems[4].Text;
-                String valenceString = item.SubItems[5].Text;
-                String arousalSdString = item.SubItems[6].Text;
-                String valenceSdString = item.SubItems[7].Text;
-
-                double samArousalValue;
-                double samValenceValue;
-                double arousalValue;
-                double valenceValue;
-                double arousalSdValue;
-                double valenceSdValue;
-
-                if (!String.IsNullOrEmpty(samArousalString) && !String.IsNullOrEmpty(samValenceString))
+                double multiplier = 0.0;
+                try
                 {
-                    try
-                    {
-                        samArousalValue = Convert.ToDouble(samArousalString);
-                        samValenceValue = Convert.ToDouble(samValenceString);
-                    }
-                    catch (FormatException fe)
-                    {
-                        _analysisSystemForm.SetStatus("Error occur! Command terminated.");
-                        return;
-                    }
+                    _analysisSystemForm.SetStatus("Processing...");
+                    multiplier = Convert.ToDouble(inputTextBox.Text);
+                }
+                catch (FormatException)
+                {
+                    _analysisSystemForm.SetStatus("Multiplier is not right format");
+                    return;
+                }
 
-                    if (!String.IsNullOrEmpty(arousalString) &&
-                        !String.IsNullOrEmpty(valenceString) &&
-                        !String.IsNullOrEmpty(arousalSdString) &&
-                        !String.IsNullOrEmpty(valenceSdString))
+                resultChoosingControlPanel.RightListView.Items.Clear();
+                _goodSamples.Clear();
+                _badSamples.Clear();
+                _faultSamples.Clear();
+
+                badSampleRadioButton.Enabled = false;
+                goodSampleRadioButton.Enabled = false;
+
+                foreach (ListViewItem item in resultChoosingControlPanel.LeftListView.Items)
+                {
+                    String samArousalString = item.SubItems[1].Text;
+                    String samValenceString = item.SubItems[2].Text;
+                    String arousalString = item.SubItems[4].Text;
+                    String valenceString = item.SubItems[5].Text;
+                    String arousalSdString = item.SubItems[6].Text;
+                    String valenceSdString = item.SubItems[7].Text;
+
+                    double samArousalValue;
+                    double samValenceValue;
+                    double arousalValue;
+                    double valenceValue;
+                    double arousalSdValue;
+                    double valenceSdValue;
+
+                    if (!String.IsNullOrEmpty(samArousalString) && !String.IsNullOrEmpty(samValenceString))
                     {
                         try
                         {
-                            arousalValue = Convert.ToDouble(arousalString);
-                            valenceValue = Convert.ToDouble(valenceString);
-                            arousalSdValue = Convert.ToDouble(arousalSdString);
-                            valenceSdValue = Convert.ToDouble(valenceSdString);
+                            samArousalValue = Convert.ToDouble(samArousalString);
+                            samValenceValue = Convert.ToDouble(samValenceString);
                         }
                         catch (FormatException fe)
                         {
@@ -95,24 +82,47 @@ namespace AnalysisSystem.Controls
                             return;
                         }
 
-                        if (((samArousalValue >= arousalValue - multiplier * arousalSdValue) && (samArousalValue <= arousalValue + multiplier * arousalSdValue)) &&
-                            ((samValenceValue >= valenceValue - multiplier * valenceSdValue) && (samValenceValue <= valenceValue + multiplier * valenceSdValue)))
+                        if (!String.IsNullOrEmpty(arousalString) &&
+                            !String.IsNullOrEmpty(valenceString) &&
+                            !String.IsNullOrEmpty(arousalSdString) &&
+                            !String.IsNullOrEmpty(valenceSdString))
                         {
-                            _goodSamples.Add(item.Text);
-
-                            if (goodSampleRadioButton.Checked)
+                            try
                             {
-                                resultChoosingControlPanel.RightListView.Items.Add(item.Clone() as ListViewItem);
+                                arousalValue = Convert.ToDouble(arousalString);
+                                valenceValue = Convert.ToDouble(valenceString);
+                                arousalSdValue = Convert.ToDouble(arousalSdString);
+                                valenceSdValue = Convert.ToDouble(valenceSdString);
+                            }
+                            catch (FormatException fe)
+                            {
+                                _analysisSystemForm.SetStatus("Error occur! Command terminated.");
+                                return;
+                            }
+
+                            if (((samArousalValue >= arousalValue - multiplier * arousalSdValue) && (samArousalValue <= arousalValue + multiplier * arousalSdValue)) &&
+                                ((samValenceValue >= valenceValue - multiplier * valenceSdValue) && (samValenceValue <= valenceValue + multiplier * valenceSdValue)))
+                            {
+                                _goodSamples.Add(item.Text);
+
+                                if (goodSampleRadioButton.Checked)
+                                {
+                                    resultChoosingControlPanel.RightListView.Items.Add(item.Clone() as ListViewItem);
+                                }
+                            }
+                            else
+                            {
+                                _badSamples.Add(item.Text);
+
+                                if (badSampleRadioButton.Checked)
+                                {
+                                    resultChoosingControlPanel.RightListView.Items.Add(item.Clone() as ListViewItem);
+                                }
                             }
                         }
                         else
                         {
-                            _badSamples.Add(item.Text);
-
-                            if (badSampleRadioButton.Checked)
-                            {
-                                resultChoosingControlPanel.RightListView.Items.Add(item.Clone() as ListViewItem);
-                            }
+                            _faultSamples.Add(item.Text);
                         }
                     }
                     else
@@ -120,20 +130,17 @@ namespace AnalysisSystem.Controls
                         _faultSamples.Add(item.Text);
                     }
                 }
-                else
-                {
-                    _faultSamples.Add(item.Text);
-                }
+
+                badSampleRadioButton.Enabled = true;
+                goodSampleRadioButton.Enabled = true;
+
+                updateLeftListViewGroupBox();
+                updateRightListViewGroupBox();
+
+                processButton.Enabled = true;
+                updateButton.Enabled = true;
+                _analysisSystemForm.SetStatus("Processing... Done");
             }
-
-            badSampleRadioButton.Enabled = true;
-            goodSampleRadioButton.Enabled = true;
-
-            updateLeftListViewGroupBox();
-            updateRightListViewGroupBox();
-
-            updateButton.Enabled = true;
-            _analysisSystemForm.SetStatus("Processing... Done");
         }
 
         private void updateButton_Click(object sender, EventArgs e)

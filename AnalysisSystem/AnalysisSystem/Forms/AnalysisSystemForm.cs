@@ -15,6 +15,8 @@ namespace AnalysisSystem.Forms
         {
             InitializeComponent();
 
+            this.HelpButton = true;
+
             functionChoosingControlPanel.AnalysisSystemForm = this;
             edfConvertingControlPanel.AnalysisSystemForm = this;
             sampleEliminatingControlPanel.AnalysisSystemForm = this;

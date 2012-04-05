@@ -34,61 +34,38 @@ namespace AnalysisSystem.Controls
         {
             _analysisSystemForm.SetStatus("Choosing sample");
 
-            var dataQuery =
+            ChoosingForm form = new ChoosingForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _analysisSystemForm.SampleEliminatingControlPanel.UpdateButton.Enabled = false;
+
+                var dataQuery =
                 from samples in _db.Samples
                 from volpics in _db.VolPics
                 from pictures in _db.Pictures
                 where samples.SID == volpics.SID &&
                       volpics.PID == pictures.PID
                 orderby samples.SID ascending
-                select new
-                {
-                    samples.SID,
-                    samples.SamArousal,
-                    samples.SamValence,
-                    pictures.PID,
-                    pictures.Arousal,
-                    pictures.Valence,
-                    pictures.ArousalSD,
-                    pictures.ValenceSD
-                };
+                select new { samples, pictures };
 
-            ChoosingForm form = new ChoosingForm();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                _analysisSystemForm.SampleEliminatingControlPanel.UpdateButton.Enabled = false;
-
-                ArrayList sidList = new ArrayList();
-                foreach (ListViewItem item in form.ListView.SelectedItems)
+                List<AnalysisSystemUtils.AnalysisSystemTaskArgs> itemToSearchList = new List<AnalysisSystemUtils.AnalysisSystemTaskArgs>();
+                foreach (var data in dataQuery)
                 {
-                    sidList.Add(item.Text);
+                    AnalysisSystemUtils.AnalysisSystemTaskArgs args = new AnalysisSystemUtils.AnalysisSystemTaskArgs(data.samples.SID);
+                    args.Sample = data.samples;
+                    args.Picture = data.pictures;
+
+                    itemToSearchList.Add(args);
                 }
-                sidList.Sort();
 
                 leftListView.BeginUpdate();
                 leftListView.Items.Clear();
                 rightListView.Items.Clear();
 
-                foreach (var data in dataQuery)
-                {
-                    if (AnalysisSystemUtils.Find(sidList, data.SID))
-                    {
-                        ListViewItem item = new ListViewItem();
-
-                        item.Text = data.SID;
-                        item.Name = data.SID;
-
-                        item.SubItems.AddRange(new String[] 
-                            {
-                                data.SamArousal.ToString(), data.SamValence.ToString(), data.PID, 
-                                data.Arousal.ToString(), data.Valence.ToString(),
-                                data.ArousalSD.ToString(), data.ValenceSD.ToString()
-                            }
-                        );
-
-                        leftListView.Items.Add(item);
-                    }
-                }
+                AnalysisSystemUtils.PerformTask(
+                        form.ListView.SelectedItems, 
+                        itemToSearchList, 
+                        new AnalysisSystemUtils.AnalysisSystemTask(addLeftListViewItem));
 
                 leftListView.EndUpdate();
 
@@ -192,6 +169,28 @@ namespace AnalysisSystem.Controls
             );
 
             rightListView.EndUpdate();
+        }
+
+        private void addLeftListViewItem(AnalysisSystemUtils.AnalysisSystemTaskArgs args)
+        {
+            ListViewItem item = new ListViewItem();
+
+            item.Text = (args.Sample.SID != null ? args.Sample.SID : "");
+            item.Name = (args.Sample.SID != null ? args.Sample.SID : "");
+
+            item.SubItems.AddRange(new String[] 
+                {
+                    args.Sample.SamArousal != null ? args.Sample.SamArousal.ToString() : "", 
+                    args.Sample.SamValence != null ? args.Sample.SamValence.ToString() : "",
+                    args.Picture != null ? args.Picture.PID : "", 
+                    args.Picture.Arousal != null ? args.Picture.Arousal.ToString() : "", 
+                    args.Picture.Valence != null ? args.Picture.Valence.ToString() : "",
+                    args.Picture.ArousalSD != null ? args.Picture.ArousalSD.ToString() : "", 
+                    args.Picture.ValenceSD != null ? args.Picture.ValenceSD.ToString() : ""
+                }
+            );
+
+            leftListView.Items.Add(item);
         }
 
         private void OnSelectComplete()
