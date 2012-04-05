@@ -89,6 +89,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AnalysisSystem.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\EmoMappingControlPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EmoMappingControlPanel.Designer.cs">
+      <DependentUpon>EmoMappingControlPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EmoSelectControlPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EmoSelectControlPanel.Designer.cs">
+      <DependentUpon>EmoSelectControlPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\HfdCalculatingControlPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -11,6 +11,7 @@ using AnalysisSystem.Matlab;
 using MathWorks.MATLAB.NET.Arrays;
 using MathWorks.MATLAB.NET.Utility;
 using System.IO;
+using System.Collections;
 
 namespace AnalysisSystem.Controls
 {
@@ -19,11 +20,17 @@ namespace AnalysisSystem.Controls
         AnalysisSystemForm _analysisSystemForm;
         HfdCalculator _hfdCalculator;
 
+        AnalysisSystemDataContext _db = new AnalysisSystemDataContext();
+
         String _baseFolderPath;
         String _outCsvFolderName = "HfdCsvFiles";
         String _outCsvFolderPath;
         String _inCsvFolderName = "DataCsvFiles";
         String _inCsvFolderPath;
+
+        int _startSignal = 0;
+        int _totalSignal = 0;
+        int _kMax = 0;
 
         //-------------------------- CONSTRUCTOR ---------------------------//
 
@@ -52,16 +59,13 @@ namespace AnalysisSystem.Controls
 
         private void processButton_Click(object sender, EventArgs e)
         {
-            int startSignal = 0;
-            int totalSignal = 0;
-            int kMax = 0;
             _analysisSystemForm.SetStatus("");
 
             try
             {
-                startSignal = Convert.ToInt32(startSignalTextBox.Text);
-                totalSignal = Convert.ToInt32(totalSignalTextBox.Text);
-                kMax = Convert.ToInt32(kMaxTextBox.Text);
+                _startSignal = Convert.ToInt32(startSignalTextBox.Text);
+                _totalSignal = Convert.ToInt32(totalSignalTextBox.Text);
+                _kMax = Convert.ToInt32(kMaxTextBox.Text);
             }
             catch (Exception)
             {
@@ -69,16 +73,52 @@ namespace AnalysisSystem.Controls
                 return;
             }
 
-            foreach (ListViewItem item in choosingControlPanel.ListView.Items)
-            {
-                MWCharArray inputFilePath = new MWCharArray(Path.Combine(_inCsvFolderPath, item.SubItems[7].Text));
-                MWCharArray outputFilePath = new MWCharArray(Path.Combine(_outCsvFolderPath, item.Text + "-fd.csv"));
-                MWNumericArray kMaxNumericArray = new MWNumericArray(kMax);
-                MWNumericArray totalSignalNumericArray = new MWNumericArray(totalSignal);
-                MWNumericArray startSignalNumericArray = new MWNumericArray(startSignal);
+            var sampleQuery =
+                from samples in _db.Samples
+                orderby samples.SID ascending
+                select samples;
 
-                if (File.Exists(inputFilePath.ToString()))
-                    _hfdCalculator.Calculate(inputFilePath, outputFilePath, kMaxNumericArray, totalSignalNumericArray, startSignalNumericArray);
+            List<AnalysisSystemUtils.AnalysisSystemTaskArgs> itemToSearchList = new List<AnalysisSystemUtils.AnalysisSystemTaskArgs>();
+            int total = sampleQuery.Count();
+            int ordinal = 0;
+            foreach (Sample sample in sampleQuery)
+            {
+                ordinal++;
+                AnalysisSystemUtils.AnalysisSystemTaskArgs args 
+                    = new AnalysisSystemUtils.AnalysisSystemTaskArgs(sample.SID, ordinal, total);
+                args.Sample = sample;
+
+                itemToSearchList.Add(args);
+            }
+
+            _analysisSystemForm.SetStatus("Converting...");
+
+            AnalysisSystemUtils.PerformTask(
+                choosingControlPanel.ListView.Items,
+                itemToSearchList,
+                new AnalysisSystemUtils.AnalysisSystemTask(createCsvFileAndUpdateDataBase));
+
+            _db.SubmitChanges();
+
+            _analysisSystemForm.SetStatus("Converting... Done");
+        }
+
+        //-------------------------- PRIVATE HELPDERS ----------------------//
+
+        private void createCsvFileAndUpdateDataBase(AnalysisSystemUtils.AnalysisSystemTaskArgs args)
+        {
+            if (args.Sample.DataCsvPath != null)
+            {
+                _analysisSystemForm.SetStatus("Converting... " + args.Ordinal + "/" + args.Total);
+
+                string inputFilePath = Path.Combine(_inCsvFolderPath, args.Sample.DataCsvPath);
+                string outputFilePath = Path.Combine(_outCsvFolderPath, args.Sample.SID + ".fd.csv");
+
+                if (File.Exists(inputFilePath))
+                {
+                    _hfdCalculator.Calculate(inputFilePath, outputFilePath, _kMax, _totalSignal, _startSignal);
+                    args.Sample.HfdCsvPath = Path.GetFileName(outputFilePath);
+                }
             }
         }
 
