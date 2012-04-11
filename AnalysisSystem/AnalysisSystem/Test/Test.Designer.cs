@@ -28,34 +28,60 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.choosingControlPanel1 = new AnalysisSystem.Controls.ChoosingControlPanel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // choosingControlPanel1
+            // comboBox1
             // 
-            this.choosingControlPanel1.AnalysisSystemForm = null;
-            this.choosingControlPanel1.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.choosingControlPanel1.Location = new System.Drawing.Point(91, 45);
-            this.choosingControlPanel1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.choosingControlPanel1.Name = "choosingControlPanel1";
-            this.choosingControlPanel1.Size = new System.Drawing.Size(620, 329);
-            this.choosingControlPanel1.TabIndex = 0;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(12, 12);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 0;
+            this.comboBox1.Validating += new System.ComponentModel.CancelEventHandler(this.comboBox1_Validating);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "None";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(12, 39);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 2;
             // 
             // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(865, 434);
-            this.Controls.Add(this.choosingControlPanel1);
+            this.ClientSize = new System.Drawing.Size(207, 140);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBox1);
             this.Name = "Test";
             this.Text = "Test";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private Controls.ChoosingControlPanel choosingControlPanel1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox2;
+
 
 
 

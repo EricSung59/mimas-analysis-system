@@ -95,11 +95,11 @@
     <Compile Include="Controls\EmoMappingControlPanel.Designer.cs">
       <DependentUpon>EmoMappingControlPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\EmoSelectControlPanel.cs">
+    <Compile Include="Controls\EmotionSelectControlPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\EmoSelectControlPanel.Designer.cs">
-      <DependentUpon>EmoSelectControlPanel.cs</DependentUpon>
+    <Compile Include="Controls\EmotionSelectControlPanel.Designer.cs">
+      <DependentUpon>EmotionSelectControlPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\HfdCalculatingControlPanel.cs">
       <SubType>UserControl</SubType>
@@ -112,6 +112,12 @@
     </Compile>
     <Compile Include="Controls\IcaProcessingControlPanel.Designer.cs">
       <DependentUpon>IcaProcessingControlPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LabelChoosingControlPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\LabelChoosingControlPanel.Designer.cs">
+      <DependentUpon>LabelChoosingControlPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\OutFolderChooserControlPanel.cs">
       <SubType>UserControl</SubType>
@@ -162,6 +168,9 @@
     <Compile Include="Forms\ChoosingForm.Designer.cs">
       <DependentUpon>ChoosingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Test\LayoutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Test\ListBoxMultiColumn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,11 +194,20 @@
     <EmbeddedResource Include="Controls\EdfConvertingControlPanel.resx">
       <DependentUpon>EdfConvertingControlPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EmoMappingControlPanel.resx">
+      <DependentUpon>EmoMappingControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EmotionSelectControlPanel.resx">
+      <DependentUpon>EmotionSelectControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\HfdCalculatingControlPanel.resx">
       <DependentUpon>HfdCalculatingControlPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\IcaProcessingControlPanel.resx">
       <DependentUpon>IcaProcessingControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LabelChoosingControlPanel.resx">
+      <DependentUpon>LabelChoosingControlPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\OutFolderChooserControlPanel.resx">
       <DependentUpon>OutFolderChooserControlPanel.cs</DependentUpon>

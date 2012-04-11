@@ -32,6 +32,10 @@ namespace AnalysisSystem.Controls
         int _totalSignal = 0;
         int _kMax = 0;
 
+        int _successCount;
+        int _failCount;
+        int _notFoundCount;
+
         //-------------------------- CONSTRUCTOR ---------------------------//
 
         public HfdCalculatingControlPanel()
@@ -60,6 +64,9 @@ namespace AnalysisSystem.Controls
         private void processButton_Click(object sender, EventArgs e)
         {
             _analysisSystemForm.SetStatus("");
+            _successCount = 0;
+            _failCount = 0;
+            _notFoundCount = 0;
 
             try
             {
@@ -96,14 +103,18 @@ namespace AnalysisSystem.Controls
             AnalysisSystemUtils.PerformTask(
                 choosingControlPanel.ListView.Items,
                 itemToSearchList,
-                new AnalysisSystemUtils.AnalysisSystemTask(createCsvFileAndUpdateDataBase));
+                new AnalysisSystemUtils.AnalysisSystemTask(createCsvFileAndUpdateDataBase),
+                true);
 
             _db.SubmitChanges();
 
             _analysisSystemForm.SetStatus("Converting... Done");
+            successCountLabel.Text = _successCount.ToString();
+            failCountLabel.Text = _failCount.ToString();
+            notFoundCountLabel.Text = _notFoundCount.ToString();
         }
 
-        //-------------------------- PRIVATE HELPDERS ----------------------//
+        //-------------------------- PRIVATE HELPERS ----------------------//
 
         private void createCsvFileAndUpdateDataBase(AnalysisSystemUtils.AnalysisSystemTaskArgs args)
         {
@@ -116,8 +127,24 @@ namespace AnalysisSystem.Controls
 
                 if (File.Exists(inputFilePath))
                 {
-                    _hfdCalculator.Calculate(inputFilePath, outputFilePath, _kMax, _totalSignal, _startSignal);
-                    args.Sample.HfdCsvPath = Path.GetFileName(outputFilePath);
+                    try
+                    {
+                        if (File.Exists(outputFilePath))
+                            File.Delete(outputFilePath);
+
+                        _hfdCalculator.Calculate(inputFilePath, outputFilePath, _kMax, _totalSignal, _startSignal);
+                        args.Sample.HfdCsvPath = Path.GetFileName(outputFilePath);
+
+                        _successCount++;
+                    }
+                    catch (Exception)
+                    {
+                        _failCount++;
+                    }
+                }
+                else
+                {
+                    _notFoundCount++;
                 }
             }
         }

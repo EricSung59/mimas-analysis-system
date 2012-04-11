@@ -59,7 +59,8 @@ namespace AnalysisSystem.Controls
                 AnalysisSystemUtils.PerformTask(
                         form.ListView.SelectedItems, 
                         itemToSearchList, 
-                        new AnalysisSystemUtils.AnalysisSystemTask(addListViewItem));
+                        new AnalysisSystemUtils.AnalysisSystemTask(addListViewItem),
+                        true);
 
                 foreach (ColumnHeader columnHeader in listView.Columns)
                 {

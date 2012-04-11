@@ -7,11 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AnalysisSystem.Forms;
-using System.Collections;
 
 namespace AnalysisSystem.Controls
 {
-    public partial class ResultChoosingControlPanel : UserControl
+    public partial class LabelChoosingControlPanel : UserControl
     {
         AnalysisSystemDataContext _db = new AnalysisSystemDataContext();
         AnalysisSystemForm _analysisSystemForm;
@@ -20,7 +19,7 @@ namespace AnalysisSystem.Controls
 
         //------------------- CONSTRUCTOR -------------------//
 
-        public ResultChoosingControlPanel()
+        public LabelChoosingControlPanel()
         {
             InitializeComponent();
 
@@ -63,8 +62,8 @@ namespace AnalysisSystem.Controls
                 rightListView.Items.Clear();
 
                 AnalysisSystemUtils.PerformTask(
-                        form.ListView.SelectedItems, 
-                        itemToSearchList, 
+                        form.ListView.SelectedItems,
+                        itemToSearchList,
                         new AnalysisSystemUtils.AnalysisSystemTask(addLeftListViewItem),
                         true);
 
@@ -133,39 +132,22 @@ namespace AnalysisSystem.Controls
             samplesIdColumnHeader.Text = "Sample ID";
             samplesIdColumnHeader.Width = -2;
 
-            ColumnHeader samArousalColumnHeader = new ColumnHeader();
-            samArousalColumnHeader.Text = "Sam Arousal";
-            samArousalColumnHeader.Width = -2;
+            ColumnHeader hfdArousalColumnHeader = new ColumnHeader();
+            hfdArousalColumnHeader.Text = "Hfd Arousal";
+            hfdArousalColumnHeader.Width = -2;
 
-            ColumnHeader samValenceColumnHeader = new ColumnHeader();
-            samValenceColumnHeader.Text = "Sam Valence";
-            samValenceColumnHeader.Width = -2;
+            ColumnHeader hfdValenceColumnHeader = new ColumnHeader();
+            hfdValenceColumnHeader.Text = "Hfd Valence";
+            hfdValenceColumnHeader.Width = -2;
 
-            ColumnHeader pictureIdColumnHeader = new ColumnHeader();
-            pictureIdColumnHeader.Text = "Picture ID";
-            pictureIdColumnHeader.Width = -2;
-
-            ColumnHeader pictureArousalColumnHeader = new ColumnHeader();
-            pictureArousalColumnHeader.Text = "Arousal";
-            pictureArousalColumnHeader.Width = -2;
-
-            ColumnHeader pictureValenceColumnHeader = new ColumnHeader();
-            pictureValenceColumnHeader.Text = "Valence";
-            pictureValenceColumnHeader.Width = -2;
-
-            ColumnHeader pictureArousalSdColumnHeader = new ColumnHeader();
-            pictureArousalSdColumnHeader.Text = "Arousal SD";
-            pictureArousalSdColumnHeader.Width = -2;
-
-            ColumnHeader pictureValenceSdColumnHeader = new ColumnHeader();
-            pictureValenceSdColumnHeader.Text = "Valence SD";
-            pictureValenceSdColumnHeader.Width = -2;
+            ColumnHeader labelColumnHeader = new ColumnHeader();
+            labelColumnHeader.Text = "Label";
+            labelColumnHeader.Width = -2;
 
             rightListView.Columns.AddRange(new ColumnHeader[]
                 {
-                    samplesIdColumnHeader, samArousalColumnHeader, samValenceColumnHeader,
-                    pictureIdColumnHeader, pictureArousalColumnHeader, pictureValenceColumnHeader,
-                    pictureArousalSdColumnHeader, pictureValenceSdColumnHeader
+                    samplesIdColumnHeader, hfdArousalColumnHeader, hfdValenceColumnHeader,
+                    labelColumnHeader
                 }
             );
 
