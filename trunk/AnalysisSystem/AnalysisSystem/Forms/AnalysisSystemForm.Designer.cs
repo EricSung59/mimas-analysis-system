@@ -41,6 +41,7 @@
             this.tableLayoutPanel_00_10 = new System.Windows.Forms.TableLayoutPanel();
             this.functionChoosingControlPanel = new AnalysisSystem.Controls.FunctionChoosingControlPanel();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.emoMappingControlPanel = new AnalysisSystem.Controls.EmoMappingControlPanel();
             this.hfdCalculatingControlPanel = new AnalysisSystem.Controls.HfdCalculatingControlPanel();
             this.icaProcessingControlPanel = new AnalysisSystem.Controls.IcaProcessingControlPanel();
             this.sampleEliminatingControlPanel = new AnalysisSystem.Controls.SampleEliminatingControlPanel();
@@ -176,6 +177,7 @@
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.emoMappingControlPanel);
             this.mainPanel.Controls.Add(this.hfdCalculatingControlPanel);
             this.mainPanel.Controls.Add(this.icaProcessingControlPanel);
             this.mainPanel.Controls.Add(this.sampleEliminatingControlPanel);
@@ -187,9 +189,21 @@
             this.mainPanel.Size = new System.Drawing.Size(695, 540);
             this.mainPanel.TabIndex = 0;
             // 
+            // emoMappingControlPanel
+            // 
+            this.emoMappingControlPanel.AnalysisSystemForm = null;
+            this.emoMappingControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.emoMappingControlPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emoMappingControlPanel.Location = new System.Drawing.Point(0, 0);
+            this.emoMappingControlPanel.Name = "emoMappingControlPanel";
+            this.emoMappingControlPanel.Size = new System.Drawing.Size(695, 540);
+            this.emoMappingControlPanel.TabIndex = 10;
+            // 
             // hfdCalculatingControlPanel
             // 
+            this.hfdCalculatingControlPanel.AnalysisSystemForm = null;
             this.hfdCalculatingControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hfdCalculatingControlPanel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hfdCalculatingControlPanel.Location = new System.Drawing.Point(0, 0);
             this.hfdCalculatingControlPanel.Margin = new System.Windows.Forms.Padding(5);
             this.hfdCalculatingControlPanel.Name = "hfdCalculatingControlPanel";
@@ -273,5 +287,6 @@
         private System.Windows.Forms.ToolStripMenuItem settings2ToolStripMenuItem;
         private Controls.IcaProcessingControlPanel icaProcessingControlPanel;
         private Controls.HfdCalculatingControlPanel hfdCalculatingControlPanel;
+        private Controls.EmoMappingControlPanel emoMappingControlPanel;
     }
 }

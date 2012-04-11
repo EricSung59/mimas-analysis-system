@@ -15,21 +15,21 @@ namespace AnalysisSystem.Forms
         {
             InitializeComponent();
 
-            this.HelpButton = true;
-
             functionChoosingControlPanel.AnalysisSystemForm = this;
             edfConvertingControlPanel.AnalysisSystemForm = this;
             sampleEliminatingControlPanel.AnalysisSystemForm = this;
             icaProcessingControlPanel.AnalysisSystemForm = this;
             hfdCalculatingControlPanel.AnalysisSystemForm = this;
+            emoMappingControlPanel.AnalysisSystemForm = this;
 
             _screens = new ArrayList();
             _screens.Add(edfConvertingControlPanel);
             _screens.Add(sampleEliminatingControlPanel);
             _screens.Add(icaProcessingControlPanel);
             _screens.Add(hfdCalculatingControlPanel);
+            _screens.Add(emoMappingControlPanel);
 
-            ShowScreen(3);
+            ShowScreen(4);
         }
 
         //-------------------- EVENT HANDLERS ------------------//

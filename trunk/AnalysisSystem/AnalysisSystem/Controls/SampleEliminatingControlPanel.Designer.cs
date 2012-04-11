@@ -283,10 +283,9 @@
             this.resultChoosingControlPanel.AnalysisSystemForm = null;
             this.resultChoosingControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resultChoosingControlPanel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resultChoosingControlPanel.Location = new System.Drawing.Point(6, 6);
-            this.resultChoosingControlPanel.Margin = new System.Windows.Forms.Padding(5);
+            this.resultChoosingControlPanel.Location = new System.Drawing.Point(4, 4);
             this.resultChoosingControlPanel.Name = "resultChoosingControlPanel";
-            this.resultChoosingControlPanel.Size = new System.Drawing.Size(902, 370);
+            this.resultChoosingControlPanel.Size = new System.Drawing.Size(906, 374);
             this.resultChoosingControlPanel.TabIndex = 8;
             // 
             // SampleEliminatingControlPanel

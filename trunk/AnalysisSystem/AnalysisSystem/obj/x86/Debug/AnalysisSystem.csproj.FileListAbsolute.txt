@@ -23,3 +23,6 @@ D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analy
 D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Controls.HfdCalculatingControlPanel.resources
 D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Controls.OutFolderChooserControlPanel.resources
 D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\bin\Debug\Matlab.dll
+D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Controls.EmoMappingControlPanel.resources
+D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Controls.EmotionSelectControlPanel.resources
+D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Controls.LabelChoosingControlPanel.resources

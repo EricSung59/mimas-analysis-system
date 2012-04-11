@@ -14,148 +14,284 @@ namespace AnalysisSystem.Controls
     public partial class EmoMappingControlPanel : UserControl
     {
         private AnalysisSystemForm _analysisSytemForm;
-        ArrayList emoSelectControlPanel = new ArrayList();
-        ArrayList selectedSample = new ArrayList();
-        AnalysisSystemDataContext _db = new AnalysisSystemDataContext();
+        private AnalysisSystemDataContext _db = new AnalysisSystemDataContext();
+
+        private int _rowsCount;
+        private int _colsCount;
+
+        private EmotionSelectControlPanel[,] _emotionSelectControlPanelArray = null;
+        private int[,] emotionIndexMatrix;
+
+        //------------------------ CONSTRUCTOR -----------------------//
 
         public EmoMappingControlPanel()
         {
             InitializeComponent();
-
         }
 
-        private void OkButton_Click(object sender, EventArgs e)
+        //------------------------ EVENT HANDLERS --------------------//
+
+        private void okButton_Click(object sender, EventArgs e)
         {
-            int ArousalColumNumber;
-            int ValenceRowNumber;
-            EmoPanel.Controls.Clear();
-            try
-            {
-                ArousalColumNumber = Convert.ToInt32(AQuantityCombobox.Text);
-                ValenceRowNumber = Convert.ToInt32(VQuantityCombobox.Text);
-            }
-            catch (System.Exception)
-            {
-                MessageBox.Show("Multiplier is not right format", "Error");
+            if (!validateRowsAndCols())
                 return;
-            }
-            if (ArousalColumNumber <= 9 && ArousalColumNumber >= 0 &&
 
-                ValenceRowNumber <= 9 && ValenceRowNumber >= 0)
+            _emotionSelectControlPanelArray = new EmotionSelectControlPanel[_rowsCount, _colsCount];
+            emotionParentTableLayoutPanel.SuspendLayout();
+            resetEmotionParentTableLayoutPanel(_rowsCount, _colsCount);
+
+            EmotionSelectControlPanel.RowsCount = _rowsCount;
+            EmotionSelectControlPanel.ColumnsCount = _colsCount;
+            for (int i = 0; i < _rowsCount; i++)
             {
-                for (int j = 0; j < ArousalColumNumber; j++)
+                for (int j = 0; j < _colsCount; j++)
                 {
-                    for (int i = 0; i < ValenceRowNumber; i++)
-                    {
-
-                        //emoSelectControlPanel[i*ArousalColumNumber+j] = new EmoSelectControlPanel(this, i * ArousalColumNumber + j+1);
-                        emoSelectControlPanel.Add(new EmoSelectControlPanel(this, j * ValenceRowNumber + i + 1));
-                        UserControl currentControl = (UserControl)emoSelectControlPanel[j * ValenceRowNumber + i];
-                        currentControl.Location = new Point(currentControl.Width * i + i, currentControl.Height * j + j);
-                        EmoPanel.Controls.Add(currentControl);
-                    }
+                    EmotionSelectControlPanel emotionSelectControlPanel = new EmotionSelectControlPanel(this, i * _colsCount + j + 1, i, j);
+                    emotionSelectControlPanel.Anchor = AnchorStyles.None;
+                    _emotionSelectControlPanelArray[i, j] = emotionSelectControlPanel;
+                    emotionParentTableLayoutPanel.Controls.Add(emotionSelectControlPanel, j, i);
                 }
             }
-            else
+
+            emotionParentTableLayoutPanel.ResumeLayout();
+
+            processButton.Enabled = true;
+        }
+
+        private void processButton_Click(object sender, EventArgs e)
+        {
+            constructEmotionIndexMatrix();
+            processLabel();
+            loadRightListView();
+        }
+
+        //------------------------ PRIVATE HELPERS -------------------//
+
+        private void resetEmotionParentTableLayoutPanel(int rowsCount, int colsCount)
+        {
+            emotionParentTableLayoutPanel.Controls.Clear();
+            emotionParentTableLayoutPanel.Size = new System.Drawing.Size(0, 0);
+
+            emotionParentTableLayoutPanel.ColumnCount = colsCount;
+            emotionParentTableLayoutPanel.RowCount = rowsCount;
+
+            emotionParentTableLayoutPanel.ColumnStyles.Clear();
+            for (int i = 0; i < colsCount; i++)
             {
-                MessageBox.Show("Right number from 1 to 9", "Error");
+                emotionParentTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
             }
 
-
+            emotionParentTableLayoutPanel.RowStyles.Clear();
+            for (int i = 0; i < rowsCount; i++)
+            {
+                emotionParentTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            }
         }
+
+        private bool validateRowsAndCols()
+        {
+            _analysisSytemForm.SetStatus("");
+            try
+            {
+                _rowsCount = Convert.ToInt32(rowCountComboBox.Text);
+                _colsCount = Convert.ToInt32(columnCountComboBox.Text);
+            }
+            catch (Exception)
+            {
+                _analysisSytemForm.SetStatus("Rows and Cols number must be a valid positive integer.");
+                return false;
+            }
+
+            if (_rowsCount <= 0)
+            {
+                _analysisSytemForm.SetStatus("Rows must be greater than zero.");
+                return false;
+            }
+
+            if (_colsCount <= 0)
+            {
+                _analysisSytemForm.SetStatus("Columns must be greater than zero.");
+                return false;
+            }
+
+            if (_rowsCount > (EmotionSelectControlPanel.MaxArousal - EmotionSelectControlPanel.MinArousal + 1))
+            {
+                _analysisSytemForm.SetStatus("Rows must be lower than or equal to " + (EmotionSelectControlPanel.MaxArousal - EmotionSelectControlPanel.MinArousal + 1));
+                return false;
+            }
+
+            if (_colsCount > (EmotionSelectControlPanel.MaxValence - EmotionSelectControlPanel.MinValence + 1))
+            {
+                _analysisSytemForm.SetStatus("Cols must be lower than or equal to " + (EmotionSelectControlPanel.MaxValence - EmotionSelectControlPanel.MinValence + 1));
+                return false;
+            }
+
+            return true;
+        }
+
+        private void constructEmotionIndexMatrix()
+        {
+            emotionIndexMatrix = 
+                new int[EmotionSelectControlPanel.MaxValence - EmotionSelectControlPanel.MinValence + 2, EmotionSelectControlPanel.MaxArousal - EmotionSelectControlPanel.MinArousal + 2];
+
+            for (int i = 0; i < _rowsCount; i++)
+                for (int j = 0; j < _colsCount; j++)
+                {
+                    EmotionSelectControlPanel currentPanel = _emotionSelectControlPanelArray[i, j];
+                    int valenceStartValue = (int)currentPanel.ValenceStartComboBox.SelectedItem;
+                    int valenceEndValue = (int)currentPanel.ValenceEndComboBox.SelectedItem;
+                    int arousalStartValue = (int)currentPanel.ArousalStartComboBox.SelectedItem;
+                    int arousalEndValue = (int)currentPanel.ArousalEndComboBox.SelectedItem;
+                    int emotionValue = (int)currentPanel.Emotion;
+
+                    for (int i1 = valenceStartValue; i1 <= valenceEndValue; i1++)
+                        for (int j1 = arousalStartValue; j1 <= arousalEndValue; j1++)
+                        {
+                            emotionIndexMatrix[i1, j1] = emotionValue;
+                        }
+                }
+        }
+
+        private void processLabel()
+        {
+            List<ListViewItem> leftListViewItemCloneList = new List<ListViewItem>();
+
+            var dataQuery =
+                from samples in _db.Samples
+                from datapoints in _db.DataPoints
+                where samples.SID == datapoints.SID
+                orderby samples.SID ascending
+                select datapoints;
+            List<DataPoint> dataPointList = new List<DataPoint>();
+            foreach (DataPoint dp in dataQuery)
+            {
+                dataPointList.Add(dp);
+            }
+
+            while (leftListViewItemCloneList.Count > 0 && dataPointList.Count > 0)
+            {
+                ListViewItem leftListViewItem = leftListViewItemCloneList[0];
+                DataPoint dataPoint = dataPointList[0];
+
+                int samArousal = Convert.ToInt32(leftListViewItem.SubItems[1].Text);
+                int samValence = Convert.ToInt32(leftListViewItem.SubItems[2].Text);
+
+                // already have in database
+                if (String.Compare(leftListViewItem.Text, dataPoint.SID) == 0)
+                {
+                    dataPoint.Label = emotionIndexMatrix[samValence, samArousal].ToString();
+
+                    leftListViewItemCloneList.RemoveAt(0);
+                    dataPointList.RemoveAt(0);
+                }
+                // not in database
+                else if (String.Compare(leftListViewItem.Text, dataPoint.SID) < 0)
+                {
+                    DataPoint newDataPoint = new DataPoint();
+
+                    newDataPoint.SID = leftListViewItem.Text;
+                    newDataPoint.Label = emotionIndexMatrix[samValence, samArousal].ToString();
+
+                    _db.DataPoints.InsertOnSubmit(newDataPoint);
+
+                    leftListViewItemCloneList.RemoveAt(0);
+                }
+                // not yet
+                else
+                {
+                    dataPointList.RemoveAt(0);
+                }
+            }
+
+            while (leftListViewItemCloneList.Count > 0)
+            {
+                ListViewItem leftListViewItem = leftListViewItemCloneList[0];
+                int samArousal = Convert.ToInt32(leftListViewItem.SubItems[1].Text);
+                int samValence = Convert.ToInt32(leftListViewItem.SubItems[2].Text);
+
+                DataPoint newDataPoint = new DataPoint();
+
+                newDataPoint.SID = leftListViewItem.Text;
+                newDataPoint.Label = emotionIndexMatrix[samValence, samArousal].ToString();
+
+                _db.DataPoints.InsertOnSubmit(newDataPoint);
+
+                leftListViewItemCloneList.RemoveAt(0);
+            }
+
+            _db.SubmitChanges();
+        }
+
+        private void loadRightListView()
+        {
+            var dataQuery = 
+                from datapoints
+                in _db.DataPoints
+                select datapoints;
+
+            foreach (DataPoint dataPoint in dataQuery)
+            {
+                ListViewItem item = new ListViewItem();
+
+                item.Text = (dataPoint.SID != null ? dataPoint.SID : "");
+                item.Name = (dataPoint.SID != null ? dataPoint.SID : "");
+
+                item.SubItems.AddRange(new String[]
+                    {
+                        dataPoint.FdArousal != null ? dataPoint.FdArousal.ToString() : "",
+                        dataPoint.FdValence != null ? dataPoint.FdValence.ToString() : "",
+                        dataPoint.Label != null ? dataPoint.Label : ""
+                    }
+                );
+
+                labelChoosingControlPanel.RightListView.Items.Add(item);
+            }
+        }
+
+        //------------------------ PUBLIC METHODS --------------------//
+
+        public List<EmotionSelectControlPanel> GetEmotionSelectControlPanelsByRow(int row)
+        {
+            List<EmotionSelectControlPanel> result = new List<EmotionSelectControlPanel>();
+
+            for (int j = 0; j < _colsCount; j++)
+            {
+                result.Add(_emotionSelectControlPanelArray[row, j]);
+            }
+
+            return result;
+        }
+
+        public List<EmotionSelectControlPanel> GetEmotionSelectControlPanelsByColumn(int col)
+        {
+            List<EmotionSelectControlPanel> result = new List<EmotionSelectControlPanel>();
+
+            for (int i = _rowsCount - 1; i >= 0; i--)
+            {
+                result.Add(_emotionSelectControlPanelArray[i, col]);
+            }
+
+            return result;
+        }
+
+        //------------------------ PROPERTIES ------------------------//
 
         public AnalysisSystemForm AnalysisSystemForm
         {
-            get { return _analysisSytemForm; }
+            get
+            {
+                return _analysisSytemForm;
+            }
             set
             {
                 _analysisSytemForm = value;
-                resultChoosingControlPanel.AnalysisSystemForm = value;
+                labelChoosingControlPanel.AnalysisSystemForm = value;
             }
         }
 
-        private void ProcessButton_Click(object sender, EventArgs e)
+        public EmotionSelectControlPanel[,] EmotionSelectControlPanelArray
         {
-            int ArousalColumNumber = Convert.ToInt32(AQuantityCombobox.Text);
-            int ValenceRowNumber = Convert.ToInt32(VQuantityCombobox.Text);
-            int[,] emoMappingArray = new int[9, 9];
-            for (int i = 0; i < ArousalColumNumber; i++)
-            {
-                for (int j = 0; j < ValenceRowNumber; j++)
-                {
-                    EmoSelectControlPanel currentControl = emoSelectControlPanel[i * ValenceRowNumber + j] as EmoSelectControlPanel;
-                    int emoSelect = Convert.ToInt32(currentControl.EmoTextbox.Text);
-                    int MinA = Convert.ToInt32(currentControl.MinACombobox.Text);
-                    int MaxA = Convert.ToInt32(currentControl.MaxACombobox.Text);
-                    int MinV = Convert.ToInt32(currentControl.MinVCombobox.Text);
-                    int MaxV = Convert.ToInt32(currentControl.MaxVCombobox.Text);
-                    for (int k1 = MinA - 1; k1 < MaxA; k1++)
-                    {
-                        for (int k2 = MinV - 1; k2 < MaxV; k2++)
-                            emoMappingArray[k1, k2] = emoSelect;
-                    }
-                }
-            }
-
-            resultChoosingControlPanel.RightListView.Items.Clear();
-            foreach (ListViewItem item in resultChoosingControlPanel.LeftListView.Items)
-            {
-
-                String arousalString = item.SubItems[1].Text;
-                String valenceString = item.SubItems[2].Text;
-
-
-                if (!String.IsNullOrEmpty(arousalString) &&
-                    !String.IsNullOrEmpty(valenceString))
-                {
-                    try
-                    {
-                        Convert.ToInt32(arousalString);
-                        Convert.ToInt32(valenceString);
-                        selectedSample.Add(item.Text);
-                    }
-                    catch (FormatException fe)
-                    {
-                        //_analysisSytemForm.StatusLabel.Text = "Error occur! Command terminated.";
-                        return;
-                    }
-                }
-
-                var dataQuery =
-                    from samples
-                    in _db.Samples
-                    orderby samples.SID ascending
-                    select samples;
-
-                foreach (var data in dataQuery)
-                {
-                    while (true)
-                    {
-                        if (selectedSample.Count <= 0)
-                            break;
-
-                        if (String.Compare(data.SID, selectedSample[0] as String) > 0)
-                        {
-                            selectedSample.RemoveAt(0);
-                            continue;
-                        }
-                        else if (String.Compare(data.SID, selectedSample[0] as String) == 0)
-                        {
-                            int arousalValue = Convert.ToInt32(data.SamArousal);
-                            int valenceValue = Convert.ToInt32(data.SamValence);
-                            data.AffectionLabel = emoMappingArray[arousalValue, valenceValue].ToString();
-                            break;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                }
-                _db.SubmitChanges();
-
-            }
-
+            get { return _emotionSelectControlPanelArray; }
         }
     }
 }

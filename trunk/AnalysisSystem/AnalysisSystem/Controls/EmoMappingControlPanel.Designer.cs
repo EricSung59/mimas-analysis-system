@@ -29,39 +29,44 @@
         private void InitializeComponent()
         {
             this.EmoQuantityLabel = new System.Windows.Forms.Label();
-            this.AQuantityCombobox = new System.Windows.Forms.ComboBox();
-            this.VQuantityCombobox = new System.Windows.Forms.ComboBox();
-            this.MultipliLabel = new System.Windows.Forms.Label();
-            this.ProcessButton = new System.Windows.Forms.Button();
-            this.OkButton = new System.Windows.Forms.Button();
-            this.EmoQuantityPanel = new System.Windows.Forms.Panel();
-            this.EmoPanel = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.resultChoosingControlPanel = new AnalysisSystem.Controls.ResultChoosingControlPanel();
-            this.EmoQuantityPanel.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.rowCountComboBox = new System.Windows.Forms.ComboBox();
+            this.columnCountComboBox = new System.Windows.Forms.ComboBox();
+            this.processButton = new System.Windows.Forms.Button();
+            this.okButton = new System.Windows.Forms.Button();
+            this.emotionParentPanel = new System.Windows.Forms.Panel();
+            this.emotionParentTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel_00 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel_00_10 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelChoosingControlPanel = new AnalysisSystem.Controls.LabelChoosingControlPanel();
+            this.emotionParentPanel.SuspendLayout();
+            this.tableLayoutPanel_00.SuspendLayout();
+            this.tableLayoutPanel_00_10.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // EmoQuantityLabel
             // 
             this.EmoQuantityLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.EmoQuantityLabel.AutoSize = true;
-            this.EmoQuantityLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmoQuantityLabel.Location = new System.Drawing.Point(34, 77);
+            this.EmoQuantityLabel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmoQuantityLabel.Location = new System.Drawing.Point(7, 45);
             this.EmoQuantityLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.EmoQuantityLabel.Name = "EmoQuantityLabel";
-            this.EmoQuantityLabel.Size = new System.Drawing.Size(187, 18);
+            this.EmoQuantityLabel.Size = new System.Drawing.Size(181, 23);
             this.EmoQuantityLabel.TabIndex = 1;
-            this.EmoQuantityLabel.Text = "Quantity of Emotion :";
+            this.EmoQuantityLabel.Text = "Quantity of Emotions :";
             // 
-            // AQuantityCombobox
+            // rowCountComboBox
             // 
-            this.AQuantityCombobox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.AQuantityCombobox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AQuantityCombobox.FormattingEnabled = true;
-            this.AQuantityCombobox.Items.AddRange(new object[] {
+            this.rowCountComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rowCountComboBox.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rowCountComboBox.FormattingEnabled = true;
+            this.rowCountComboBox.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
@@ -71,19 +76,19 @@
             "7",
             "8",
             "9"});
-            this.AQuantityCombobox.Location = new System.Drawing.Point(34, 109);
-            this.AQuantityCombobox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.AQuantityCombobox.Name = "AQuantityCombobox";
-            this.AQuantityCombobox.Size = new System.Drawing.Size(41, 26);
-            this.AQuantityCombobox.TabIndex = 2;
-            this.AQuantityCombobox.Text = "3";
+            this.rowCountComboBox.Location = new System.Drawing.Point(119, 98);
+            this.rowCountComboBox.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.rowCountComboBox.Name = "rowCountComboBox";
+            this.rowCountComboBox.Size = new System.Drawing.Size(45, 31);
+            this.rowCountComboBox.TabIndex = 2;
+            this.rowCountComboBox.Text = "2";
             // 
-            // VQuantityCombobox
+            // columnCountComboBox
             // 
-            this.VQuantityCombobox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.VQuantityCombobox.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VQuantityCombobox.FormattingEnabled = true;
-            this.VQuantityCombobox.Items.AddRange(new object[] {
+            this.columnCountComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.columnCountComboBox.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.columnCountComboBox.FormattingEnabled = true;
+            this.columnCountComboBox.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
@@ -93,126 +98,176 @@
             "7",
             "8",
             "9"});
-            this.VQuantityCombobox.Location = new System.Drawing.Point(108, 109);
-            this.VQuantityCombobox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.VQuantityCombobox.Name = "VQuantityCombobox";
-            this.VQuantityCombobox.Size = new System.Drawing.Size(43, 26);
-            this.VQuantityCombobox.TabIndex = 3;
-            this.VQuantityCombobox.Text = "4";
+            this.columnCountComboBox.Location = new System.Drawing.Point(119, 143);
+            this.columnCountComboBox.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.columnCountComboBox.Name = "columnCountComboBox";
+            this.columnCountComboBox.Size = new System.Drawing.Size(45, 31);
+            this.columnCountComboBox.TabIndex = 3;
+            this.columnCountComboBox.Text = "3";
             // 
-            // MultipliLabel
+            // processButton
             // 
-            this.MultipliLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.MultipliLabel.AutoSize = true;
-            this.MultipliLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MultipliLabel.Location = new System.Drawing.Point(82, 112);
-            this.MultipliLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.MultipliLabel.Name = "MultipliLabel";
-            this.MultipliLabel.Size = new System.Drawing.Size(18, 18);
-            this.MultipliLabel.TabIndex = 4;
-            this.MultipliLabel.Text = "*";
-            this.MultipliLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.processButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.processButton.Enabled = false;
+            this.processButton.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.processButton.Location = new System.Drawing.Point(74, 24);
+            this.processButton.Name = "processButton";
+            this.processButton.Size = new System.Drawing.Size(135, 63);
+            this.processButton.TabIndex = 7;
+            this.processButton.Text = "PROCESS";
+            this.processButton.UseVisualStyleBackColor = true;
+            this.processButton.Click += new System.EventHandler(this.processButton_Click);
             // 
-            // ProcessButton
+            // okButton
             // 
-            this.ProcessButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ProcessButton.Location = new System.Drawing.Point(3, 228);
-            this.ProcessButton.Name = "ProcessButton";
-            this.ProcessButton.Size = new System.Drawing.Size(105, 42);
-            this.ProcessButton.TabIndex = 7;
-            this.ProcessButton.Text = "Process";
-            this.ProcessButton.UseVisualStyleBackColor = true;
-            this.ProcessButton.Click += new System.EventHandler(this.ProcessButton_Click);
+            this.okButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.okButton.AutoSize = true;
+            this.okButton.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.okButton.Location = new System.Drawing.Point(212, 84);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(80, 58);
+            this.okButton.TabIndex = 8;
+            this.okButton.Text = "OK";
+            this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
-            // OkButton
+            // emotionParentPanel
             // 
-            this.OkButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.OkButton.Location = new System.Drawing.Point(45, 152);
-            this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(55, 38);
-            this.OkButton.TabIndex = 8;
-            this.OkButton.Text = "OK";
-            this.OkButton.UseVisualStyleBackColor = true;
-            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
+            this.emotionParentPanel.AutoScroll = true;
+            this.emotionParentPanel.Controls.Add(this.emotionParentTableLayoutPanel);
+            this.emotionParentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.emotionParentPanel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emotionParentPanel.Location = new System.Drawing.Point(303, 1);
+            this.emotionParentPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.emotionParentPanel.Name = "emotionParentPanel";
+            this.tableLayoutPanel_00_10.SetRowSpan(this.emotionParentPanel, 2);
+            this.emotionParentPanel.Size = new System.Drawing.Size(832, 325);
+            this.emotionParentPanel.TabIndex = 10;
             // 
-            // EmoQuantityPanel
+            // emotionParentTableLayoutPanel
             // 
-            this.EmoQuantityPanel.Controls.Add(this.ProcessButton);
-            this.EmoQuantityPanel.Controls.Add(this.VQuantityCombobox);
-            this.EmoQuantityPanel.Controls.Add(this.OkButton);
-            this.EmoQuantityPanel.Controls.Add(this.EmoQuantityLabel);
-            this.EmoQuantityPanel.Controls.Add(this.AQuantityCombobox);
-            this.EmoQuantityPanel.Controls.Add(this.MultipliLabel);
-            this.EmoQuantityPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EmoQuantityPanel.Location = new System.Drawing.Point(4, 4);
-            this.EmoQuantityPanel.Name = "EmoQuantityPanel";
-            this.EmoQuantityPanel.Size = new System.Drawing.Size(299, 273);
-            this.EmoQuantityPanel.TabIndex = 9;
+            this.emotionParentTableLayoutPanel.AutoScroll = true;
+            this.emotionParentTableLayoutPanel.AutoSize = true;
+            this.emotionParentTableLayoutPanel.ColumnCount = 2;
+            this.emotionParentTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.emotionParentTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.emotionParentTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.emotionParentTableLayoutPanel.Name = "emotionParentTableLayoutPanel";
+            this.emotionParentTableLayoutPanel.RowCount = 2;
+            this.emotionParentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.emotionParentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.emotionParentTableLayoutPanel.Size = new System.Drawing.Size(832, 325);
+            this.emotionParentTableLayoutPanel.TabIndex = 0;
             // 
-            // EmoPanel
+            // tableLayoutPanel_00
             // 
-            this.EmoPanel.AutoScroll = true;
-            this.EmoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EmoPanel.Location = new System.Drawing.Point(310, 4);
-            this.EmoPanel.Name = "EmoPanel";
-            this.EmoPanel.Size = new System.Drawing.Size(708, 273);
-            this.EmoPanel.TabIndex = 10;
+            this.tableLayoutPanel_00.ColumnCount = 1;
+            this.tableLayoutPanel_00.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_00.Controls.Add(this.tableLayoutPanel_00_10, 0, 1);
+            this.tableLayoutPanel_00.Controls.Add(this.labelChoosingControlPanel, 0, 0);
+            this.tableLayoutPanel_00.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel_00.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLayoutPanel_00.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel_00.Name = "tableLayoutPanel_00";
+            this.tableLayoutPanel_00.RowCount = 2;
+            this.tableLayoutPanel_00.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel_00.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel_00.Size = new System.Drawing.Size(1142, 659);
+            this.tableLayoutPanel_00.TabIndex = 11;
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanel_00_10
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.resultChoosingControlPanel, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1028, 573);
-            this.tableLayoutPanel1.TabIndex = 11;
+            this.tableLayoutPanel_00_10.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel_00_10.ColumnCount = 3;
+            this.tableLayoutPanel_00_10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel_00_10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel_00_10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_00_10.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel_00_10.Controls.Add(this.panel2, 0, 1);
+            this.tableLayoutPanel_00_10.Controls.Add(this.emotionParentPanel, 2, 0);
+            this.tableLayoutPanel_00_10.Controls.Add(this.okButton, 1, 0);
+            this.tableLayoutPanel_00_10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel_00_10.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLayoutPanel_00_10.Location = new System.Drawing.Point(3, 329);
+            this.tableLayoutPanel_00_10.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.tableLayoutPanel_00_10.Name = "tableLayoutPanel_00_10";
+            this.tableLayoutPanel_00_10.RowCount = 2;
+            this.tableLayoutPanel_00_10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_00_10.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel_00_10.Size = new System.Drawing.Size(1136, 327);
+            this.tableLayoutPanel_00_10.TabIndex = 6;
             // 
-            // tableLayoutPanel2
+            // panel1
             // 
-            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel2.Controls.Add(this.EmoQuantityPanel, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.EmoPanel, 1, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 289);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1022, 281);
-            this.tableLayoutPanel2.TabIndex = 6;
+            this.panel1.Controls.Add(this.EmoQuantityLabel);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.rowCountComboBox);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.columnCountComboBox);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(4, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(194, 218);
+            this.panel1.TabIndex = 11;
             // 
-            // doubleViewChoosingControlPanel
+            // label2
             // 
-            this.resultChoosingControlPanel.AnalysisSystemForm = null;
-            this.resultChoosingControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.resultChoosingControlPanel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resultChoosingControlPanel.Location = new System.Drawing.Point(5, 5);
-            this.resultChoosingControlPanel.Margin = new System.Windows.Forms.Padding(5);
-            this.resultChoosingControlPanel.Name = "doubleViewChoosingControlPanel";
-            this.resultChoosingControlPanel.Size = new System.Drawing.Size(1018, 276);
-            this.resultChoosingControlPanel.TabIndex = 7;
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(38, 147);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 23);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Cols   =";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(31, 102);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 23);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Rows   =";
+            // 
+            // panel2
+            // 
+            this.tableLayoutPanel_00_10.SetColumnSpan(this.panel2, 2);
+            this.panel2.Controls.Add(this.processButton);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(1, 226);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(301, 100);
+            this.panel2.TabIndex = 12;
+            // 
+            // labelChoosingControlPanel
+            // 
+            this.labelChoosingControlPanel.AnalysisSystemForm = null;
+            this.labelChoosingControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelChoosingControlPanel.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelChoosingControlPanel.Location = new System.Drawing.Point(3, 3);
+            this.labelChoosingControlPanel.Name = "labelChoosingControlPanel";
+            this.labelChoosingControlPanel.Size = new System.Drawing.Size(1136, 323);
+            this.labelChoosingControlPanel.TabIndex = 7;
             // 
             // EmoMappingControlPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Controls.Add(this.tableLayoutPanel_00);
+            this.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "EmoMappingControlPanel";
-            this.Size = new System.Drawing.Size(1028, 573);
-            this.EmoQuantityPanel.ResumeLayout(false);
-            this.EmoQuantityPanel.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.Size = new System.Drawing.Size(1142, 659);
+            this.emotionParentPanel.ResumeLayout(false);
+            this.emotionParentPanel.PerformLayout();
+            this.tableLayoutPanel_00.ResumeLayout(false);
+            this.tableLayoutPanel_00_10.ResumeLayout(false);
+            this.tableLayoutPanel_00_10.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -220,16 +275,19 @@
         #endregion
 
         private System.Windows.Forms.Label EmoQuantityLabel;
-        private System.Windows.Forms.ComboBox AQuantityCombobox;
-        private System.Windows.Forms.ComboBox VQuantityCombobox;
-        private System.Windows.Forms.Label MultipliLabel;
-        private System.Windows.Forms.Button ProcessButton;
-        private System.Windows.Forms.Button OkButton;
-        private System.Windows.Forms.Panel EmoQuantityPanel;
-        private System.Windows.Forms.Panel EmoPanel;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        public ResultChoosingControlPanel resultChoosingControlPanel;
+        private System.Windows.Forms.ComboBox rowCountComboBox;
+        private System.Windows.Forms.ComboBox columnCountComboBox;
+        private System.Windows.Forms.Button processButton;
+        private System.Windows.Forms.Button okButton;
+        private System.Windows.Forms.Panel emotionParentPanel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_00;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_00_10;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TableLayoutPanel emotionParentTableLayoutPanel;
+        private LabelChoosingControlPanel labelChoosingControlPanel;
 
     }
 }

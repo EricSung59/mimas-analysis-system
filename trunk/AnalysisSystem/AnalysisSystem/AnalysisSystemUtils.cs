@@ -61,20 +61,31 @@ namespace AnalysisSystem
         /// <param name="task"></param>
         public static void PerformTask(
                 ICollection searchCollection, 
-                ICollection<AnalysisSystemTaskArgs> itemToSearchCollection, 
-                AnalysisSystemTask task)
+                ICollection<AnalysisSystemTaskArgs> itemToSearchCollection,
+                AnalysisSystemTask task, bool createCloneCollection)
         {
-            ArrayList searchList = new ArrayList();
-            foreach (ListViewItem item in searchCollection)
+            if (createCloneCollection)
             {
-                searchList.Add(item.Text);
-            }
-            searchList.Sort();
+                ArrayList searchList = new ArrayList();
+                foreach (ListViewItem item in searchCollection)
+                {
+                    searchList.Add(item.Text);
+                }
+                searchList.Sort();
 
-            foreach (AnalysisSystemTaskArgs args in itemToSearchCollection)
+                foreach (AnalysisSystemTaskArgs args in itemToSearchCollection)
+                {
+                    if (Find(searchList, args.SearchValue))
+                        task(args);
+                }
+            }
+            else
             {
-                if (Find(searchList, args.SearchValue))
-                    task(args);
+                foreach (AnalysisSystemTaskArgs args in itemToSearchCollection)
+                {
+                    if (Find(searchCollection as ArrayList, args.SearchValue))
+                        task(args);
+                }
             }
         }
 
@@ -105,7 +116,7 @@ namespace AnalysisSystem
                 _total = total;
             }
 
-            // ---------------------- PROPERTIES ---------------------//
+            //----------------------- PROPERTIES ---------------------//
 
             public string SearchValue
             {
