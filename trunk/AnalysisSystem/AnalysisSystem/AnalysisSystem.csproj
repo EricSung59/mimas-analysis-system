@@ -67,6 +67,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\MATLAB\Hfd\AnalysisSystem.Matlab\distrib\Matlab.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="MWArray, Version=2.10.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\MATLAB\MATLAB Compiler Runtime\v713\toolbox\dotnetbuilder\bin\win32\v2.0\MWArray.dll</HintPath>
@@ -168,6 +171,18 @@
     <Compile Include="Forms\ChoosingForm.Designer.cs">
       <DependentUpon>ChoosingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EmotionExceptChoosingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EmotionExceptChoosingForm.Designer.cs">
+      <DependentUpon>EmotionExceptChoosingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test\ExcelTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\ExcelTest.Designer.cs">
+      <DependentUpon>ExcelTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Test\LayoutForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +241,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ChoosingForm.resx">
       <DependentUpon>ChoosingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EmotionExceptChoosingForm.resx">
+      <DependentUpon>EmotionExceptChoosingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test\ExcelTest.resx">
+      <DependentUpon>ExcelTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test\Test.resx">
       <DependentUpon>Test.cs</DependentUpon>

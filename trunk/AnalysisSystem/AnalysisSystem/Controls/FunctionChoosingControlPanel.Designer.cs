@@ -44,12 +44,12 @@
             // 
             this.edfConvertingButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.edfConvertingButton.AutoSize = true;
-            this.edfConvertingButton.Location = new System.Drawing.Point(7, 48);
+            this.edfConvertingButton.Location = new System.Drawing.Point(7, 91);
             this.edfConvertingButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.edfConvertingButton.Name = "edfConvertingButton";
             this.edfConvertingButton.Size = new System.Drawing.Size(187, 33);
             this.edfConvertingButton.TabIndex = 1;
-            this.edfConvertingButton.Text = "1. Edf Converting";
+            this.edfConvertingButton.Text = "2. Edf Converting";
             this.edfConvertingButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.edfConvertingButton.UseVisualStyleBackColor = true;
             this.edfConvertingButton.Click += new System.EventHandler(this.functionButton_Click);
@@ -58,12 +58,12 @@
             // 
             this.sampleEliminatingButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.sampleEliminatingButton.AutoSize = true;
-            this.sampleEliminatingButton.Location = new System.Drawing.Point(7, 91);
+            this.sampleEliminatingButton.Location = new System.Drawing.Point(7, 48);
             this.sampleEliminatingButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.sampleEliminatingButton.Name = "sampleEliminatingButton";
             this.sampleEliminatingButton.Size = new System.Drawing.Size(187, 33);
             this.sampleEliminatingButton.TabIndex = 2;
-            this.sampleEliminatingButton.Text = "2. Sample Eliminating";
+            this.sampleEliminatingButton.Text = "1. Sample Eliminating";
             this.sampleEliminatingButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.sampleEliminatingButton.UseVisualStyleBackColor = true;
             this.sampleEliminatingButton.Click += new System.EventHandler(this.functionButton_Click);
@@ -156,12 +156,12 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.testButton, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.edfConvertingButton, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.svmTrainingButton, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.hfdCalculatingButton, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.sampleEliminatingButton, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.icaProcessingButton, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.emoMappingButton, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.sampleEliminatingButton, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.edfConvertingButton, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);

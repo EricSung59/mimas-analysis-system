@@ -1599,19 +1599,19 @@ namespace AnalysisSystem
 		
 		private string _SID;
 		
-		private string _EdfPath;
-		
-		private string _DataCsvPath;
-		
 		private System.Nullable<double> _SamArousal;
 		
 		private System.Nullable<double> _SamValence;
 		
 		private string _AffectionLabel;
 		
-		private System.Nullable<bool> _IsGood;
+		private string _EdfPath;
+		
+		private string _DataCsvPath;
 		
 		private string _HfdCsvPath;
+		
+		private bool _IsGood;
 		
 		private EntityRef<DataPoint> _DataPoint;
 		
@@ -1625,20 +1625,20 @@ namespace AnalysisSystem
     partial void OnCreated();
     partial void OnSIDChanging(string value);
     partial void OnSIDChanged();
-    partial void OnEdfPathChanging(string value);
-    partial void OnEdfPathChanged();
-    partial void OnDataCsvPathChanging(string value);
-    partial void OnDataCsvPathChanged();
     partial void OnSamArousalChanging(System.Nullable<double> value);
     partial void OnSamArousalChanged();
     partial void OnSamValenceChanging(System.Nullable<double> value);
     partial void OnSamValenceChanged();
     partial void OnAffectionLabelChanging(string value);
     partial void OnAffectionLabelChanged();
-    partial void OnIsGoodChanging(System.Nullable<bool> value);
-    partial void OnIsGoodChanged();
+    partial void OnEdfPathChanging(string value);
+    partial void OnEdfPathChanged();
+    partial void OnDataCsvPathChanging(string value);
+    partial void OnDataCsvPathChanged();
     partial void OnHfdCsvPathChanging(string value);
     partial void OnHfdCsvPathChanged();
+    partial void OnIsGoodChanging(bool value);
+    partial void OnIsGoodChanged();
     #endregion
 		
 		public Sample()
@@ -1665,46 +1665,6 @@ namespace AnalysisSystem
 					this._SID = value;
 					this.SendPropertyChanged("SID");
 					this.OnSIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EdfPath", DbType="NVarChar(MAX)")]
-		public string EdfPath
-		{
-			get
-			{
-				return this._EdfPath;
-			}
-			set
-			{
-				if ((this._EdfPath != value))
-				{
-					this.OnEdfPathChanging(value);
-					this.SendPropertyChanging();
-					this._EdfPath = value;
-					this.SendPropertyChanged("EdfPath");
-					this.OnEdfPathChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataCsvPath", DbType="NVarChar(MAX)")]
-		public string DataCsvPath
-		{
-			get
-			{
-				return this._DataCsvPath;
-			}
-			set
-			{
-				if ((this._DataCsvPath != value))
-				{
-					this.OnDataCsvPathChanging(value);
-					this.SendPropertyChanging();
-					this._DataCsvPath = value;
-					this.SendPropertyChanged("DataCsvPath");
-					this.OnDataCsvPathChanged();
 				}
 			}
 		}
@@ -1769,22 +1729,42 @@ namespace AnalysisSystem
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsGood", DbType="Bit")]
-		public System.Nullable<bool> IsGood
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EdfPath", DbType="NVarChar(MAX)")]
+		public string EdfPath
 		{
 			get
 			{
-				return this._IsGood;
+				return this._EdfPath;
 			}
 			set
 			{
-				if ((this._IsGood != value))
+				if ((this._EdfPath != value))
 				{
-					this.OnIsGoodChanging(value);
+					this.OnEdfPathChanging(value);
 					this.SendPropertyChanging();
-					this._IsGood = value;
-					this.SendPropertyChanged("IsGood");
-					this.OnIsGoodChanged();
+					this._EdfPath = value;
+					this.SendPropertyChanged("EdfPath");
+					this.OnEdfPathChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataCsvPath", DbType="NVarChar(MAX)")]
+		public string DataCsvPath
+		{
+			get
+			{
+				return this._DataCsvPath;
+			}
+			set
+			{
+				if ((this._DataCsvPath != value))
+				{
+					this.OnDataCsvPathChanging(value);
+					this.SendPropertyChanging();
+					this._DataCsvPath = value;
+					this.SendPropertyChanged("DataCsvPath");
+					this.OnDataCsvPathChanged();
 				}
 			}
 		}
@@ -1805,6 +1785,26 @@ namespace AnalysisSystem
 					this._HfdCsvPath = value;
 					this.SendPropertyChanged("HfdCsvPath");
 					this.OnHfdCsvPathChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsGood", DbType="Bit NOT NULL")]
+		public bool IsGood
+		{
+			get
+			{
+				return this._IsGood;
+			}
+			set
+			{
+				if ((this._IsGood != value))
+				{
+					this.OnIsGoodChanging(value);
+					this.SendPropertyChanging();
+					this._IsGood = value;
+					this.SendPropertyChanged("IsGood");
+					this.OnIsGoodChanged();
 				}
 			}
 		}
@@ -2057,7 +2057,7 @@ namespace AnalysisSystem
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sample_VolPic", Storage="_Sample", ThisKey="SID", OtherKey="SID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sample_VolPic", Storage="_Sample", ThisKey="SID", OtherKey="SID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Sample Sample
 		{
 			get
@@ -2091,7 +2091,7 @@ namespace AnalysisSystem
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Volunteer_VolPic", Storage="_Volunteer", ThisKey="VID", OtherKey="VID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Volunteer_VolPic", Storage="_Volunteer", ThisKey="VID", OtherKey="VID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Volunteer Volunteer
 		{
 			get

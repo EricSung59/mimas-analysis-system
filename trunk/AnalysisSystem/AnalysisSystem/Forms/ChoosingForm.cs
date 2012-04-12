@@ -13,13 +13,23 @@ namespace AnalysisSystem.Forms
 {
     public partial class ChoosingForm : Form
     {
-        AnalysisSystemDataContext _db = new AnalysisSystemDataContext();
+        private AnalysisSystemDataContext _db = new AnalysisSystemDataContext();
+        private bool _onlyGoodSamples;
+
+        //--------------- CONSTRUCTOR -----------------//
 
         public ChoosingForm()
         {
             InitializeComponent();
 
             CancelButton = cancelButton;
+            AcceptButton = okButton;
+        }
+
+        public ChoosingForm(bool onlyGoodSamples)
+            : this()
+        {
+            _onlyGoodSamples = onlyGoodSamples;
 
             loadListView();
             loadVolunteerIdInListBox();
@@ -291,7 +301,8 @@ namespace AnalysisSystem.Forms
             var dataQuery =
                 from samples in _db.Samples
                 from volpics in _db.VolPics
-                where samples.SID == volpics.SID
+                where samples.SID == volpics.SID &&
+                      (_onlyGoodSamples ? samples.IsGood : true)
                 select new { volpics.VID, volpics.PID, samples.SID, samples.EdfPath };
             //
             // Fill data to ListView
@@ -320,7 +331,8 @@ namespace AnalysisSystem.Forms
             var dataQuery =
                     from samples in _db.Samples
                     from volpics in _db.VolPics
-                    where samples.SID == volpics.SID
+                    where samples.SID == volpics.SID &&
+                          (_onlyGoodSamples ? samples.IsGood : true)
                     orderby samples.SID ascending
                     select new { samples.SID, samples.EdfPath, volpics.VID, volpics.PID };
 

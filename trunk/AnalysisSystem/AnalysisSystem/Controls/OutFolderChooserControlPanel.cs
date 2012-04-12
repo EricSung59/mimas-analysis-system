@@ -18,6 +18,11 @@ namespace AnalysisSystem.Controls
             InitializeComponent();
         }
 
+        public OutFolderChooserControlPanel(String path)
+        {
+            outFolderTextBox.Text = path;
+        }
+
         //----------------------- EVENT HANDLERS -------------------//
 
         private void outFolderBrowseButton_Click(object sender, EventArgs e)

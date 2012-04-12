@@ -74,13 +74,13 @@
   <Table Name="dbo.Samples" Member="Samples">
     <Type Name="Sample">
       <Column Name="SID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="EdfPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="DataCsvPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SamArousal" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="SamValence" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="AffectionLabel" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="IsGood" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EdfPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DataCsvPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="HfdCsvPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsGood" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Sample_DataPoint" Member="DataPoint" ThisKey="SID" OtherKey="SID" Type="DataPoint" Cardinality="One" />
       <Association Name="Sample_EEG" Member="EEG" ThisKey="SID" OtherKey="SID" Type="EEG" Cardinality="One" />
       <Association Name="Sample_VolPic" Member="VolPics" ThisKey="SID" OtherKey="SID" Type="VolPic" />
@@ -92,8 +92,8 @@
       <Column Name="PID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="SID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Association Name="Picture_VolPic" Member="Picture" ThisKey="PID" OtherKey="PID" Type="Picture" IsForeignKey="true" />
-      <Association Name="Sample_VolPic" Member="Sample" ThisKey="SID" OtherKey="SID" Type="Sample" IsForeignKey="true" />
-      <Association Name="Volunteer_VolPic" Member="Volunteer" ThisKey="VID" OtherKey="VID" Type="Volunteer" IsForeignKey="true" />
+      <Association Name="Sample_VolPic" Member="Sample" ThisKey="SID" OtherKey="SID" Type="Sample" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Volunteer_VolPic" Member="Volunteer" ThisKey="VID" OtherKey="VID" Type="Volunteer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

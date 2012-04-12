@@ -83,6 +83,7 @@ namespace AnalysisSystem.Controls
             var sampleQuery =
                 from samples in _db.Samples
                 orderby samples.SID ascending
+                where (choosingControlPanel.OnlyGoodSample ? samples.IsGood : true)
                 select samples;
 
             List<AnalysisSystemUtils.AnalysisSystemTaskArgs> itemToSearchList = new List<AnalysisSystemUtils.AnalysisSystemTaskArgs>();
