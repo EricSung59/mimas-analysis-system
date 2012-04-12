@@ -26,3 +26,5 @@ D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analy
 D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Controls.EmoMappingControlPanel.resources
 D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Controls.EmotionSelectControlPanel.resources
 D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Controls.LabelChoosingControlPanel.resources
+D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Test.ExcelTest.resources
+D:\ToanBK\Documents\Visual Studio 2010\Projects\Google Code Projects\mimas-analysis-system\AnalysisSystem\AnalysisSystem\obj\x86\Debug\AnalysisSystem.Forms.EmotionExceptChoosingForm.resources

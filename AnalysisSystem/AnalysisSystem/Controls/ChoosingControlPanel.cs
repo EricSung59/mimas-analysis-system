@@ -32,7 +32,7 @@ namespace AnalysisSystem.Controls
         {
             _analysisSystemForm.SetStatus("Choosing sample");
 
-            ChoosingForm form = new ChoosingForm();
+            ChoosingForm form = new ChoosingForm(onlyGoodSampleCheckBox.Checked);
             if (form.ShowDialog() == DialogResult.OK)
             {
                 listView.BeginUpdate();
@@ -169,6 +169,11 @@ namespace AnalysisSystem.Controls
             {
                 _analysisSystemForm = value;
             }
+        }
+
+        public bool OnlyGoodSample
+        {
+            get { return onlyGoodSampleCheckBox.Checked; }
         }
     }
 }

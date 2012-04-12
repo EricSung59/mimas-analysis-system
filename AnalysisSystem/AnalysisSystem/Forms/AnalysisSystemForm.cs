@@ -23,8 +23,8 @@ namespace AnalysisSystem.Forms
             emoMappingControlPanel.AnalysisSystemForm = this;
 
             _screens = new ArrayList();
-            _screens.Add(edfConvertingControlPanel);
             _screens.Add(sampleEliminatingControlPanel);
+            _screens.Add(edfConvertingControlPanel);
             _screens.Add(icaProcessingControlPanel);
             _screens.Add(hfdCalculatingControlPanel);
             _screens.Add(emoMappingControlPanel);

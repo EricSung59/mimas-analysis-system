@@ -18,8 +18,8 @@ namespace AnalysisSystem.Controls
             InitializeComponent();
 
             _buttons = new ArrayList();
-            _buttons.Add(edfConvertingButton);
             _buttons.Add(sampleEliminatingButton);
+            _buttons.Add(edfConvertingButton);
             _buttons.Add(icaProcessingButton);
             _buttons.Add(hfdCalculatingButton);
             _buttons.Add(emoMappingButton);

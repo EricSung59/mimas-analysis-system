@@ -101,6 +101,7 @@ namespace AnalysisSystem
             private Volunteer _volunteer = null;
             private Picture _picture = null;
             private VolPic _volpic = null;
+            private DataPoint _dataPoint = null;
 
             //----------------------- CONSTRUCTOR --------------------//
 
@@ -145,6 +146,12 @@ namespace AnalysisSystem
             {
                 get { return _volpic; }
                 set { _volpic = value; }
+            }
+
+            public DataPoint DataPoint
+            {
+                get { return _dataPoint; }
+                set { _dataPoint = value; }
             }
 
             public int Ordinal

@@ -34,7 +34,7 @@ namespace AnalysisSystem.Controls
         {
             _analysisSystemForm.SetStatus("Choosing sample");
 
-            ChoosingForm form = new ChoosingForm();
+            ChoosingForm form = new ChoosingForm(false);
             if (form.ShowDialog() == DialogResult.OK)
             {
                 _analysisSystemForm.SampleEliminatingControlPanel.UpdateButton.Enabled = false;
