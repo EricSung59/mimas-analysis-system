@@ -28,8 +28,10 @@ namespace AnalysisSystem.Forms
             _screens.Add(icaProcessingControlPanel);
             _screens.Add(hfdCalculatingControlPanel);
             _screens.Add(emoMappingControlPanel);
+            _screens.Add(svmTrainingControlPanel); 
+            _screens.Add(testingControlPanel);
 
-            ShowScreen(4);
+            ShowScreen(6);
         }
 
         //-------------------- EVENT HANDLERS ------------------//
