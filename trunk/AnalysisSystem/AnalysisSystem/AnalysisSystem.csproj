@@ -147,6 +147,7 @@
     <Compile Include="Controls\ResultChoosingControlPanel.Designer.cs">
       <DependentUpon>ResultChoosingControlPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="TestBench\RTFilter.cs" />
     <Compile Include="Controls\SampleEliminatingControlPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -158,6 +159,18 @@
     </Compile>
     <Compile Include="Controls\FunctionChoosingControlPanel.Designer.cs">
       <DependentUpon>FunctionChoosingControlPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SvmTrainingControlPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SvmTrainingControlPanel.Designer.cs">
+      <DependentUpon>SvmTrainingControlPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TestingControlPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TestingControlPanel.Designer.cs">
+      <DependentUpon>TestingControlPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AnalysisSystemForm.cs">
       <SubType>Form</SubType>
@@ -177,29 +190,11 @@
     <Compile Include="Forms\EmotionExceptChoosingForm.Designer.cs">
       <DependentUpon>EmotionExceptChoosingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Test\ExcelTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Test\ExcelTest.Designer.cs">
-      <DependentUpon>ExcelTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Test\LayoutForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Test\ListBoxMultiColumn.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Test\ListViewGroupsExample.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Test\Test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Test\Test.Designer.cs">
-      <DependentUpon>Test.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestBench\EmotivDongle.cs" />
+    <Compile Include="TestBench\EmotivDongleDriver.cs" />
+    <Compile Include="TestBench\RawDataModel.cs" />
     <None Include="AnalysisSystem.dbml.layout">
       <DependentUpon>AnalysisSystem.dbml</DependentUpon>
     </None>
@@ -236,6 +231,12 @@
     <EmbeddedResource Include="Controls\FunctionChoosingControlPanel.resx">
       <DependentUpon>FunctionChoosingControlPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SvmTrainingControlPanel.resx">
+      <DependentUpon>SvmTrainingControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TestingControlPanel.resx">
+      <DependentUpon>TestingControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AnalysisSystemForm.resx">
       <DependentUpon>AnalysisSystemForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,12 +245,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EmotionExceptChoosingForm.resx">
       <DependentUpon>EmotionExceptChoosingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Test\ExcelTest.resx">
-      <DependentUpon>ExcelTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Test\Test.resx">
-      <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
