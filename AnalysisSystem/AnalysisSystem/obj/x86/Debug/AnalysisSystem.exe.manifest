@@ -47,14 +47,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AnalysisSystem.exe" size="155136">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AnalysisSystem.exe" size="150016">
       <assemblyIdentity name="AnalysisSystem" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>qRifRl1h98EIhEgKghQanFvusMo=</dsig:DigestValue>
+        <dsig:DigestValue>qG2CFBdnYSZHESc2mRvVfjaXYKU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DotNetEmotivDongleDriver.dll" size="12288">
+      <assemblyIdentity name="DotNetEmotivDongleDriver" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>d+ccIIHAl7jbJRznb0Ieap1Ip+Y=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DotNetEmotivSDK.dll" size="53760">
+      <assemblyIdentity name="DotNetEmotivSDK" version="0.8.1.7" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>NoJ0DQjZ/O3jpZdBHQBIYeGtG1I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -66,7 +90,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>1AR3GEQVdHoEYKcIQWj9TFQ70zo=</dsig:DigestValue>
+        <dsig:DigestValue>Piu3cCQmtp4AqNHmGwCen471AvE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

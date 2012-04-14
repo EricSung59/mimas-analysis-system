@@ -40,8 +40,10 @@ namespace AnalysisSystem.Controls
             _rawDataModel.NewData += new RawDataModel.NewDataEventHandler(_rawDataModel_NewData);
             _hfdCalculator = new HfdCalculator();
 
-            double[] b = { 0.0783, 0, -0.1567, 0, 0.0783 };
-            double[] a = { 1.0000, -3.0097, 3.4242, -1.7943, 0.3807 };
+            //double[] b = { 0.0783, 0, -0.1567, 0, 0.0783 };
+            //double[] a = { 1.0000, -3.0097, 3.4242, -1.7943, 0.3807 };
+            double[] b = { 0.0878, 0.1756, 0.0878 };
+            double[] a = { 1.0000, -1.0048, 0.3561 };
             _filter = new RTFilter(2, b, a);
 
             _af3Buffer = new List<Double>(BUFFER_SIZE);
@@ -58,7 +60,7 @@ namespace AnalysisSystem.Controls
         private void button1_Click(object sender, EventArgs e)
         {
             _rawDataModel.Start();
-
+            rawDataModelTimer.Start();
         }
 
         private void _rawDataModel_NewData(object sender, NewDataEventArgs e)
@@ -70,21 +72,34 @@ namespace AnalysisSystem.Controls
             calculateHfd();
         }
 
+        private void rawDataModelTimer_Tick(object sender, EventArgs e)
+        {
+            _rawDataModel.Process();
+        }
+
         //----------------------- PRIVATE HELPERS -------------------//
 
         private void updateBuffer(List<Double> buffer, List<Double> filteredBuffer, Emotiv.EmotivDongle.Channels channel)
         {
-            double[] eegData = _rawDataModel.GetEegData(channel);
-            int numberOfSampleNeedToRemove = _af3Buffer.Count + eegData.Length - BUFFER_SIZE;
+            List<Double> eegDataList = new List<Double>(_rawDataModel.GetEegData(channel));
 
-            if (numberOfSampleNeedToRemove <= 0)
+            if (eegDataList.Count >= BUFFER_SIZE)
             {
-                buffer.AddRange(eegData);
+                buffer.Clear();
+                buffer.AddRange(eegDataList.GetRange(eegDataList.Count - BUFFER_SIZE, BUFFER_SIZE));
             }
             else
             {
-                buffer.RemoveRange(0, numberOfSampleNeedToRemove);
-                buffer.AddRange(eegData);
+                int numberOfSampleNeedToRemove = buffer.Count + eegDataList.Count - BUFFER_SIZE;
+                if (numberOfSampleNeedToRemove <= 0)
+                {
+                    buffer.AddRange(eegDataList);
+                }
+                else
+                {
+                    buffer.RemoveRange(0, numberOfSampleNeedToRemove);
+                    buffer.AddRange(eegDataList);
+                }
             }
 
             filteredBuffer.Clear();
@@ -97,6 +112,8 @@ namespace AnalysisSystem.Controls
             MWNumericArray af3TimeSeries = new MWNumericArray(_af3FilteredBuffer.ToArray());
             MWNumericArray f4TimeSeries = new MWNumericArray(_f4FilteredBuffer.ToArray());
 
+            MWArray result = _hfdCalculator.CalculateHfd(fc6TimeSeries, 12);
+            double[] resulta = (double[])result.ToArray();
             _arousal = (double)(_hfdCalculator.CalculateHfd(fc6TimeSeries, 12) as MWNumericArray)[0];
             _valence = (double)(_hfdCalculator.CalculateHfd(af3TimeSeries, 12) as MWNumericArray)[0] -
                        (double)(_hfdCalculator.CalculateHfd(f4TimeSeries, 12) as MWNumericArray)[0];
