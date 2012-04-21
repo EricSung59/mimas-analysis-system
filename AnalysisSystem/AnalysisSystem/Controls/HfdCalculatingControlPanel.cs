@@ -104,7 +104,7 @@ namespace AnalysisSystem.Controls
             AnalysisSystemUtils.PerformTask(
                 choosingControlPanel.ListView.Items,
                 itemToSearchList,
-                new AnalysisSystemUtils.AnalysisSystemTask(createCsvFileAndUpdateDataBase),
+                new AnalysisSystemUtils.AnalysisSystemTask(createCsvFileAndUpdateDatabase),
                 true);
 
             _db.SubmitChanges();
@@ -117,7 +117,7 @@ namespace AnalysisSystem.Controls
 
         //-------------------------- PRIVATE HELPERS ----------------------//
 
-        private void createCsvFileAndUpdateDataBase(AnalysisSystemUtils.AnalysisSystemTaskArgs args)
+        private void createCsvFileAndUpdateDatabase(AnalysisSystemUtils.AnalysisSystemTaskArgs args)
         {
             if (args.Sample.DataCsvPath != null)
             {

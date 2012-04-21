@@ -33,9 +33,9 @@ namespace AnalysisSystem
     partial void InsertDataPoint(DataPoint instance);
     partial void UpdateDataPoint(DataPoint instance);
     partial void DeleteDataPoint(DataPoint instance);
-    partial void InsertVolunteer(Volunteer instance);
-    partial void UpdateVolunteer(Volunteer instance);
-    partial void DeleteVolunteer(Volunteer instance);
+    partial void InsertVolPic(VolPic instance);
+    partial void UpdateVolPic(VolPic instance);
+    partial void DeleteVolPic(VolPic instance);
     partial void InsertEEG(EEG instance);
     partial void UpdateEEG(EEG instance);
     partial void DeleteEEG(EEG instance);
@@ -51,9 +51,9 @@ namespace AnalysisSystem
     partial void InsertSample(Sample instance);
     partial void UpdateSample(Sample instance);
     partial void DeleteSample(Sample instance);
-    partial void InsertVolPic(VolPic instance);
-    partial void UpdateVolPic(VolPic instance);
-    partial void DeleteVolPic(VolPic instance);
+    partial void InsertVolunteer(Volunteer instance);
+    partial void UpdateVolunteer(Volunteer instance);
+    partial void DeleteVolunteer(Volunteer instance);
     #endregion
 		
 		public AnalysisSystemDataContext() : 
@@ -94,11 +94,11 @@ namespace AnalysisSystem
 			}
 		}
 		
-		public System.Data.Linq.Table<Volunteer> Volunteers
+		public System.Data.Linq.Table<VolPic> VolPics
 		{
 			get
 			{
-				return this.GetTable<Volunteer>();
+				return this.GetTable<VolPic>();
 			}
 		}
 		
@@ -142,11 +142,11 @@ namespace AnalysisSystem
 			}
 		}
 		
-		public System.Data.Linq.Table<VolPic> VolPics
+		public System.Data.Linq.Table<Volunteer> Volunteers
 		{
 			get
 			{
-				return this.GetTable<VolPic>();
+				return this.GetTable<Volunteer>();
 			}
 		}
 	}
@@ -326,31 +326,23 @@ namespace AnalysisSystem
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Volunteers")]
-	public partial class Volunteer : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VolPics")]
+	public partial class VolPic : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private string _VID;
 		
-		private string _Name;
+		private string _PID;
 		
-		private System.Nullable<int> _Age;
+		private string _SID;
 		
-		private string _Gender;
+		private EntityRef<Picture> _Picture;
 		
-		private string _Email;
+		private EntityRef<Sample> _Sample;
 		
-		private string _Phone;
-		
-		private string _Address;
-		
-		private string _Study;
-		
-		private string _JobTitle;
-		
-		private EntitySet<VolPic> _VolPics;
+		private EntityRef<Volunteer> _Volunteer;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -358,27 +350,17 @@ namespace AnalysisSystem
     partial void OnCreated();
     partial void OnVIDChanging(string value);
     partial void OnVIDChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnAgeChanging(System.Nullable<int> value);
-    partial void OnAgeChanged();
-    partial void OnGenderChanging(string value);
-    partial void OnGenderChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnPhoneChanging(string value);
-    partial void OnPhoneChanged();
-    partial void OnAddressChanging(string value);
-    partial void OnAddressChanged();
-    partial void OnStudyChanging(string value);
-    partial void OnStudyChanged();
-    partial void OnJobTitleChanging(string value);
-    partial void OnJobTitleChanged();
+    partial void OnPIDChanging(string value);
+    partial void OnPIDChanged();
+    partial void OnSIDChanging(string value);
+    partial void OnSIDChanged();
     #endregion
 		
-		public Volunteer()
+		public VolPic()
 		{
-			this._VolPics = new EntitySet<VolPic>(new Action<VolPic>(this.attach_VolPics), new Action<VolPic>(this.detach_VolPics));
+			this._Picture = default(EntityRef<Picture>);
+			this._Sample = default(EntityRef<Sample>);
+			this._Volunteer = default(EntityRef<Volunteer>);
 			OnCreated();
 		}
 		
@@ -393,6 +375,10 @@ namespace AnalysisSystem
 			{
 				if ((this._VID != value))
 				{
+					if (this._Volunteer.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnVIDChanging(value);
 					this.SendPropertyChanging();
 					this._VID = value;
@@ -402,176 +388,153 @@ namespace AnalysisSystem
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX)")]
-		public string Name
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PID", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string PID
 		{
 			get
 			{
-				return this._Name;
+				return this._PID;
 			}
 			set
 			{
-				if ((this._Name != value))
+				if ((this._PID != value))
 				{
-					this.OnNameChanging(value);
+					if (this._Picture.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPIDChanging(value);
 					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
+					this._PID = value;
+					this.SendPropertyChanged("PID");
+					this.OnPIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Age", DbType="Int")]
-		public System.Nullable<int> Age
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SID", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string SID
 		{
 			get
 			{
-				return this._Age;
+				return this._SID;
 			}
 			set
 			{
-				if ((this._Age != value))
+				if ((this._SID != value))
 				{
-					this.OnAgeChanging(value);
+					if (this._Sample.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSIDChanging(value);
 					this.SendPropertyChanging();
-					this._Age = value;
-					this.SendPropertyChanged("Age");
-					this.OnAgeChanged();
+					this._SID = value;
+					this.SendPropertyChanged("SID");
+					this.OnSIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Gender", DbType="NVarChar(MAX)")]
-		public string Gender
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Picture_VolPic", Storage="_Picture", ThisKey="PID", OtherKey="PID", IsForeignKey=true)]
+		public Picture Picture
 		{
 			get
 			{
-				return this._Gender;
+				return this._Picture.Entity;
 			}
 			set
 			{
-				if ((this._Gender != value))
+				Picture previousValue = this._Picture.Entity;
+				if (((previousValue != value) 
+							|| (this._Picture.HasLoadedOrAssignedValue == false)))
 				{
-					this.OnGenderChanging(value);
 					this.SendPropertyChanging();
-					this._Gender = value;
-					this.SendPropertyChanged("Gender");
-					this.OnGenderChanged();
+					if ((previousValue != null))
+					{
+						this._Picture.Entity = null;
+						previousValue.VolPics.Remove(this);
+					}
+					this._Picture.Entity = value;
+					if ((value != null))
+					{
+						value.VolPics.Add(this);
+						this._PID = value.PID;
+					}
+					else
+					{
+						this._PID = default(string);
+					}
+					this.SendPropertyChanged("Picture");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(MAX)")]
-		public string Email
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sample_VolPic", Storage="_Sample", ThisKey="SID", OtherKey="SID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Sample Sample
 		{
 			get
 			{
-				return this._Email;
+				return this._Sample.Entity;
 			}
 			set
 			{
-				if ((this._Email != value))
+				Sample previousValue = this._Sample.Entity;
+				if (((previousValue != value) 
+							|| (this._Sample.HasLoadedOrAssignedValue == false)))
 				{
-					this.OnEmailChanging(value);
 					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
+					if ((previousValue != null))
+					{
+						this._Sample.Entity = null;
+						previousValue.VolPics.Remove(this);
+					}
+					this._Sample.Entity = value;
+					if ((value != null))
+					{
+						value.VolPics.Add(this);
+						this._SID = value.SID;
+					}
+					else
+					{
+						this._SID = default(string);
+					}
+					this.SendPropertyChanged("Sample");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(MAX)")]
-		public string Phone
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Volunteer_VolPic", Storage="_Volunteer", ThisKey="VID", OtherKey="VID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Volunteer Volunteer
 		{
 			get
 			{
-				return this._Phone;
+				return this._Volunteer.Entity;
 			}
 			set
 			{
-				if ((this._Phone != value))
+				Volunteer previousValue = this._Volunteer.Entity;
+				if (((previousValue != value) 
+							|| (this._Volunteer.HasLoadedOrAssignedValue == false)))
 				{
-					this.OnPhoneChanging(value);
 					this.SendPropertyChanging();
-					this._Phone = value;
-					this.SendPropertyChanged("Phone");
-					this.OnPhoneChanged();
+					if ((previousValue != null))
+					{
+						this._Volunteer.Entity = null;
+						previousValue.VolPics.Remove(this);
+					}
+					this._Volunteer.Entity = value;
+					if ((value != null))
+					{
+						value.VolPics.Add(this);
+						this._VID = value.VID;
+					}
+					else
+					{
+						this._VID = default(string);
+					}
+					this.SendPropertyChanged("Volunteer");
 				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(MAX)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this.OnAddressChanging(value);
-					this.SendPropertyChanging();
-					this._Address = value;
-					this.SendPropertyChanged("Address");
-					this.OnAddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Study", DbType="NVarChar(MAX)")]
-		public string Study
-		{
-			get
-			{
-				return this._Study;
-			}
-			set
-			{
-				if ((this._Study != value))
-				{
-					this.OnStudyChanging(value);
-					this.SendPropertyChanging();
-					this._Study = value;
-					this.SendPropertyChanged("Study");
-					this.OnStudyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobTitle", DbType="NVarChar(MAX)")]
-		public string JobTitle
-		{
-			get
-			{
-				return this._JobTitle;
-			}
-			set
-			{
-				if ((this._JobTitle != value))
-				{
-					this.OnJobTitleChanging(value);
-					this.SendPropertyChanging();
-					this._JobTitle = value;
-					this.SendPropertyChanged("JobTitle");
-					this.OnJobTitleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Volunteer_VolPic", Storage="_VolPics", ThisKey="VID", OtherKey="VID")]
-		public EntitySet<VolPic> VolPics
-		{
-			get
-			{
-				return this._VolPics;
-			}
-			set
-			{
-				this._VolPics.Assign(value);
 			}
 		}
 		
@@ -593,18 +556,6 @@ namespace AnalysisSystem
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_VolPics(VolPic entity)
-		{
-			this.SendPropertyChanging();
-			entity.Volunteer = this;
-		}
-		
-		private void detach_VolPics(VolPic entity)
-		{
-			this.SendPropertyChanging();
-			entity.Volunteer = null;
 		}
 	}
 	
@@ -1264,7 +1215,7 @@ namespace AnalysisSystem
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_PicGroup", Storage="_Group", ThisKey="GID", OtherKey="GID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_PicGroup", Storage="_Group", ThisKey="GID", OtherKey="GID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Group Group
 		{
 			get
@@ -1298,7 +1249,7 @@ namespace AnalysisSystem
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Picture_PicGroup", Storage="_Picture", ThisKey="PID", OtherKey="PID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Picture_PicGroup", Storage="_Picture", ThisKey="PID", OtherKey="PID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Picture Picture
 		{
 			get
@@ -1371,9 +1322,9 @@ namespace AnalysisSystem
 		
 		private System.Nullable<double> _ValenceSD;
 		
-		private EntitySet<PicGroup> _PicGroups;
-		
 		private EntitySet<VolPic> _VolPics;
+		
+		private EntitySet<PicGroup> _PicGroups;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1395,8 +1346,8 @@ namespace AnalysisSystem
 		
 		public Picture()
 		{
-			this._PicGroups = new EntitySet<PicGroup>(new Action<PicGroup>(this.attach_PicGroups), new Action<PicGroup>(this.detach_PicGroups));
 			this._VolPics = new EntitySet<VolPic>(new Action<VolPic>(this.attach_VolPics), new Action<VolPic>(this.detach_VolPics));
+			this._PicGroups = new EntitySet<PicGroup>(new Action<PicGroup>(this.attach_PicGroups), new Action<PicGroup>(this.detach_PicGroups));
 			OnCreated();
 		}
 		
@@ -1520,19 +1471,6 @@ namespace AnalysisSystem
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Picture_PicGroup", Storage="_PicGroups", ThisKey="PID", OtherKey="PID")]
-		public EntitySet<PicGroup> PicGroups
-		{
-			get
-			{
-				return this._PicGroups;
-			}
-			set
-			{
-				this._PicGroups.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Picture_VolPic", Storage="_VolPics", ThisKey="PID", OtherKey="PID")]
 		public EntitySet<VolPic> VolPics
 		{
@@ -1543,6 +1481,19 @@ namespace AnalysisSystem
 			set
 			{
 				this._VolPics.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Picture_PicGroup", Storage="_PicGroups", ThisKey="PID", OtherKey="PID")]
+		public EntitySet<PicGroup> PicGroups
+		{
+			get
+			{
+				return this._PicGroups;
+			}
+			set
+			{
+				this._PicGroups.Assign(value);
 			}
 		}
 		
@@ -1566,18 +1517,6 @@ namespace AnalysisSystem
 			}
 		}
 		
-		private void attach_PicGroups(PicGroup entity)
-		{
-			this.SendPropertyChanging();
-			entity.Picture = this;
-		}
-		
-		private void detach_PicGroups(PicGroup entity)
-		{
-			this.SendPropertyChanging();
-			entity.Picture = null;
-		}
-		
 		private void attach_VolPics(VolPic entity)
 		{
 			this.SendPropertyChanging();
@@ -1585,6 +1524,18 @@ namespace AnalysisSystem
 		}
 		
 		private void detach_VolPics(VolPic entity)
+		{
+			this.SendPropertyChanging();
+			entity.Picture = null;
+		}
+		
+		private void attach_PicGroups(PicGroup entity)
+		{
+			this.SendPropertyChanging();
+			entity.Picture = this;
+		}
+		
+		private void detach_PicGroups(PicGroup entity)
 		{
 			this.SendPropertyChanging();
 			entity.Picture = null;
@@ -1615,9 +1566,9 @@ namespace AnalysisSystem
 		
 		private EntityRef<DataPoint> _DataPoint;
 		
-		private EntityRef<EEG> _EEG;
-		
 		private EntitySet<VolPic> _VolPics;
+		
+		private EntityRef<EEG> _EEG;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1644,8 +1595,8 @@ namespace AnalysisSystem
 		public Sample()
 		{
 			this._DataPoint = default(EntityRef<DataPoint>);
-			this._EEG = default(EntityRef<EEG>);
 			this._VolPics = new EntitySet<VolPic>(new Action<VolPic>(this.attach_VolPics), new Action<VolPic>(this.detach_VolPics));
+			this._EEG = default(EntityRef<EEG>);
 			OnCreated();
 		}
 		
@@ -1838,6 +1789,19 @@ namespace AnalysisSystem
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sample_VolPic", Storage="_VolPics", ThisKey="SID", OtherKey="SID")]
+		public EntitySet<VolPic> VolPics
+		{
+			get
+			{
+				return this._VolPics;
+			}
+			set
+			{
+				this._VolPics.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sample_EEG", Storage="_EEG", ThisKey="SID", OtherKey="SID", IsUnique=true, IsForeignKey=false)]
 		public EEG EEG
 		{
@@ -1864,19 +1828,6 @@ namespace AnalysisSystem
 					}
 					this.SendPropertyChanged("EEG");
 				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sample_VolPic", Storage="_VolPics", ThisKey="SID", OtherKey="SID")]
-		public EntitySet<VolPic> VolPics
-		{
-			get
-			{
-				return this._VolPics;
-			}
-			set
-			{
-				this._VolPics.Assign(value);
 			}
 		}
 		
@@ -1913,23 +1864,31 @@ namespace AnalysisSystem
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VolPics")]
-	public partial class VolPic : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Volunteers")]
+	public partial class Volunteer : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private string _VID;
 		
-		private string _PID;
+		private string _Name;
 		
-		private string _SID;
+		private System.Nullable<int> _Age;
 		
-		private EntityRef<Picture> _Picture;
+		private string _Gender;
 		
-		private EntityRef<Sample> _Sample;
+		private string _Email;
 		
-		private EntityRef<Volunteer> _Volunteer;
+		private string _Phone;
+		
+		private string _Address;
+		
+		private string _Study;
+		
+		private string _JobTitle;
+		
+		private EntitySet<VolPic> _VolPics;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1937,17 +1896,27 @@ namespace AnalysisSystem
     partial void OnCreated();
     partial void OnVIDChanging(string value);
     partial void OnVIDChanged();
-    partial void OnPIDChanging(string value);
-    partial void OnPIDChanged();
-    partial void OnSIDChanging(string value);
-    partial void OnSIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnAgeChanging(System.Nullable<int> value);
+    partial void OnAgeChanged();
+    partial void OnGenderChanging(string value);
+    partial void OnGenderChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnPhoneChanging(string value);
+    partial void OnPhoneChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnStudyChanging(string value);
+    partial void OnStudyChanged();
+    partial void OnJobTitleChanging(string value);
+    partial void OnJobTitleChanged();
     #endregion
 		
-		public VolPic()
+		public Volunteer()
 		{
-			this._Picture = default(EntityRef<Picture>);
-			this._Sample = default(EntityRef<Sample>);
-			this._Volunteer = default(EntityRef<Volunteer>);
+			this._VolPics = new EntitySet<VolPic>(new Action<VolPic>(this.attach_VolPics), new Action<VolPic>(this.detach_VolPics));
 			OnCreated();
 		}
 		
@@ -1962,10 +1931,6 @@ namespace AnalysisSystem
 			{
 				if ((this._VID != value))
 				{
-					if (this._Volunteer.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnVIDChanging(value);
 					this.SendPropertyChanging();
 					this._VID = value;
@@ -1975,153 +1940,176 @@ namespace AnalysisSystem
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PID", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string PID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX)")]
+		public string Name
 		{
 			get
 			{
-				return this._PID;
+				return this._Name;
 			}
 			set
 			{
-				if ((this._PID != value))
+				if ((this._Name != value))
 				{
-					if (this._Picture.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPIDChanging(value);
+					this.OnNameChanging(value);
 					this.SendPropertyChanging();
-					this._PID = value;
-					this.SendPropertyChanged("PID");
-					this.OnPIDChanged();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SID", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string SID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Age", DbType="Int")]
+		public System.Nullable<int> Age
 		{
 			get
 			{
-				return this._SID;
+				return this._Age;
 			}
 			set
 			{
-				if ((this._SID != value))
+				if ((this._Age != value))
 				{
-					if (this._Sample.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSIDChanging(value);
+					this.OnAgeChanging(value);
 					this.SendPropertyChanging();
-					this._SID = value;
-					this.SendPropertyChanged("SID");
-					this.OnSIDChanged();
+					this._Age = value;
+					this.SendPropertyChanged("Age");
+					this.OnAgeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Picture_VolPic", Storage="_Picture", ThisKey="PID", OtherKey="PID", IsForeignKey=true)]
-		public Picture Picture
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Gender", DbType="NVarChar(MAX)")]
+		public string Gender
 		{
 			get
 			{
-				return this._Picture.Entity;
+				return this._Gender;
 			}
 			set
 			{
-				Picture previousValue = this._Picture.Entity;
-				if (((previousValue != value) 
-							|| (this._Picture.HasLoadedOrAssignedValue == false)))
+				if ((this._Gender != value))
 				{
+					this.OnGenderChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Picture.Entity = null;
-						previousValue.VolPics.Remove(this);
-					}
-					this._Picture.Entity = value;
-					if ((value != null))
-					{
-						value.VolPics.Add(this);
-						this._PID = value.PID;
-					}
-					else
-					{
-						this._PID = default(string);
-					}
-					this.SendPropertyChanged("Picture");
+					this._Gender = value;
+					this.SendPropertyChanged("Gender");
+					this.OnGenderChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sample_VolPic", Storage="_Sample", ThisKey="SID", OtherKey="SID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Sample Sample
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(MAX)")]
+		public string Email
 		{
 			get
 			{
-				return this._Sample.Entity;
+				return this._Email;
 			}
 			set
 			{
-				Sample previousValue = this._Sample.Entity;
-				if (((previousValue != value) 
-							|| (this._Sample.HasLoadedOrAssignedValue == false)))
+				if ((this._Email != value))
 				{
+					this.OnEmailChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Sample.Entity = null;
-						previousValue.VolPics.Remove(this);
-					}
-					this._Sample.Entity = value;
-					if ((value != null))
-					{
-						value.VolPics.Add(this);
-						this._SID = value.SID;
-					}
-					else
-					{
-						this._SID = default(string);
-					}
-					this.SendPropertyChanged("Sample");
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Volunteer_VolPic", Storage="_Volunteer", ThisKey="VID", OtherKey="VID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Volunteer Volunteer
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(MAX)")]
+		public string Phone
 		{
 			get
 			{
-				return this._Volunteer.Entity;
+				return this._Phone;
 			}
 			set
 			{
-				Volunteer previousValue = this._Volunteer.Entity;
-				if (((previousValue != value) 
-							|| (this._Volunteer.HasLoadedOrAssignedValue == false)))
+				if ((this._Phone != value))
 				{
+					this.OnPhoneChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Volunteer.Entity = null;
-						previousValue.VolPics.Remove(this);
-					}
-					this._Volunteer.Entity = value;
-					if ((value != null))
-					{
-						value.VolPics.Add(this);
-						this._VID = value.VID;
-					}
-					else
-					{
-						this._VID = default(string);
-					}
-					this.SendPropertyChanged("Volunteer");
+					this._Phone = value;
+					this.SendPropertyChanged("Phone");
+					this.OnPhoneChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(MAX)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Study", DbType="NVarChar(MAX)")]
+		public string Study
+		{
+			get
+			{
+				return this._Study;
+			}
+			set
+			{
+				if ((this._Study != value))
+				{
+					this.OnStudyChanging(value);
+					this.SendPropertyChanging();
+					this._Study = value;
+					this.SendPropertyChanged("Study");
+					this.OnStudyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobTitle", DbType="NVarChar(MAX)")]
+		public string JobTitle
+		{
+			get
+			{
+				return this._JobTitle;
+			}
+			set
+			{
+				if ((this._JobTitle != value))
+				{
+					this.OnJobTitleChanging(value);
+					this.SendPropertyChanging();
+					this._JobTitle = value;
+					this.SendPropertyChanged("JobTitle");
+					this.OnJobTitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Volunteer_VolPic", Storage="_VolPics", ThisKey="VID", OtherKey="VID")]
+		public EntitySet<VolPic> VolPics
+		{
+			get
+			{
+				return this._VolPics;
+			}
+			set
+			{
+				this._VolPics.Assign(value);
 			}
 		}
 		
@@ -2143,6 +2131,18 @@ namespace AnalysisSystem
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_VolPics(VolPic entity)
+		{
+			this.SendPropertyChanging();
+			entity.Volunteer = this;
+		}
+		
+		private void detach_VolPics(VolPic entity)
+		{
+			this.SendPropertyChanging();
+			entity.Volunteer = null;
 		}
 	}
 }

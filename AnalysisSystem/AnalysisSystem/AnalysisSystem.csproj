@@ -95,6 +95,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalysisSystem.cs">
+      <DependentUpon>AnalysisSystem.dbml</DependentUpon>
+    </Compile>
     <Compile Include="AnalysisSystem.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -154,6 +157,14 @@
     </Compile>
     <Compile Include="Controls\ResultChoosingControlPanel.Designer.cs">
       <DependentUpon>ResultChoosingControlPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CsvReader.cs" />
+    <Compile Include="CsvWriter.cs" />
+    <Compile Include="Forms\HfdCalculateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HfdCalculateForm.Designer.cs">
+      <DependentUpon>HfdCalculateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TestBench\RTFilter.cs" />
     <Compile Include="Controls\SampleEliminatingControlPanel.cs">
@@ -252,6 +263,9 @@
     <EmbeddedResource Include="Forms\EmotionExceptChoosingForm.resx">
       <DependentUpon>EmotionExceptChoosingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HfdCalculateForm.resx">
+      <DependentUpon>HfdCalculateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -260,6 +274,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="AnalysisSystem.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>

@@ -53,6 +53,9 @@ namespace AnalysisSystem.Controls
             _af3FilteredBuffer = new List<Double>(BUFFER_SIZE);
             _fc6FilteredBuffer = new List<Double>(BUFFER_SIZE);
             _f4FilteredBuffer = new List<Double>(BUFFER_SIZE);
+
+            _rawDataModel.Start();
+            rawDataModelTimer.Start();
         }
 
         //----------------------- EVENT HANDLERS --------------------//
@@ -111,12 +114,16 @@ namespace AnalysisSystem.Controls
             MWNumericArray fc6TimeSeries = new MWNumericArray(_fc6FilteredBuffer.ToArray());
             MWNumericArray af3TimeSeries = new MWNumericArray(_af3FilteredBuffer.ToArray());
             MWNumericArray f4TimeSeries = new MWNumericArray(_f4FilteredBuffer.ToArray());
+            
+            _arousal = ((double[,])_hfdCalculator.CalculateHfd(fc6TimeSeries, 12).ToArray())[0, 0];
+            _valence = ((double[,])_hfdCalculator.CalculateHfd(af3TimeSeries, 12).ToArray())[0, 0] -
+                       ((double[,])_hfdCalculator.CalculateHfd(f4TimeSeries, 12).ToArray())[0, 0];
 
-            MWArray result = _hfdCalculator.CalculateHfd(fc6TimeSeries, 12);
-            double[] resulta = (double[])result.ToArray();
-            _arousal = (double)(_hfdCalculator.CalculateHfd(fc6TimeSeries, 12) as MWNumericArray)[0];
-            _valence = (double)(_hfdCalculator.CalculateHfd(af3TimeSeries, 12) as MWNumericArray)[0] -
-                       (double)(_hfdCalculator.CalculateHfd(f4TimeSeries, 12) as MWNumericArray)[0];
+            if (Double.IsNaN(_arousal) || Double.IsNaN(_valence))
+            {
+                _arousal = 0;
+                _valence = 0;
+            }
         }
     }
 }
