@@ -70,38 +70,64 @@ namespace AnalysisSystem.Controls
 
         private void exportButton_Click(object sender, EventArgs e)
         {
-            EmotionExceptChoosingForm form = new EmotionExceptChoosingForm(1, Convert.ToInt32(rowCountComboBox.Text) * Convert.ToInt32(columnCountComboBox.Text));
+            //if (labelChoosingControlPanel.OnlySelectedSample)
+            //{
+            //    foreach (ListViewItem item in labelChoosingControlPanel.LeftListView.Items)
+            //    {
+            //        try
+            //        {
+            //            var dataPoint = (
+            //            from datapoints
+            //            in _db.DataPoints
+            //            where item.Text == datapoints.SID
+            //            select datapoints).SingleOrDefault();
 
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                String exportFilePath = Path.Combine(outFolderChooserControlPanel.OutFolderPathTextBox.Text, "ExportData.txt");
 
-                if (File.Exists(exportFilePath))
-                    File.Delete(exportFilePath);
+            //        }
+            //        catch (Exception)
+            //        {
+            //            MessageBox.Show("Querry database error at EmoMappingControlPanel::exportButton_Click");
+            //            return;
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    EmotionExceptChoosingForm form = new EmotionExceptChoosingForm(1, Convert.ToInt32(rowCountComboBox.Text) * Convert.ToInt32(columnCountComboBox.Text));
 
-                using (StreamWriter writer = new StreamWriter(exportFilePath))
-                {
-                    _analysisSytemForm.SetStatus("Exporting...");
+            //    if (form.ShowDialog() == DialogResult.OK)
+            //    {
+            //        String exportFilePath = Path.Combine(outFolderChooserControlPanel.OutFolderPathTextBox.Text, "ExportData.txt");
 
-                    List<Int32> exceptLabelsList = form.EmotionLabelExceptList;
-                    var dataQuery =
-                        from datapoints
-                        in _db.DataPoints
-                        select datapoints;
+            //        if (File.Exists(exportFilePath))
+            //            File.Delete(exportFilePath);
 
-                    foreach (var data in dataQuery)
-                    {
-                        if (!String.IsNullOrEmpty(data.Label) &&
-                            !exceptLabelsList.Contains(Convert.ToInt32(data.Label)) &&
-                            data.FdArousal != null && data.FdValence != null)
-                        {
-                            writer.WriteLine("{0}  1:{1} 2:{2}", data.Label, data.FdArousal, data.FdValence);
-                        }
-                    }
+            //        using (StreamWriter writer = new StreamWriter(exportFilePath))
+            //        {
+            //            _analysisSytemForm.SetStatus("Exporting...");
 
-                    _analysisSytemForm.SetStatus("Exporting... Done");
-                }
-            }
+            //            List<Int32> exceptLabelsList = form.EmotionLabelExceptList;
+            //            var dataQuery =
+            //                from datapoints
+            //                in _db.DataPoints
+            //                select datapoints;
+
+            //            foreach (var data in dataQuery)
+            //            {
+            //                if (!String.IsNullOrEmpty(data.Label) &&
+            //                    !exceptLabelsList.Contains(Convert.ToInt32(data.Label)) &&
+            //                    data.FdArousal != null && data.FdValence != null)
+            //                {
+            //                    writer.WriteLine("{0}  1:{1} 2:{2}", data.Label, data.FdArousal, data.FdValence);
+            //                }
+            //            }
+
+            //            _analysisSytemForm.SetStatus("Exporting... Done");
+            //        }
+            //    }
+            //}
+
+
         }
 
         //------------------------ PRIVATE HELPERS -------------------//

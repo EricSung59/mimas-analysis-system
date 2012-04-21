@@ -47,14 +47,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AnalysisSystem.exe" size="150016">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AnalysisSystem.exe" size="154624">
       <assemblyIdentity name="AnalysisSystem" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>qG2CFBdnYSZHESc2mRvVfjaXYKU=</dsig:DigestValue>
+        <dsig:DigestValue>yd+V+gS/NdRstRAji8V+S8f9JJk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -90,17 +90,17 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Piu3cCQmtp4AqNHmGwCen471AvE=</dsig:DigestValue>
+        <dsig:DigestValue>rYG9ait8z5mVmzyCq4tEdXr9tBM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="AnalysisSystem.exe.config" size="434">
+  <file name="AnalysisSystem.exe.config" size="533">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>+htEYfP3TzvbUlgfnMDfKDq4Cms=</dsig:DigestValue>
+      <dsig:DigestValue>0V7+BY4+YkAUIxHcB1XoNZHXzlg=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

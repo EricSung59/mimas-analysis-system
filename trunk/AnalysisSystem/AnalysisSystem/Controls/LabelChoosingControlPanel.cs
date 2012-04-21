@@ -206,5 +206,10 @@ namespace AnalysisSystem.Controls
         {
             get { return onlyGoodSamplesCheckBox.Checked; }
         }
+
+        public bool OnlySelectedSample
+        {
+            get { return exportOnlySelectedSamplesCheckBox.Checked; }
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace AnalysisSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.AnalysisSystemForm());
+            Application.Run(new Forms.HfdCalculateForm());
         }
     }
 }

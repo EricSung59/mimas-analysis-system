@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel_00 = new System.Windows.Forms.TableLayoutPanel();
-            this.selectSampleButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel_00_10 = new System.Windows.Forms.TableLayoutPanel();
             this.rightListView = new System.Windows.Forms.ListView();
             this.rightTitleLabel = new System.Windows.Forms.Label();
@@ -37,6 +36,8 @@
             this.leftTitleLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.onlyGoodSamplesCheckBox = new System.Windows.Forms.CheckBox();
+            this.selectSampleButton = new System.Windows.Forms.Button();
+            this.exportOnlySelectedSamplesCheckBox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel_00.SuspendLayout();
             this.tableLayoutPanel_00_10.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -58,18 +59,6 @@
             this.tableLayoutPanel_00.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel_00.Size = new System.Drawing.Size(947, 406);
             this.tableLayoutPanel_00.TabIndex = 11;
-            // 
-            // selectSampleButton
-            // 
-            this.selectSampleButton.AutoSize = true;
-            this.selectSampleButton.Location = new System.Drawing.Point(5, 3);
-            this.selectSampleButton.Margin = new System.Windows.Forms.Padding(5);
-            this.selectSampleButton.Name = "selectSampleButton";
-            this.selectSampleButton.Size = new System.Drawing.Size(160, 35);
-            this.selectSampleButton.TabIndex = 8;
-            this.selectSampleButton.Text = "Select Sample  ID";
-            this.selectSampleButton.UseVisualStyleBackColor = true;
-            this.selectSampleButton.Click += new System.EventHandler(this.selectSampleButton_Click);
             // 
             // tableLayoutPanel_00_10
             // 
@@ -142,6 +131,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.exportOnlySelectedSamplesCheckBox);
             this.panel1.Controls.Add(this.onlyGoodSamplesCheckBox);
             this.panel1.Controls.Add(this.selectSampleButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -161,6 +151,30 @@
             this.onlyGoodSamplesCheckBox.TabIndex = 9;
             this.onlyGoodSamplesCheckBox.Text = "Only good samples";
             this.onlyGoodSamplesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // selectSampleButton
+            // 
+            this.selectSampleButton.AutoSize = true;
+            this.selectSampleButton.Location = new System.Drawing.Point(5, 3);
+            this.selectSampleButton.Margin = new System.Windows.Forms.Padding(5);
+            this.selectSampleButton.Name = "selectSampleButton";
+            this.selectSampleButton.Size = new System.Drawing.Size(160, 35);
+            this.selectSampleButton.TabIndex = 8;
+            this.selectSampleButton.Text = "Select Sample  ID";
+            this.selectSampleButton.UseVisualStyleBackColor = true;
+            this.selectSampleButton.Click += new System.EventHandler(this.selectSampleButton_Click);
+            // 
+            // exportOnlySelectedSamplesCheckBox
+            // 
+            this.exportOnlySelectedSamplesCheckBox.AutoSize = true;
+            this.exportOnlySelectedSamplesCheckBox.Checked = true;
+            this.exportOnlySelectedSamplesCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.exportOnlySelectedSamplesCheckBox.Location = new System.Drawing.Point(353, 8);
+            this.exportOnlySelectedSamplesCheckBox.Name = "exportOnlySelectedSamplesCheckBox";
+            this.exportOnlySelectedSamplesCheckBox.Size = new System.Drawing.Size(248, 27);
+            this.exportOnlySelectedSamplesCheckBox.TabIndex = 10;
+            this.exportOnlySelectedSamplesCheckBox.Text = "Export only selected samples";
+            this.exportOnlySelectedSamplesCheckBox.UseVisualStyleBackColor = true;
             // 
             // LabelChoosingControlPanel
             // 
@@ -189,5 +203,6 @@
         private System.Windows.Forms.Label leftTitleLabel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox onlyGoodSamplesCheckBox;
+        private System.Windows.Forms.CheckBox exportOnlySelectedSamplesCheckBox;
     }
 }

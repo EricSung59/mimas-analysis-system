@@ -9,18 +9,14 @@
       <Association Name="Sample_DataPoint" Member="Sample" ThisKey="SID" OtherKey="SID" Type="Sample" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Volunteers" Member="Volunteers">
-    <Type Name="Volunteer">
+  <Table Name="dbo.VolPics" Member="VolPics">
+    <Type Name="VolPic">
       <Column Name="VID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Gender" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Study" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="JobTitle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="Volunteer_VolPic" Member="VolPics" ThisKey="VID" OtherKey="VID" Type="VolPic" />
+      <Column Name="PID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Picture_VolPic" Member="Picture" ThisKey="PID" OtherKey="PID" Type="Picture" IsForeignKey="true" />
+      <Association Name="Sample_VolPic" Member="Sample" ThisKey="SID" OtherKey="SID" Type="Sample" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Volunteer_VolPic" Member="Volunteer" ThisKey="VID" OtherKey="VID" Type="Volunteer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.EEG" Member="EEGs">
@@ -55,8 +51,8 @@
     <Type Name="PicGroup">
       <Column Name="PID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="GID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="Group_PicGroup" Member="Group" ThisKey="GID" OtherKey="GID" Type="Group" IsForeignKey="true" />
-      <Association Name="Picture_PicGroup" Member="Picture" ThisKey="PID" OtherKey="PID" Type="Picture" IsForeignKey="true" />
+      <Association Name="Group_PicGroup" Member="Group" ThisKey="GID" OtherKey="GID" Type="Group" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Picture_PicGroup" Member="Picture" ThisKey="PID" OtherKey="PID" Type="Picture" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Pictures" Member="Pictures">
@@ -67,8 +63,8 @@
       <Column Name="Valence" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="ArousalSD" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="ValenceSD" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="Picture_PicGroup" Member="PicGroups" ThisKey="PID" OtherKey="PID" Type="PicGroup" />
       <Association Name="Picture_VolPic" Member="VolPics" ThisKey="PID" OtherKey="PID" Type="VolPic" />
+      <Association Name="Picture_PicGroup" Member="PicGroups" ThisKey="PID" OtherKey="PID" Type="PicGroup" />
     </Type>
   </Table>
   <Table Name="dbo.Samples" Member="Samples">
@@ -82,18 +78,22 @@
       <Column Name="HfdCsvPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="IsGood" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Sample_DataPoint" Member="DataPoint" ThisKey="SID" OtherKey="SID" Type="DataPoint" Cardinality="One" />
-      <Association Name="Sample_EEG" Member="EEG" ThisKey="SID" OtherKey="SID" Type="EEG" Cardinality="One" />
       <Association Name="Sample_VolPic" Member="VolPics" ThisKey="SID" OtherKey="SID" Type="VolPic" />
+      <Association Name="Sample_EEG" Member="EEG" ThisKey="SID" OtherKey="SID" Type="EEG" Cardinality="One" />
     </Type>
   </Table>
-  <Table Name="dbo.VolPics" Member="VolPics">
-    <Type Name="VolPic">
+  <Table Name="dbo.Volunteers" Member="Volunteers">
+    <Type Name="Volunteer">
       <Column Name="VID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="PID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="SID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="Picture_VolPic" Member="Picture" ThisKey="PID" OtherKey="PID" Type="Picture" IsForeignKey="true" />
-      <Association Name="Sample_VolPic" Member="Sample" ThisKey="SID" OtherKey="SID" Type="Sample" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="Volunteer_VolPic" Member="Volunteer" ThisKey="VID" OtherKey="VID" Type="Volunteer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Study" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="JobTitle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Volunteer_VolPic" Member="VolPics" ThisKey="VID" OtherKey="VID" Type="VolPic" />
     </Type>
   </Table>
 </Database>
