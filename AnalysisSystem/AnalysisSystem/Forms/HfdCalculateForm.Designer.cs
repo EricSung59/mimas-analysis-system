@@ -70,7 +70,7 @@
             this.outputFolderTextBox.Name = "outputFolderTextBox";
             this.outputFolderTextBox.Size = new System.Drawing.Size(355, 20);
             this.outputFolderTextBox.TabIndex = 3;
-            this.outputFolderTextBox.Text = "D:\\ToanBK\\Desktop\\Test";
+            this.outputFolderTextBox.Text = "D:\\ToanBK\\Desktop\\Test\\Hfd";
             // 
             // inputFolderBrowseButton
             // 
