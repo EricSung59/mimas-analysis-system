@@ -16,6 +16,10 @@ namespace AnalysisSystem
         public CsvWriter(string filename, Electrodes[] electrodes)
         {
             _filename = filename;
+            if (File.Exists(_filename))
+            {
+                File.Delete(filename);
+            }
             _writer = new StreamWriter(_filename);
 
             for (int i = 0; i < electrodes.Count(); i++)

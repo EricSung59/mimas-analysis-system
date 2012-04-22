@@ -30,6 +30,10 @@ namespace AnalysisSystem.Forms
             InitializeComponent();
 
             _electrodeValuesList = new List<double[]>(_electrodes.Count());
+            for (int i = 0; i < _electrodes.Count(); i++)
+            {
+                _electrodeValuesList.Add(new double[0]);
+            }
         }
 
         //---------------------------- EVENT HANDLERS ----------------------//
@@ -82,7 +86,7 @@ namespace AnalysisSystem.Forms
                 if (numberOfLines < _skipSamples + _base + _windowSize * _count)
                 {
                     MessageBox.Show("File " + filepath + " không đủ số dòng cần thiết");
-                    break;
+                    continue;
                 }
 
                 // Bat dau ghi ra file
@@ -92,20 +96,25 @@ namespace AnalysisSystem.Forms
                     // Dich chuyen theo cua so
                     for (int i = 0; i < _count; i++)
                     {
-                        int startIndex = _skipSamples + i * _count;
-                        int endIndex = _skipSamples + i * _count + _base;
+                        int startIndex = _skipSamples + i * _windowSize;
+                        int endIndex = _skipSamples + _base + i * _windowSize;
 
                         // Xac dinh dong`
                         string line = "";
                         for (int j = 0; j < _electrodes.Count(); j++)
                         {
-                            line = line + calculateHfd(_electrodeValuesList[j], startIndex, endIndex).ToString() + ",";
+                            if (j != _electrodes.Count() - 1)
+                                line = line + calculateHfd(_electrodeValuesList[j], startIndex, endIndex).ToString() + ",";
+                            else
+                                line = line + calculateHfd(_electrodeValuesList[j], startIndex, endIndex).ToString();
                         }
 
                         writer.WriteLine(line);
                     }
                 }
             }
+
+            MessageBox.Show("Đã xử lý xong.");
         }
 
         //---------------------------- PRIVATE HELPERS ---------------------//
