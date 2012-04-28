@@ -74,7 +74,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="svm-predict.c" />
+    <ClCompile Include="svm-scale.c" />
     <ClCompile Include="svm.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -9,14 +9,18 @@ using System.Windows.Forms;
 using TestBench;
 using AnalysisSystem.Matlab;
 using MathWorks.MATLAB.NET.Arrays;
+using System.IO;
 
 namespace AnalysisSystem.Controls
 {
     public partial class TestingControlPanel : UserControl
     {
+        //----------------------- CLASS MEMBERS ---------------------//
+
         private RawDataModel _rawDataModel = RawDataModel.Instance;
         private RTFilter _filter;
         private HfdCalculator _hfdCalculator;
+        private SvmModel _model;
 
         private List<Double> _af3Buffer;
         private List<Double> _fc6Buffer;
@@ -29,6 +33,13 @@ namespace AnalysisSystem.Controls
         private double _arousal; // FC6
         private double _valence; // AF3 - F4
 
+        private double _arousalMinValue;
+        private double _arousalMaxValue;
+        private double _valenceMinValue;
+        private double _valenceMaxValue;
+        private double _lowerValue;
+        private double _upperValue;
+
         private const int BUFFER_SIZE = 640;
 
         //----------------------- CONSTRUCTOR -----------------------//
@@ -40,8 +51,6 @@ namespace AnalysisSystem.Controls
             _rawDataModel.NewData += new RawDataModel.NewDataEventHandler(_rawDataModel_NewData);
             _hfdCalculator = new HfdCalculator();
 
-            //double[] b = { 0.0783, 0, -0.1567, 0, 0.0783 };
-            //double[] a = { 1.0000, -3.0097, 3.4242, -1.7943, 0.3807 };
             double[] b = { 0.0878, 0.1756, 0.0878 };
             double[] a = { 1.0000, -1.0048, 0.3561 };
             _filter = new RTFilter(2, b, a);
@@ -54,17 +63,12 @@ namespace AnalysisSystem.Controls
             _fc6FilteredBuffer = new List<Double>(BUFFER_SIZE);
             _f4FilteredBuffer = new List<Double>(BUFFER_SIZE);
 
-            _rawDataModel.Start();
-            rawDataModelTimer.Start();
+            // model file text box
+            modelFilePathTextBox.Text =
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Mimas", "AnalysisSystem", "ModelFiles", "105.model");
         }
 
         //----------------------- EVENT HANDLERS --------------------//
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            _rawDataModel.Start();
-            rawDataModelTimer.Start();
-        }
 
         private void _rawDataModel_NewData(object sender, NewDataEventArgs e)
         {
@@ -73,6 +77,8 @@ namespace AnalysisSystem.Controls
             updateBuffer(_f4Buffer, _f4FilteredBuffer, Emotiv.EmotivDongle.Channels.F4);
 
             calculateHfd();
+            scaleHfdValues();
+            updateLabel();
         }
 
         private void rawDataModelTimer_Tick(object sender, EventArgs e)
@@ -80,8 +86,58 @@ namespace AnalysisSystem.Controls
             _rawDataModel.Process();
         }
 
+        private void modelFilePathBrowseButton_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                modelFilePathTextBox.Text = openFileDialog.FileName;   
+            }
+        }
+
+        private void startButton_Click(object sender, EventArgs e)
+        {
+            if (!validateInputValues())
+                return;
+
+            // Disable controls
+            startButton.Enabled = false;
+            modelFilePathTextBox.Enabled = false;
+            arousalMaxTextBox.Enabled = false;
+            arousalMinTextBox.Enabled = false;
+            valenceMaxTextBox.Enabled = false;
+            valenceMinTextBox.Enabled = false;
+            upperTextBox.Enabled = false;
+            lowerTextBox.Enabled = false;
+
+            _model = SvmLibWrapper.LoadModel(modelFilePathTextBox.Text);
+
+            _rawDataModel.Start();
+            rawDataModelTimer.Start();
+        }
+
+        private void stopButton_Click(object sender, EventArgs e)
+        {
+            startButton.Enabled = true;
+            modelFilePathTextBox.Enabled = true;
+            arousalMaxTextBox.Enabled = true;
+            arousalMinTextBox.Enabled = true;
+            valenceMaxTextBox.Enabled = true;
+            valenceMinTextBox.Enabled = true;
+            upperTextBox.Enabled = true;
+            lowerTextBox.Enabled = true;
+
+            _rawDataModel.Stop();
+            rawDataModelTimer.Stop();
+        }
+
         //----------------------- PRIVATE HELPERS -------------------//
 
+        /// <summary>
+        /// Cập nhật giá trị của buffer, từ đó đưa qua bộ lọc và cho vào filteredBuffer.
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="filteredBuffer"></param>
+        /// <param name="channel"></param>
         private void updateBuffer(List<Double> buffer, List<Double> filteredBuffer, Emotiv.EmotivDongle.Channels channel)
         {
             List<Double> eegDataList = new List<Double>(_rawDataModel.GetEegData(channel));
@@ -109,6 +165,10 @@ namespace AnalysisSystem.Controls
             filteredBuffer.AddRange(_filter.Filter(buffer.ToArray()));
         }
 
+        /// <summary>
+        /// Tính toán giá trị Hfd theo các giá trị trong 3 filtedBuffer.
+        /// Giá trị sau khi tính toán được lưu trong biến toàn cục _arousal và _valence
+        /// </summary>
         private void calculateHfd()
         {
             MWNumericArray fc6TimeSeries = new MWNumericArray(_fc6FilteredBuffer.ToArray());
@@ -124,6 +184,83 @@ namespace AnalysisSystem.Controls
                 _arousal = 0;
                 _valence = 0;
             }
+        }
+
+        /// <summary>
+        /// Scale các giá trị _arousal và _valence
+        /// </summary>
+        private void scaleHfdValues()
+        {
+            // Arousal
+            if (_arousal <= _arousalMinValue)
+            {
+                _arousal = _lowerValue;
+            }
+            else if (_arousal >= _arousalMaxValue)
+            {
+                _arousal = _upperValue;
+            }
+            else
+            {
+                _arousal = _lowerValue + ((_arousal - _arousalMinValue) / (_arousalMaxValue - _arousalMinValue)) * (_upperValue - _lowerValue);
+            }
+
+            // Valence
+            if (_valence <= _valenceMinValue) 
+            {
+                _valence = _lowerValue;
+            }
+            else if (_valence >= _valenceMaxValue)
+            {
+                _valence = _upperValue;
+            }
+            else
+            {
+                _valence = _lowerValue + ((_valence - _valenceMinValue) / (_valenceMaxValue - _valenceMinValue)) * (_upperValue - _lowerValue);
+            }
+        }
+
+        /// <summary>
+        /// Cập nhật nhãn cảm xúc dựa theo các giá trị _valence và _arousal đã tính được
+        /// </summary>
+        private void updateLabel()
+        {
+            SvmNode[] nodes = new SvmNode[3];
+            nodes[0] = new SvmNode(1, _arousal);
+            nodes[1] = new SvmNode(2, _valence);
+            nodes[2] = new SvmNode(-1, 0);
+            labelLabel.Text = SvmLibWrapper.Predict(_model, nodes).ToString();
+        }
+
+        /// <summary>
+        /// Kiểm tra các giá trị nhập vào
+        /// </summary>
+        /// <returns></returns>
+        private bool validateInputValues()
+        {
+            if (!File.Exists(modelFilePathTextBox.Text))
+            {
+                MessageBox.Show("Không tìm thấy file " + modelFilePathTextBox.Text + "\nKiểm tra lại đường dẫn");
+                return false;
+            }
+
+            try
+            {
+                _lowerValue = Convert.ToDouble(lowerTextBox.Text);
+                _upperValue = Convert.ToDouble(upperTextBox.Text);
+
+                _arousalMinValue = Convert.ToDouble(arousalMinTextBox.Text);
+                _arousalMaxValue = Convert.ToDouble(arousalMaxTextBox.Text);
+                _valenceMinValue = Convert.ToDouble(valenceMinTextBox.Text);
+                _valenceMaxValue = Convert.ToDouble(valenceMaxTextBox.Text);
+            }
+            catch (FormatException fe)
+            {
+                MessageBox.Show(fe.Message);
+                return false;
+            }
+
+            return true;
         }
     }
 }

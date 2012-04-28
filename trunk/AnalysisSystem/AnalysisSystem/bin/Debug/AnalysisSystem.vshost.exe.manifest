@@ -42,14 +42,19 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AnalysisSystem.exe" size="155136">
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="MWArray" version="2.10.0.0" publicKeyToken="E1D84A0DA19DB86F" language="neutral" processorArchitecture="x86" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AnalysisSystem.exe" size="162816">
       <assemblyIdentity name="AnalysisSystem" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>WD9cbhksTgyJIL+FoTy+aNsCtaY=</dsig:DigestValue>
+        <dsig:DigestValue>wte+QOZjgg2h+PDHv0CFffVbi40=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -86,18 +91,6 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
         <dsig:DigestValue>rYG9ait8z5mVmzyCq4tEdXr9tBM=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MWArray.dll" size="98304">
-      <assemblyIdentity name="MWArray" version="2.10.0.0" publicKeyToken="E1D84A0DA19DB86F" language="neutral" processorArchitecture="x86" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>z49tXx3uuExSov2ctafnyX/Qngw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

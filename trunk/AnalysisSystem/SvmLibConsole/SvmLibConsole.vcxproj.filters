@@ -18,7 +18,7 @@
     <ClCompile Include="svm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="svm-predict.c">
+    <ClCompile Include="svm-scale.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
